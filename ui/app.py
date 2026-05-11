@@ -81,7 +81,7 @@ def _build_agent(site_id: str) -> NTOAgent:
         st.error("❌ ANTHROPIC_API_KEY not found! Please set it in .env file.")
         st.stop()
 
-    # Load SCAPI creds from sites/<site_id>/config.env, fall back to root .env
+    # Load SCAPI creds from agents/<site_id>/config.env, fall back to root .env
     senv = load_site_scapi_env(site_id) if site_id else {}
     scapi_token_url = senv.get("SCAPI_TOKEN_URL") or os.getenv("SCAPI_TOKEN_URL")
     scapi_credentials = senv.get("SCAPI_CLIENT_CREDENTIALS") or os.getenv("SCAPI_CLIENT_CREDENTIALS")
@@ -90,7 +90,7 @@ def _build_agent(site_id: str) -> NTOAgent:
     scapi_locale = senv.get("SCAPI_LOCALE") or os.getenv("SCAPI_LOCALE")
 
     if not all([scapi_token_url, scapi_credentials, scapi_search_url]):
-        st.error("❌ SCAPI credentials not found. Check sites/{site_id}/config.env or root .env")
+        st.error("❌ SCAPI credentials not found. Check agents/{site_id}/config.env or root .env")
         st.stop()
 
     return NTOAgent(

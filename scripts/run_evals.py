@@ -8,7 +8,7 @@ Usage (from nto-agent/ root):
     python scripts/run_evals.py --site NTOManaged --output results/run1.json
     python scripts/run_evals.py --site NTOManaged --workers 5 --metric cognitive_load
 
-Dataset defaults to sites/<site_id>/eval_dataset.json if --dataset is not specified.
+Dataset defaults to agents/<site_id>/eval_dataset.json if --dataset is not specified.
 """
 
 import argparse
@@ -41,7 +41,7 @@ def main():
         "--dataset",
         default=None,
         metavar="PATH",
-        help="Path to eval dataset JSON. Defaults to sites/<site_id>/eval_dataset.json.",
+        help="Path to eval dataset JSON. Defaults to agents/<site_id>/eval_dataset.json.",
     )
     parser.add_argument(
         "--sample",
@@ -81,7 +81,7 @@ def main():
     if args.dataset:
         dataset_path = Path(args.dataset)
     elif args.site:
-        dataset_path = Path("sites") / args.site / "eval_dataset.json"
+        dataset_path = Path("agents") / args.site / "eval_dataset.json"
     else:
         dataset_path = Path("data/nto_eval_dataset.json")
 

@@ -1,7 +1,7 @@
 """
 Per-site configuration loader.
 
-Each site lives in sites/<site_id>/ and has:
+Each site lives in agents/<site_id>/ and has:
   config.yaml  — system_prompt, overlay, examples, gepa metadata
   config.env   — SCAPI_TOKEN_URL, SCAPI_CLIENT_CREDENTIALS,
                  SCAPI_SEARCH_URL, SCAPI_SITE_ID
@@ -27,7 +27,7 @@ except ImportError:
 
 from system_prompt import get_system_prompt
 
-SITES_DIR = Path(__file__).parent.parent / "sites"
+SITES_DIR = Path(__file__).parent.parent / "agents"
 
 _OVERLAY_SECTION = """
 ---
@@ -139,7 +139,7 @@ def get_system_prompt_for_site(site_id: Optional[str] = None) -> str:
 
 
 def load_site_scapi_env(site_id: str) -> dict:
-    """Load SCAPI credentials from sites/<site_id>/config.env.
+    """Load SCAPI credentials from agents/<site_id>/config.env.
 
     Returns a dict with SCAPI_TOKEN_URL, SCAPI_CLIENT_CREDENTIALS,
     SCAPI_SEARCH_URL, SCAPI_SITE_ID. Falls back to os.environ if file missing.
