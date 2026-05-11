@@ -1,13 +1,13 @@
 ---
 name: demo-shopper-agent
 description: |
-  Scaffold, configure, and launch a branded shopper agent demo in minutes. Clones an
-  existing agent (NTOManaged or shiseido_us), sets up SCAPI credentials, customises
-  branding, and starts the Streamlit UI. Use this skill whenever the user wants to:
-  create a new demo, onboard a new brand, clone an agent, set up credentials, launch
-  an agent, or list available agents.
+  Scaffold, configure, and launch a branded shopper agent demo in minutes. Gathers brand
+  inputs, generates or clones a contextualised system prompt, sets up SCAPI credentials,
+  and starts the Streamlit UI. Use this skill whenever the user wants to: create a new
+  demo, onboard a new brand, clone an agent, set up credentials, launch an agent, or
+  list available agents.
 compatibility: |
-  Must be run from the nto-agent repo root (scripts/new_agent.py must exist).
+  Must be run from the shopper-agent-prototype repo root (scripts/new_agent.py must exist).
   Requires Python 3.10+, pyyaml, and streamlit installed (pip install -r requirements.txt).
   SCAPI credentials (token URL, client credentials, search URL) must be provided by the user.
 ---
@@ -18,11 +18,12 @@ Scaffold and launch a branded shopper agent demo for any SFCC/SCAPI storefront.
 
 ## What This Skill Does
 
-Walks the user through three stages:
+Walks the user through four stages:
 
-1. **Scaffold** — clone an existing agent into `agents/<new_id>/`
-2. **Configure** — fill in SCAPI credentials and brand identity
-3. **Launch** — start the Streamlit UI and verify it's running
+1. **Brand inputs** — learn about the brand to inform the system prompt
+2. **System prompt** — either clone from a matching existing agent or generate fresh from inputs
+3. **Configure** — fill in SCAPI credentials and branding
+4. **Launch** — start the Streamlit UI
 
 ---
 
@@ -30,8 +31,6 @@ Walks the user through three stages:
 
 Read `config/defaults.yaml` (sibling of this SKILL.md) for defaults:
 - `default_source` — which agent to clone from by default
-- `available_sources` — list of cloneable agents
-- `required_env_vars` — SCAPI fields the user must supply
 - `base_port` — starting port for the UI
 
 ---
@@ -41,46 +40,92 @@ Read `config/defaults.yaml` (sibling of this SKILL.md) for defaults:
 ### Triggers
 - "create a new agent for <brand>"
 - "scaffold a demo for <brand>"
-- "clone the shiseido agent for <brand>"
 - "onboard <brand>"
 - "set up a new demo"
 
-### Step 1 — Gather inputs
+---
 
-Ask the user for:
-1. **Agent ID** — short slug, no spaces (e.g. `acme_us`, `nordstrom_us`). Suggest `<brand>_<locale>` format.
-2. **Source agent** — which existing agent to clone from (default: `NTOManaged`). Show the full list of available agents by running `ls agents/` — any agent with a `config.yaml` is a valid source. The user can pick any of them.
-3. **Brand name** — full display name (e.g. "ACME Sports")
-4. **Tagline** — one-line subtitle for the UI (e.g. "Your personal sports gear advisor")
-5. **Icon emoji** — shown in the UI header (e.g. 🏃)
+### Step 1 — Gather brand inputs
 
-Then ask for SCAPI credentials. Explain what each is for:
-- **SCAPI_TOKEN_URL** — OAuth token endpoint (e.g. `https://<shortcode>.api.commercecloud.salesforce.com/shopper/auth/v1/organizations/<org>/oauth2/token`)
-- **SCAPI_CLIENT_CREDENTIALS** — base64-encoded `client_id:client_secret`
-- **SCAPI_SEARCH_URL** — product search endpoint (e.g. `https://<shortcode>.api.commercecloud.salesforce.com/search/shopper-search/v1/organizations/<org>/product-search`)
-- **SCAPI_SITE_ID** — the storefront site ID (often same as agent ID)
+Ask these questions **one conversation turn** (not one at a time — batch them):
 
-Say: *"I'll need SCAPI credentials to connect to the storefront. Do you have them handy, or should I scaffold first and you can fill them in later?"*
+> *"Let's set up your branded agent. Tell me about the brand:*
+> 1. *What's the brand name?*
+> 2. *What's the storefront URL? (helps me understand the product range)*
+> 3. *How would you describe the brand's voice and tone? (e.g. premium and expert, fun and youthful, practical and no-nonsense)*
+> 4. *What's the agent ID you'd like to use?* (short slug, no spaces — e.g. `acme_us`)"
 
-If they want to fill in later: proceed to Step 2 with blank credentials.
+Use these inputs to infer the brand's domain and product focus. You don't need to ask about product categories — infer them from the brand name, URL, and any context the user gives.
 
-### Step 2 — Run the scaffold script
+---
 
-Run `ls agents/` to confirm the source exists, then:
+### Step 2 — Match to an existing agent or generate fresh
 
+Run `ls agents/` to see what's available, then read each agent's `config.yaml` to understand its domain.
+
+Based on the brand inputs, determine the closest domain match:
+
+| Domain | Best source agent |
+|--------|------------------|
+| Outdoor gear, hiking, camping, apparel | `NTOManaged` |
+| Beauty, skincare, makeup, fragrance, wellness | `shiseido_us` |
+| Athletic footwear, sneakers, sportswear | `hibbett` |
+| No clear match | Generate fresh |
+
+Present your recommendation to the user:
+
+> *"Based on what you've told me, **[source agent]** is the closest match — it's set up for [domain description] and has a proven system prompt structure we can adapt. Want to use it as the starting point, or would you prefer I write a completely fresh prompt for [brand name]?"*
+
+If no existing agent fits the domain, skip the suggestion and say:
+> *"I don't have an existing agent in the same space — I'll write a fresh system prompt tailored to [brand name]."*
+
+#### Option A — Clone and adapt from existing agent
+
+Run:
 ```bash
 python scripts/new_agent.py <agent_id> --from <source> --non-interactive
 ```
 
-Then update branding in `agents/<agent_id>/config.yaml`:
-- Set `ui.title` to the brand name + "Advisor" (e.g. "ACME Sports Advisor")
-- Set `ui.subtitle` to the tagline
-- Set `ui.icon` to the emoji
-- Set `tools.search_tool_name` to `search_<agent_id>_products`
+Then **rewrite the system prompt** in `agents/<agent_id>/config.yaml` to be fully contextualised to the new brand. Do not leave the source brand's name, products, or tone in place. Use the brand inputs from Step 1 to rewrite:
 
-Use the Edit tool to apply these changes directly — do not ask the user to edit manually.
+- `system_prompt` — replace the role, brand identity, mission, voice, and product categories
+- `overlay` — adapt the brand-specific instructions (shipping thresholds, consultation offers, etc.) to what's relevant for this brand
+- `examples` — rewrite all few-shot examples using plausible queries and responses for this brand
+- `ui.about` — rewrite the sidebar about text
+- `ui.starter_queries` — generate 3 relevant starter queries for this brand
+
+#### Option B — Generate fresh prompt from inputs
+
+Do not clone any existing agent. Create `agents/<agent_id>/` manually with:
+
+```bash
+mkdir -p agents/<agent_id>
+```
+
+Then write `agents/<agent_id>/config.yaml` from scratch using the brand inputs. Structure it identically to existing agents but with all content specific to this brand. Generate:
+
+- `system_prompt` — full prompt covering role, mission, brand voice, tools, response format, and operational constraints
+- `overlay` — 4–6 brand-specific behavioural instructions
+- `examples` — 2–3 few-shot examples with plausible queries and responses
+- `ui` — title, subtitle, icon, about, starter_queries
+- `tools` — search_tool_name (`search_<agent_id>_products`), search_description, search_category_hint
+- `locales` — default `en_US`, supported list inferred from brand's markets
+- `gepa` — `{last_optimized: null, best_score: null, optimization_runs: 0}`
+
+**System prompt quality bar** — the generated prompt must:
+- Name the brand and describe its value proposition clearly
+- Define the agent's voice and tone in concrete terms (not just "helpful")
+- List the tools available with correct tool names for this agent
+- Specify the response format (JSON with `thought`, `response`, `follow_up`, `suggestions`)
+- Include domain-specific response guidelines (equivalent to Shiseido's skincare guidelines or NTO's gear guidelines)
+
+Show the user a summary of the generated prompt and ask: *"Does this capture the brand correctly? I can adjust the tone, add product categories, or change anything before we proceed."*
+
+---
 
 ### Step 3 — Write SCAPI credentials
+
+Say: *"I'll need SCAPI credentials to connect to the storefront. Do you have them handy, or should I proceed and you can fill them in later?"*
 
 Write to `agents/<agent_id>/config.env`:
 ```
@@ -91,25 +136,38 @@ SCAPI_SITE_ID=<agent_id>
 SCAPI_LOCALE=en_US
 ```
 
-If credentials were provided, fill them in. If not, leave blank and remind the user to fill them before launching.
+Explain what each is:
+- **SCAPI_TOKEN_URL** — OAuth token endpoint, ends in `/oauth2/token`
+- **SCAPI_CLIENT_CREDENTIALS** — base64-encoded `client_id:client_secret`
+- **SCAPI_SEARCH_URL** — product search endpoint, contains `/product-search`
+- **SCAPI_SITE_ID** — site ID as configured in Business Manager
 
-### Step 4 — Verify before launch
+If credentials are blank, warn: *"Product search will fail until credentials are filled in — edit `agents/<agent_id>/config.env` when ready."*
 
-Check that:
-- `agents/<agent_id>/config.yaml` exists and has `ui.title` set
-- `agents/<agent_id>/config.env` has at least `SCAPI_SITE_ID` set
-- If any credential is blank, warn: *"SCAPI credentials are missing — the agent will launch but product search will fail until you fill in `agents/<agent_id>/config.env`."*
+Also write `eval_dataset.json` as an empty array:
+```bash
+echo "[]" > agents/<agent_id>/eval_dataset.json
+```
 
-### Step 5 — Launch
+---
 
-Ask: *"Ready to launch? I'll start the agent on the next available port."*
+### Step 4 — Verify and launch
+
+Check:
+- `agents/<agent_id>/config.yaml` exists with `ui.title` and `system_prompt` set
+- `agents/<agent_id>/config.env` has `SCAPI_SITE_ID`
+- `tools.search_tool_name` is `search_<agent_id>_products`
+
+Ask: *"Ready to launch?"*
 
 Run:
 ```bash
 ./start.sh <agent_id>
 ```
 
-Report back the URL (e.g. `http://localhost:8502`) and PID. Tell the user to open it in their browser.
+Report the URL and PID.
+
+---
 
 ### Output Report
 
@@ -119,14 +177,15 @@ Report back the URL (e.g. `http://localhost:8502`) and PID. Tell the user to ope
 | Field | Value |
 |-------|-------|
 | Agent ID | <agent_id> |
-| Cloned from | <source> |
+| Brand | <brand name> |
+| System prompt | <cloned from <source> and adapted / generated fresh> |
 | Config | agents/<agent_id>/config.yaml |
 | Credentials | agents/<agent_id>/config.env |
 | URL | http://localhost:<port> |
 
 ### Next Steps
 - [ ] Fill in SCAPI credentials (if not done): `agents/<agent_id>/config.env`
-- [ ] Customise the system prompt: edit `system_prompt:` in `agents/<agent_id>/config.yaml`
+- [ ] Review and tweak the system prompt: `agents/<agent_id>/config.yaml`
 - [ ] Add eval cases: `agents/<agent_id>/eval_dataset.json`
 - [ ] Commit: `git add agents/<agent_id>/ && git commit -m "Add <agent_id> agent"`
 ```
@@ -138,14 +197,13 @@ Report back the URL (e.g. `http://localhost:8502`) and PID. Tell the user to ope
 ### List available agents
 Trigger: "what agents exist", "list agents", "what demos do we have"
 
-```bash
-ls agents/
-```
+Run `ls agents/` and read each `config.yaml`. Show:
 
-Show a table: Agent ID | Title (from config.yaml ui.title) | Port (alphabetical from 8501).
+| Agent ID | Brand | Domain | Port |
+|----------|-------|--------|------|
 
 ### Launch an existing agent
-Trigger: "launch <agent_id>", "start <agent_id>", "run the shiseido demo"
+Trigger: "launch <agent_id>", "start <agent_id>"
 
 Run `./start.sh <agent_id>` and report the URL.
 
@@ -156,38 +214,42 @@ Trigger: "is <agent_id> running", "what's running"
 pgrep -a python | grep streamlit
 ```
 
-Show running agents and their ports.
-
 ### Stop all agents
 Trigger: "stop all agents", "kill the demos"
 
-Run: `pkill -f 'streamlit run'`
+```bash
+pkill -f 'streamlit run'
+```
 
 ### Update credentials
-Trigger: "update credentials for <agent_id>", "change SCAPI config for <agent_id>"
+Trigger: "update credentials for <agent_id>"
 
-Read the current `agents/<agent_id>/config.env`, ask for the new values, write back.
+Read current `agents/<agent_id>/config.env`, ask for new values, write back.
+
+### Update system prompt
+Trigger: "update the prompt for <agent_id>", "tweak the system prompt"
+
+Read current `agents/<agent_id>/config.yaml`, show the existing `system_prompt` and `overlay`, ask what to change, apply edits directly.
 
 ---
 
 ## Troubleshooting
 
-**"No agents found in agents/"**
-- Check you're in the repo root: `ls agents/` should show at least `NTOManaged`
-- If missing, the repo may not be fully cloned
-
 **"Product search returns empty"**
-- SCAPI credentials are likely wrong or blank — open `agents/<agent_id>/config.env`
-- Verify SCAPI_TOKEN_URL format: must end in `/oauth2/token`
-- Verify SCAPI_SEARCH_URL: must include the org ID
+- SCAPI credentials wrong or blank — check `agents/<agent_id>/config.env`
+- SCAPI_TOKEN_URL must end in `/oauth2/token`
+- SCAPI_SEARCH_URL must contain `/product-search`
 
-**"Agent crashes on startup"**
-- Check logs: `cat logs/<agent_id>.log`
-- Common cause: missing `pyyaml` or `streamlit` — run `pip install -r requirements.txt`
+**"Agent shows wrong brand name or Shiseido content"**
+- System prompt wasn't fully rewritten — open `agents/<agent_id>/config.yaml` and check `system_prompt:`, `overlay:`, and `examples:` for leftover source brand content
 
 **"Port already in use"**
-- Run `./start.sh <agent_id> <custom_port>` with a free port
+- Run `./start.sh <agent_id> <custom_port>`
 
-**"Config.yaml looks wrong after scaffold"**
-- The scaffold copies from source — check `ui:` and `tools:` sections are correct
-- The search_tool_name must match the function name Claude uses: `search_<agent_id>_products`
+**"Agent crashes on startup"**
+- Check `cat logs/<agent_id>.log`
+- Common cause: missing dependencies — run `pip install -r requirements.txt`
+
+**"search_tool_name mismatch"**
+- `tools.search_tool_name` in config.yaml must be exactly `search_<agent_id>_products`
+- The system prompt must reference the same tool name
