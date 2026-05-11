@@ -5,6 +5,7 @@ Uses Claude API with custom tools to search NTO's catalog via Salesforce Commerc
 
 import json
 import os
+import re
 import time
 import threading
 import requests
@@ -497,13 +498,18 @@ QUERIES: [comma-separated queries, one per product]"""
         _trace(f"⏱ Total: {total} across {iteration} iteration(s)")
         print(f"\n⏱  TOTAL: {total} across {iteration} iteration(s)")
 
+        # Extract JSON from response — handle prose prefix before ```json fence
         cleaned = assistant_message.strip()
-        for marker in ("```json", "```"):
-            if cleaned.startswith(marker):
-                cleaned = cleaned[len(marker):]
-        if cleaned.endswith("```"):
-            cleaned = cleaned[:-3]
-        cleaned = cleaned.strip()
+        m = re.search(r"```json\s*(.*?)```", cleaned, re.DOTALL)
+        if m:
+            cleaned = m.group(1).strip()
+        else:
+            for marker in ("```json", "```"):
+                if cleaned.startswith(marker):
+                    cleaned = cleaned[len(marker):]
+            if cleaned.endswith("```"):
+                cleaned = cleaned[:-3]
+            cleaned = cleaned.strip()
 
         try:
             parsed = json.loads(cleaned)

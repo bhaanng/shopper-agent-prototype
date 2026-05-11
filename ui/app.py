@@ -148,7 +148,7 @@ st.markdown(f'<div class="sub-header">{_site_ui["subtitle"]}</div>', unsafe_allo
 # Sidebar
 with st.sidebar:
     st.header("About")
-    st.write(_site_ui["about"])
+    st.markdown(_site_ui["about"])
 
     st.divider()
 
@@ -546,5 +546,5 @@ if not st.session_state.messages:
         for col, item in zip(cols, starter_queries):
             with col:
                 if st.button(item["label"]):
-                    st.session_state.messages.append({"role": "user", "content": item["query"]})
+                    st.session_state.pending_input = item["query"]
                     st.rerun()
