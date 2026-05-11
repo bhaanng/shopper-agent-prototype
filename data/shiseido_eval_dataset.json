@@ -1,0 +1,1311 @@
+[
+  {
+    "conversation_id": "SHI_001",
+    "query": "I want to start a skincare routine",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "follow_up_offers_specific_choices",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "SHI_002",
+    "query": "Show me moisturizers",
+    "semantic_category": "Category Browse",
+    "persona": "novice",
+    "proxy": "follow_up_offers_specific_choices",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "SHI_003",
+    "query": "I need a good serum",
+    "semantic_category": "Basic Search",
+    "persona": "intermediate",
+    "proxy": "follow_up_offers_specific_choices",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "SHI_004",
+    "query": "Find me anti-aging skincare for dry skin",
+    "semantic_category": "Attribute Search",
+    "persona": "intermediate",
+    "proxy": "search_intent_transparency",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "SHI_005",
+    "query": "I need a brightening serum under 80 dollars",
+    "semantic_category": "Budget Constrained",
+    "persona": "intermediate",
+    "proxy": "search_intent_transparency",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "SHI_006",
+    "query": "Looking for hydrating skincare for a long-haul flight",
+    "semantic_category": "Activity Specific",
+    "persona": "intermediate",
+    "proxy": "search_intent_transparency",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "SHI_007",
+    "query": "What are the best Shiseido serums right now?",
+    "semantic_category": "Top Products",
+    "persona": "enthusiast",
+    "proxy": "scannable_result_framing",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "SHI_008",
+    "query": "Show me SPF products for sensitive skin",
+    "semantic_category": "Attribute Search",
+    "persona": "intermediate",
+    "proxy": "scannable_result_framing",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "SHI_009",
+    "query": "Find me Ultimune products",
+    "semantic_category": "Technology Specific",
+    "persona": "enthusiast",
+    "proxy": "scannable_result_framing",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "SHI_010",
+    "query": "I want skincare",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "stacks_multiple_open_ended_questions",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "SHI_011",
+    "query": "What eye creams do you have?",
+    "semantic_category": "Category Browse",
+    "persona": "intermediate",
+    "proxy": "stacks_multiple_open_ended_questions",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "SHI_012",
+    "query": "I need help with my skin",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "stacks_multiple_open_ended_questions",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "SHI_013",
+    "query": "Find me everything for oily skin",
+    "semantic_category": "Category Browse",
+    "persona": "novice",
+    "proxy": "dumps_undifferentiated_product_list",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "SHI_014",
+    "query": "Show me all anti-aging products",
+    "semantic_category": "Category Browse",
+    "persona": "intermediate",
+    "proxy": "dumps_undifferentiated_product_list",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "SHI_015",
+    "query": "What do you have for brightening?",
+    "semantic_category": "Category Browse",
+    "persona": "novice",
+    "proxy": "dumps_undifferentiated_product_list",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "SHI_016",
+    "query": "I need a retinol product",
+    "semantic_category": "Ingredient Search",
+    "persona": "intermediate",
+    "proxy": "shows_results_mismatching_query_without_explanation",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "SHI_017",
+    "query": "I want fragrance-free moisturizer",
+    "semantic_category": "Attribute Search",
+    "persona": "sensitive_skin",
+    "proxy": "shows_results_mismatching_query_without_explanation",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "SHI_018",
+    "query": "Find me skincare for combination skin",
+    "semantic_category": "Skin Type Specific",
+    "persona": "novice",
+    "proxy": "shows_results_mismatching_query_without_explanation",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "SHI_019",
+    "query": "I have dry skin and want to improve my routine",
+    "semantic_category": "Routine Building",
+    "persona": "novice",
+    "proxy": "asks_foundational_attributes_before_secondary",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "SHI_020",
+    "query": "I'm looking for a good cleanser",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "asks_foundational_attributes_before_secondary",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "SHI_021",
+    "query": "I want to upgrade my skincare",
+    "semantic_category": "Routine Building",
+    "persona": "intermediate",
+    "proxy": "asks_foundational_attributes_before_secondary",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "SHI_022",
+    "query": "I want to reduce hyperpigmentation",
+    "semantic_category": "Concern Specific",
+    "persona": "intermediate",
+    "proxy": "questions_follow_logical_funnel_order",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "SHI_023",
+    "query": "Help me build a morning routine",
+    "semantic_category": "Routine Building",
+    "persona": "novice",
+    "proxy": "questions_follow_logical_funnel_order",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "SHI_024",
+    "query": "I need something for fine lines and dullness",
+    "semantic_category": "Multi-Concern",
+    "persona": "intermediate",
+    "proxy": "questions_follow_logical_funnel_order",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "SHI_025",
+    "query": "I have rosacea and need gentle skincare",
+    "semantic_category": "Condition Specific",
+    "persona": "sensitive_skin",
+    "proxy": "asks_most_critical_category_attribute_first",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "SHI_026",
+    "query": "I need an eye cream",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "asks_most_critical_category_attribute_first",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "SHI_027",
+    "query": "I want to start using a vitamin C serum",
+    "semantic_category": "Ingredient Search",
+    "persona": "intermediate",
+    "proxy": "asks_most_critical_category_attribute_first",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "SHI_028",
+    "query": "I'm going to Japan in two weeks, I want to stock up on skincare",
+    "semantic_category": "Occasion Specific",
+    "persona": "enthusiast",
+    "proxy": "targets_highest_value_situational_question",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "SHI_029",
+    "query": "I live in a very dry climate and my skin keeps flaking",
+    "semantic_category": "Condition Specific",
+    "persona": "intermediate",
+    "proxy": "targets_highest_value_situational_question",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "SHI_030",
+    "query": "I'm pregnant and looking for safe skincare",
+    "semantic_category": "Condition Specific",
+    "persona": "novice",
+    "proxy": "targets_highest_value_situational_question",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "SHI_031",
+    "query": "Find me a moisturizer",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "asks_specific_details_before_establishing_basics",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "SHI_032",
+    "query": "I want a serum for my skin concerns",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "asks_specific_details_before_establishing_basics",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "SHI_033",
+    "query": "I need new skincare products",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "asks_specific_details_before_establishing_basics",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "SHI_034",
+    "query": "Help me with my skin",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "asks_aesthetic_attribute_before_functional_need",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "SHI_035",
+    "query": "I want to improve my complexion",
+    "semantic_category": "Concern Specific",
+    "persona": "novice",
+    "proxy": "asks_aesthetic_attribute_before_functional_need",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "SHI_036",
+    "query": "Show me skincare for my face",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "asks_aesthetic_attribute_before_functional_need",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "SHI_037",
+    "query": "What skincare products should I avoid for acne-prone skin?",
+    "semantic_category": "Concern Specific",
+    "persona": "novice",
+    "proxy": "asks_generic_question_ignoring_product_context",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "SHI_038",
+    "query": "I need something for my skin but I'm not sure what",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "asks_generic_question_ignoring_product_context",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "SHI_039",
+    "query": "Find me a toner",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "asks_generic_question_ignoring_product_context",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "SHI_040",
+    "query": "I tried the Ultimune serum before and loved it, what else would complement it?",
+    "semantic_category": "Complement Search",
+    "persona": "enthusiast",
+    "proxy": "highlights_key_difference_to_guide_choice",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_041",
+    "query": "I'm choosing between a light gel moisturizer and a richer cream — which is better for my oily T-zone?",
+    "semantic_category": "Comparison",
+    "persona": "intermediate",
+    "proxy": "highlights_key_difference_to_guide_choice",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_042",
+    "query": "What's the difference between the Vital Perfection and Benefiance lines?",
+    "semantic_category": "Comparison",
+    "persona": "enthusiast",
+    "proxy": "highlights_key_difference_to_guide_choice",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_043",
+    "query": "I have sensitive skin around my eyes — will this eye cream irritate me?",
+    "semantic_category": "Concern Specific",
+    "persona": "sensitive_skin",
+    "proxy": "asks_narrow_feature_question_to_gauge_fit",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_044",
+    "query": "I want a moisturizer that layers well under makeup",
+    "semantic_category": "Attribute Search",
+    "persona": "intermediate",
+    "proxy": "asks_narrow_feature_question_to_gauge_fit",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_045",
+    "query": "I need a cleanser that doesn't leave my skin tight",
+    "semantic_category": "Attribute Search",
+    "persona": "dry_skin",
+    "proxy": "asks_narrow_feature_question_to_gauge_fit",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_046",
+    "query": "I want fragrance-free SPF under $50 but nothing shows up",
+    "semantic_category": "Zero Results",
+    "persona": "sensitive_skin",
+    "proxy": "proposes_alternative_when_zero_results",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_047",
+    "query": "Find me a vitamin A serum under $40",
+    "semantic_category": "Budget Constrained",
+    "persona": "novice",
+    "proxy": "proposes_alternative_when_zero_results",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_048",
+    "query": "I need a peeling mask that's also a moisturizer",
+    "semantic_category": "Conflicting Attributes",
+    "persona": "enthusiast",
+    "proxy": "proposes_alternative_when_zero_results",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_049",
+    "query": "Show me eye creams",
+    "semantic_category": "Category Browse",
+    "persona": "novice",
+    "proxy": "ends_turn_with_no_next_step_after_results",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_050",
+    "query": "I want a gentle exfoliator",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "ends_turn_with_no_next_step_after_results",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_051",
+    "query": "Find me a face mask",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "ends_turn_with_no_next_step_after_results",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_052",
+    "query": "I'm looking for hydration products",
+    "semantic_category": "Category Browse",
+    "persona": "novice",
+    "proxy": "asks_vague_unfocused_question_after_results",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_053",
+    "query": "Show me the best products for aging skin",
+    "semantic_category": "Concern Specific",
+    "persona": "intermediate",
+    "proxy": "asks_vague_unfocused_question_after_results",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_054",
+    "query": "Find me a toner for combination skin",
+    "semantic_category": "Skin Type Specific",
+    "persona": "intermediate",
+    "proxy": "asks_vague_unfocused_question_after_results",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_055",
+    "query": "I want to layer niacinamide with my vitamin C serum",
+    "semantic_category": "Ingredient Layering",
+    "persona": "enthusiast",
+    "proxy": "lists_overwhelming_specs_without_framing_choice",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_056",
+    "query": "Compare the Vital Perfection moisturizer and the Benefiance cream",
+    "semantic_category": "Comparison",
+    "persona": "intermediate",
+    "proxy": "lists_overwhelming_specs_without_framing_choice",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_057",
+    "query": "I need an anti-aging moisturizer",
+    "semantic_category": "Concern Specific",
+    "persona": "intermediate",
+    "proxy": "lists_overwhelming_specs_without_framing_choice",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_058",
+    "query": "What do you recommend for my first Shiseido purchase?",
+    "semantic_category": "First Purchase",
+    "persona": "novice",
+    "proxy": "pushes_to_purchase_before_validating_fit",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_059",
+    "query": "I want to try Shiseido skincare",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "pushes_to_purchase_before_validating_fit",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_060",
+    "query": "Show me everything in the Benefiance line",
+    "semantic_category": "Collection Browse",
+    "persona": "enthusiast",
+    "proxy": "pushes_to_purchase_before_validating_fit",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_061",
+    "query": "I want a complete anti-aging routine",
+    "semantic_category": "Routine Building",
+    "persona": "intermediate",
+    "proxy": "pivots_to_unrelated_category_mid_refinement",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_062",
+    "query": "My skin has been really stressed out from travel — help me recover",
+    "semantic_category": "Concern Specific",
+    "persona": "intermediate",
+    "proxy": "pivots_to_unrelated_category_mid_refinement",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_063",
+    "query": "I need SPF and a moisturizer",
+    "semantic_category": "Multi-Step Routine",
+    "persona": "novice",
+    "proxy": "pivots_to_unrelated_category_mid_refinement",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "SHI_064",
+    "query": "What makes Shiseido different from other beauty brands?",
+    "semantic_category": "Brand Education",
+    "persona": "novice",
+    "proxy": "uses_outdoor_brand_vocabulary_naturally",
+    "proxy_type": "positive",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "SHI_065",
+    "query": "Tell me about the Ultimune technology",
+    "semantic_category": "Technology Education",
+    "persona": "enthusiast",
+    "proxy": "uses_outdoor_brand_vocabulary_naturally",
+    "proxy_type": "positive",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "SHI_066",
+    "query": "Why is Japanese skincare so popular?",
+    "semantic_category": "Brand Education",
+    "persona": "intermediate",
+    "proxy": "uses_outdoor_brand_vocabulary_naturally",
+    "proxy_type": "positive",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "SHI_067",
+    "query": "What are some good anti-aging products?",
+    "semantic_category": "Concern Specific",
+    "persona": "intermediate",
+    "proxy": "uses_robotic_ai_boilerplate",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "SHI_068",
+    "query": "Can you recommend a night cream?",
+    "semantic_category": "Routine Step",
+    "persona": "novice",
+    "proxy": "uses_robotic_ai_boilerplate",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "SHI_069",
+    "query": "What does hyaluronic acid do?",
+    "semantic_category": "Ingredient Education",
+    "persona": "novice",
+    "proxy": "uses_robotic_ai_boilerplate",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "SHI_070",
+    "query": "I need a complete skincare routine for sensitive skin",
+    "semantic_category": "Routine Building",
+    "persona": "sensitive_skin",
+    "proxy": "gives_unsolicited_lengthy_explanation",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "SHI_071",
+    "query": "What SPF should I use daily?",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "gives_unsolicited_lengthy_explanation",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "SHI_072",
+    "query": "I want one product for all my skin concerns",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "gives_unsolicited_lengthy_explanation",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "SHI_073",
+    "query": "These products are too expensive and I'm frustrated",
+    "semantic_category": "Objection",
+    "persona": "budget_conscious",
+    "proxy": "responds_to_frustration_with_toxic_positivity_or_slang",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "SHI_074",
+    "query": "None of these worked for my skin. I'm very disappointed.",
+    "semantic_category": "Negative Feedback",
+    "persona": "intermediate",
+    "proxy": "responds_to_frustration_with_toxic_positivity_or_slang",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "SHI_075",
+    "query": "I've spent so much on skincare and nothing ever works",
+    "semantic_category": "Negative Feedback",
+    "persona": "intermediate",
+    "proxy": "responds_to_frustration_with_toxic_positivity_or_slang",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "SHI_076",
+    "query": "The cleanser I bought dried out my skin completely",
+    "semantic_category": "Product Complaint",
+    "persona": "dry_skin",
+    "proxy": "buries_product_info_with_apologies_and_filler",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "SHI_077",
+    "query": "I can't find the moisturizer I used last time",
+    "semantic_category": "Product Lookup",
+    "persona": "returning_customer",
+    "proxy": "buries_product_info_with_apologies_and_filler",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "SHI_078",
+    "query": "I ordered the wrong product, can you help me find the right one?",
+    "semantic_category": "Product Lookup",
+    "persona": "novice",
+    "proxy": "buries_product_info_with_apologies_and_filler",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "SHI_079",
+    "query": "My skin gets red and irritated easily — what should I use?",
+    "semantic_category": "Concern Specific",
+    "persona": "sensitive_skin",
+    "proxy": "acknowledges_user_intent_before_results",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "SHI_080",
+    "query": "I want to tackle dark spots from sun damage",
+    "semantic_category": "Concern Specific",
+    "persona": "intermediate",
+    "proxy": "acknowledges_user_intent_before_results",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "SHI_081",
+    "query": "I need a moisturizer that won't clog my pores",
+    "semantic_category": "Attribute Search",
+    "persona": "oily_skin",
+    "proxy": "acknowledges_user_intent_before_results",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "SHI_082",
+    "query": "What serums help with loss of firmness?",
+    "semantic_category": "Concern Specific",
+    "persona": "intermediate",
+    "proxy": "connects_each_product_feature_to_user_need",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "SHI_083",
+    "query": "I need hydration that lasts all day at work in an air-conditioned office",
+    "semantic_category": "Occasion Specific",
+    "persona": "intermediate",
+    "proxy": "connects_each_product_feature_to_user_need",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "SHI_084",
+    "query": "I'm in my 40s and starting to see fine lines — what's the best approach?",
+    "semantic_category": "Concern Specific",
+    "persona": "intermediate",
+    "proxy": "connects_each_product_feature_to_user_need",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "SHI_085",
+    "query": "I want a complete night routine for anti-aging",
+    "semantic_category": "Routine Building",
+    "persona": "intermediate",
+    "proxy": "covers_product_space_and_explains_differences",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "SHI_086",
+    "query": "Show me brightening products across different price points",
+    "semantic_category": "Category Browse",
+    "persona": "intermediate",
+    "proxy": "covers_product_space_and_explains_differences",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "SHI_087",
+    "query": "What's the best way to treat combination skin — oily T-zone but dry cheeks?",
+    "semantic_category": "Skin Type Specific",
+    "persona": "intermediate",
+    "proxy": "covers_product_space_and_explains_differences",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "SHI_088",
+    "query": "Find me a good SPF",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "introduces_results_with_no_context_or_rationale",
+    "proxy_type": "negative",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "SHI_089",
+    "query": "I need a new cleanser",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "introduces_results_with_no_context_or_rationale",
+    "proxy_type": "negative",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "SHI_090",
+    "query": "What moisturizers are popular right now?",
+    "semantic_category": "Top Products",
+    "persona": "novice",
+    "proxy": "introduces_results_with_no_context_or_rationale",
+    "proxy_type": "negative",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "SHI_091",
+    "query": "My skin has been itchy and inflamed — is this normal?",
+    "semantic_category": "Condition Specific",
+    "persona": "sensitive_skin",
+    "proxy": "translates_vague_symptom_to_product_goal",
+    "proxy_type": "positive",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "SHI_092",
+    "query": "I've been looking tired lately and want to look more awake",
+    "semantic_category": "Concern Specific",
+    "persona": "intermediate",
+    "proxy": "translates_vague_symptom_to_product_goal",
+    "proxy_type": "positive",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "SHI_093",
+    "query": "I want to look younger",
+    "semantic_category": "Concern Specific",
+    "persona": "intermediate",
+    "proxy": "shows_products_before_establishing_use_case",
+    "proxy_type": "negative",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "SHI_094",
+    "query": "My face feels dull in the morning",
+    "semantic_category": "Concern Specific",
+    "persona": "novice",
+    "proxy": "shows_products_before_establishing_use_case",
+    "proxy_type": "negative",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "SHI_095",
+    "query": "I want to smell nice",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "ignores_explicitly_stated_primary_goal",
+    "proxy_type": "negative",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "SHI_096",
+    "query": "I need an oil-free moisturizer — I specifically don't want anything heavy",
+    "semantic_category": "Attribute Search",
+    "persona": "oily_skin",
+    "proxy": "ignores_explicitly_stated_primary_goal",
+    "proxy_type": "negative",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "SHI_097",
+    "query": "I want to read about skincare ingredients before buying anything",
+    "semantic_category": "Top of Funnel",
+    "persona": "novice",
+    "proxy": "misidentifies_user_purchase_funnel_stage",
+    "proxy_type": "negative",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "SHI_098",
+    "query": "What's the difference between a serum and an essence?",
+    "semantic_category": "Education",
+    "persona": "novice",
+    "proxy": "misidentifies_user_purchase_funnel_stage",
+    "proxy_type": "negative",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "SHI_099",
+    "query": "Do any of these work for sensitive skin too?",
+    "setup_queries": [
+      "I have dry skin and want to reduce fine lines",
+      "Show me anti-aging moisturizers"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "sensitive_skin",
+    "proxy": "acknowledges_prior_constraints_in_next_question",
+    "proxy_type": "positive",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "SHI_100",
+    "query": "Is there a lighter version of this?",
+    "setup_queries": [
+      "I have oily skin",
+      "Find me a moisturizer"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "oily_skin",
+    "proxy": "acknowledges_prior_constraints_in_next_question",
+    "proxy_type": "positive",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "SHI_101",
+    "query": "Can you show me more fragrance-free options?",
+    "setup_queries": [
+      "I'm sensitive to fragrance",
+      "Show me moisturizers"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "sensitive_skin",
+    "proxy": "applies_earlier_constraint_without_being_reminded",
+    "proxy_type": "positive",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "SHI_102",
+    "query": "What about serums in the same price range?",
+    "setup_queries": [
+      "My budget is 60 dollars",
+      "Show me moisturizers"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "budget_conscious",
+    "proxy": "applies_earlier_constraint_without_being_reminded",
+    "proxy_type": "positive",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "SHI_103",
+    "query": "What would you recommend for my complete AM routine?",
+    "setup_queries": [
+      "I have dry skin",
+      "I live in a sunny climate",
+      "Show me anti-aging serums"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "intermediate",
+    "proxy": "combines_facts_from_multiple_turns_into_deduction",
+    "proxy_type": "positive",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "SHI_104",
+    "query": "Which of these would be safe for me?",
+    "setup_queries": [
+      "I'm pregnant",
+      "I'm looking for brightening products"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "novice",
+    "proxy": "combines_facts_from_multiple_turns_into_deduction",
+    "proxy_type": "positive",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "SHI_105",
+    "query": "Can you tell me more about the ingredients in this?",
+    "setup_queries": [
+      "I have oily, acne-prone skin",
+      "Find me a cleanser"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "intermediate",
+    "proxy": "re_asks_attribute_user_already_provided",
+    "proxy_type": "negative",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "SHI_106",
+    "query": "Show me something for my wrinkles",
+    "setup_queries": [
+      "I'm mainly worried about wrinkles around my eyes",
+      "What anti-aging products do you have?"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "intermediate",
+    "proxy": "re_asks_attribute_user_already_provided",
+    "proxy_type": "negative",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "SHI_107",
+    "query": "I need products that work for my skin type",
+    "setup_queries": [
+      "I have combination skin",
+      "Show me serums"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "intermediate",
+    "proxy": "asks_question_already_answered_implicitly",
+    "proxy_type": "negative",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "SHI_108",
+    "query": "What do you recommend for night use?",
+    "setup_queries": [
+      "I only want products for my nighttime routine",
+      "Show me moisturizers"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "intermediate",
+    "proxy": "asks_question_already_answered_implicitly",
+    "proxy_type": "negative",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "SHI_109",
+    "query": "Can you show me something for hydration?",
+    "setup_queries": [
+      "I go to the gym every day and my skin gets really dehydrated after workouts",
+      "Show me moisturizers"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "intermediate",
+    "proxy": "fails_to_infer_obvious_implication_from_user_context",
+    "proxy_type": "negative",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "SHI_110",
+    "query": "I want to ask about your skincare range",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "abandons_primary_goal_to_chase_secondary_concern",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "SHI_111",
+    "query": "I need anti-aging skincare but I also mentioned I've been stressed lately",
+    "semantic_category": "Multi-Concern",
+    "persona": "intermediate",
+    "proxy": "abandons_primary_goal_to_chase_secondary_concern",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "SHI_112",
+    "query": "How are you doing today? I'm just browsing",
+    "semantic_category": "Off-topic",
+    "persona": "casual",
+    "proxy": "wastes_full_turn_on_off_topic_chat",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "SHI_113",
+    "query": "Can you recommend a good diet for glowing skin?",
+    "semantic_category": "Off-topic",
+    "persona": "novice",
+    "proxy": "wastes_full_turn_on_off_topic_chat",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "SHI_114",
+    "query": "I have eczema — can you help?",
+    "semantic_category": "Condition Specific",
+    "persona": "sensitive_skin",
+    "proxy": "gives_medical_or_training_advice_instead_of_gear",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "SHI_115",
+    "query": "My dermatologist said I have a compromised skin barrier — what do you suggest?",
+    "semantic_category": "Condition Specific",
+    "persona": "sensitive_skin",
+    "proxy": "gives_medical_or_training_advice_instead_of_gear",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "SHI_116",
+    "query": "I love my La Mer moisturizer but I want to try Shiseido",
+    "semantic_category": "Competitor Mention",
+    "persona": "enthusiast",
+    "proxy": "recommends_or_discusses_non_nto_products",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "SHI_117",
+    "query": "How does the Ultimune serum compare to SK-II Pitera?",
+    "semantic_category": "Competitor Comparison",
+    "persona": "enthusiast",
+    "proxy": "recommends_or_discusses_non_nto_products",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "SHI_118",
+    "query": "I just want a serum — don't try to sell me a whole routine",
+    "semantic_category": "Scoped Request",
+    "persona": "intermediate",
+    "proxy": "promotes_add_ons_before_primary_goal_resolved",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "SHI_119",
+    "query": "Find me an SPF product",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "promotes_add_ons_before_primary_goal_resolved",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "SHI_120",
+    "query": "I need a moisturizer for men's skin",
+    "semantic_category": "Gender Specific",
+    "persona": "male",
+    "proxy": "soft_constraint_violation",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "SHI_121",
+    "query": "Find me skincare under $30",
+    "semantic_category": "Budget Constrained",
+    "persona": "budget_conscious",
+    "proxy": "hard_constraint_violation",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "SHI_122",
+    "query": "I need a face wash — nothing for the body",
+    "semantic_category": "Scoped Request",
+    "persona": "novice",
+    "proxy": "returns_wrong_product_type_entirely",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "SHI_123",
+    "query": "Show me tinted SPF only",
+    "semantic_category": "Attribute Search",
+    "persona": "intermediate",
+    "proxy": "filters_on_constraint_user_never_stated",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "SHI_124",
+    "query": "I need fragrance for a romantic evening",
+    "semantic_category": "Fragrance Search",
+    "persona": "intermediate",
+    "proxy": "soft_constraint_violation",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "SHI_125",
+    "query": "I want a moisturizer for dry skin",
+    "semantic_category": "Skin Type Specific",
+    "persona": "dry_skin",
+    "proxy": "hard_constraint_violation",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "SHI_126",
+    "query": "Find me a Vital Perfection moisturizer",
+    "semantic_category": "Collection Specific",
+    "persona": "returning_customer",
+    "proxy": "returns_wrong_product_type_entirely",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "SHI_127",
+    "query": "I want products only from the Benefiance line",
+    "semantic_category": "Collection Specific",
+    "persona": "enthusiast",
+    "proxy": "filters_on_constraint_user_never_stated",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "SHI_128",
+    "query": "Find me moisturizers for dry skin",
+    "semantic_category": "Skin Type Specific",
+    "persona": "dry_skin",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "SHI_129",
+    "query": "I need anti-aging serums",
+    "semantic_category": "Concern Specific",
+    "persona": "intermediate",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "SHI_130",
+    "query": "Show me brightening skincare",
+    "semantic_category": "Concern Specific",
+    "persona": "intermediate",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "SHI_131",
+    "query": "Find me fragrance-free moisturizers",
+    "semantic_category": "Attribute Search",
+    "persona": "sensitive_skin",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "SHI_132",
+    "query": "I want a vitamin C serum",
+    "semantic_category": "Ingredient Search",
+    "persona": "intermediate",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "SHI_133",
+    "query": "Find me daily SPF products",
+    "semantic_category": "Routine Step",
+    "persona": "novice",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "SHI_134",
+    "query": "I need a cleanser for oily skin",
+    "semantic_category": "Skin Type Specific",
+    "persona": "oily_skin",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "SHI_135",
+    "query": "Show me eye creams for dark circles",
+    "semantic_category": "Concern Specific",
+    "persona": "intermediate",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "SHI_136",
+    "query": "I want makeup that stays on all day",
+    "semantic_category": "Makeup Search",
+    "persona": "intermediate",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "SHI_137",
+    "query": "Find me Ultimune serum",
+    "semantic_category": "Technology Specific",
+    "persona": "enthusiast",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "SHI_138",
+    "query": "I want a gift set for my mom",
+    "semantic_category": "Gift Search",
+    "persona": "novice",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "SHI_139",
+    "query": "Show me toners and essences",
+    "semantic_category": "Category Browse",
+    "persona": "enthusiast",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "SHI_140",
+    "query": "Can you also show me lighter hydration options?",
+    "setup_queries": [
+      "I live in a very humid climate and my skin gets oily by midday",
+      "Show me moisturizers"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "oily_skin",
+    "proxy": "fails_to_infer_obvious_implication_from_user_context",
+    "proxy_type": "negative",
+    "metric": "redundancy_avoidance"
+  }
+]

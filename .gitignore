@@ -15,6 +15,9 @@ dist/
 .env
 .env.local
 
+# Logs
+logs/
+
 # Data — keep eval datasets, exclude raw results
 results/
 data/*_run*.json

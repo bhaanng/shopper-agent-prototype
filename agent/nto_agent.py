@@ -12,8 +12,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Dict, Any, Optional
 from anthropic import Anthropic
 from duckduckgo_search import DDGS
-from system_prompt import get_system_prompt
-from customer_prompts import get_system_prompt_for_customer
+from site_config import get_system_prompt_for_site, get_site_tools, get_site_locales
 
 
 def _ms(start: float) -> str:
@@ -24,11 +23,12 @@ class NTOAgent:
     def __init__(self, api_key: str, base_url: str = None,
                  scapi_token_url: str = None, scapi_client_credentials: str = None,
                  scapi_search_url: str = None, scapi_site_id: str = "NTOManaged",
-                 customer_id: str = None):
+                 scapi_locale: str = None,
+                 site_id: str = None):
 
         if base_url:
             self.client = Anthropic(api_key=api_key, base_url=base_url)
-            self.model = "us.anthropic.claude-sonnet-4-5-20250929-v1:0"
+            self.model = "us.anthropic.claude-sonnet-4-6"
         else:
             self.client = Anthropic(api_key=api_key)
             self.model = "claude-opus-4-7"
@@ -38,6 +38,11 @@ class NTOAgent:
         self.scapi_client_credentials = scapi_client_credentials
         self.scapi_search_url = scapi_search_url
         self.scapi_site_id = scapi_site_id
+        self.scapi_locale = scapi_locale  # site default locale
+
+        # Per-session locale — set once on first user message via langdetect
+        self._locale_config = get_site_locales(site_id)
+        self._session_locale: Optional[str] = None  # None = not yet detected
 
         # Token cache — lock prevents concurrent threads from double-minting
         self._access_token: Optional[str] = None
@@ -47,8 +52,10 @@ class NTOAgent:
         # Product cache for details lookups
         self.product_cache: Dict[str, Dict] = {}
 
-        self.customer_id = customer_id
-        self.system_prompt = get_system_prompt_for_customer(customer_id)
+        self.site_id = site_id
+        self.system_prompt = get_system_prompt_for_site(site_id)
+        self._tool_config = get_site_tools(site_id)
+        self._search_tool_name = self._tool_config.get("search_tool_name", "search_nto_products")
         self.conversation_history = []
 
     # ── SCAPI token management ──────────────────────────────────────────────
@@ -79,6 +86,49 @@ class NTOAgent:
             print(f"  ⏱  SCAPI token refresh: {_ms(t0)}")
             return self._access_token
 
+    # ── Locale detection ────────────────────────────────────────────────────
+
+    def _detect_and_set_locale(self, text: str, trace_fn=None) -> None:
+        """Detect language from text and map to a supported locale (called once per session)."""
+        if self._session_locale is not None:
+            return
+        try:
+            from langdetect import detect
+            lang = detect(text)  # e.g. 'ja', 'en', 'zh-cn'
+        except Exception:
+            self._session_locale = self._locale_config["default"]
+            return
+
+        # Build maps: full lang code (e.g. "zh-cn") and prefix (e.g. "zh") → locale
+        full_map: dict[str, str] = {}
+        prefix_map: dict[str, str] = {}
+        for loc in self._locale_config["supported"]:
+            # locale format: en_US, zh_CN — normalize to zh-cn for matching
+            normalized = loc.replace("_", "-").lower()
+            full_map[normalized] = loc
+            prefix = normalized.split("-")[0]
+            if prefix not in prefix_map:
+                prefix_map[prefix] = loc
+
+        lang_norm = lang.lower()
+        lang_prefix = lang_norm.split("-")[0]
+        resolved = (
+            full_map.get(lang_norm)
+            or prefix_map.get(lang_prefix)
+            or self._locale_config["default"]
+        )
+        self._session_locale = resolved
+        if resolved != self._locale_config["default"]:
+            msg = f"🌐 Detected language `{lang}` → locale set to `{resolved}`"
+            print(f"  {msg}")
+            if trace_fn:
+                trace_fn(msg)
+
+    @property
+    def _active_locale(self) -> Optional[str]:
+        """Return the session locale if detected, else fall back to site default."""
+        return self._session_locale or self.scapi_locale
+
     # ── SCAPI product search ────────────────────────────────────────────────
 
     def _call_scapi_search(self, query_text: str, category: str = None,
@@ -94,6 +144,8 @@ class NTOAgent:
                 "limit": max_results,
                 "siteId": self.scapi_site_id,
             }
+            if self._active_locale:
+                params["locale"] = self._active_locale.replace("_", "-")
             if category:
                 params["refine"] = f"cgid={category}"
 
@@ -153,21 +205,27 @@ class NTOAgent:
 
     # ── Agent tools ─────────────────────────────────────────────────────────
 
-    def search_products(self, queries: List[Dict]) -> Dict[str, Any]:
-        """Search the NTO catalog — all queries fired in parallel."""
+    def search_products(self, queries: List[Dict], trace_fn=None) -> Dict[str, Any]:
+        """Search the catalog — all queries fired in parallel."""
         t0 = time.monotonic()
         n = len(queries)
         print(f"  ⏱  search_products: {n} quer{'y' if n == 1 else 'ies'} (parallel)")
+        if trace_fn:
+            trace_fn(f"🔎 Searching catalog — {n} quer{'y' if n == 1 else 'ies'} in parallel")
         results = {}
 
         def _run(i: int, query: Dict):
+            qt0 = time.monotonic()
+            q_text = query.get("q", "")
             matches = self._call_scapi_search(
-                query.get("q", ""),
+                q_text,
                 category=query.get("category") or None,
                 min_price=query.get("min_price", 0),
                 max_price=query.get("max_price", float("inf")),
                 max_results=20,
             )
+            if trace_fn:
+                trace_fn(f"  ✅ `{q_text}` → {len(matches)} results ({_ms(qt0)})")
             return i, query, matches
 
         with ThreadPoolExecutor(max_workers=min(n, 5)) as executor:
@@ -191,6 +249,7 @@ class NTOAgent:
         }
 
     def _get_tools(self) -> List[Dict]:
+        tc = self._tool_config
         return [
             {
                 "name": "create_todo",
@@ -205,8 +264,8 @@ class NTOAgent:
                 },
             },
             {
-                "name": "search_nto_products",
-                "description": "Search the Northern Trail Outfitters catalog for outdoor gear, apparel, and footwear.",
+                "name": self._search_tool_name,
+                "description": tc["search_description"],
                 "input_schema": {
                     "type": "object",
                     "properties": {
@@ -216,7 +275,7 @@ class NTOAgent:
                                 "type": "object",
                                 "properties": {
                                     "q": {"type": "string", "description": "Keyword search (product type, brand, activity, feature)"},
-                                    "category": {"type": "string", "description": "Category ID filter: men, women, kids, gear"},
+                                    "category": {"type": "string", "description": tc["search_category_hint"]},
                                     "min_price": {"type": "number"},
                                     "max_price": {"type": "number"},
                                 },
@@ -227,19 +286,8 @@ class NTOAgent:
                 },
             },
             {
-                "name": "get_nto_product_details",
-                "description": "Fetch full details for up to 5 NTO product IDs.",
-                "input_schema": {
-                    "type": "object",
-                    "properties": {
-                        "product_ids": {"type": "array", "items": {"type": "string"}}
-                    },
-                    "required": ["product_ids"],
-                },
-            },
-            {
                 "name": "web_search",
-                "description": "Search the web for gear reviews, trail conditions, or activity tips.",
+                "description": tc["web_search_description"],
                 "input_schema": {
                     "type": "object",
                     "properties": {
@@ -251,11 +299,9 @@ class NTOAgent:
             },
         ]
 
-    def _execute_tool(self, tool_name: str, tool_input: Dict) -> Any:
-        if tool_name == "search_nto_products":
-            return self.search_products(tool_input.get("queries", []))
-        elif tool_name == "get_nto_product_details":
-            return self.get_product_details(tool_input.get("product_ids", []))
+    def _execute_tool(self, tool_name: str, tool_input: Dict, trace_fn=None) -> Any:
+        if tool_name == self._search_tool_name:
+            return self.search_products(tool_input.get("queries", []), trace_fn=trace_fn)
         elif tool_name == "create_todo":
             return {"status": "plan_created", "steps": tool_input.get("steps", []), "message": tool_input.get("message", "")}
         elif tool_name == "web_search":
@@ -342,9 +388,34 @@ QUERIES: [comma-separated queries, one per product]"""
             print(f"  ⚠️  Vision error: {e}")
             return ["outdoor gear"], "Outdoor product in image", "unknown", str(e)
 
+    def _generate_follow_up(self, user_message: str, agent_response: str) -> str:
+        """Generate a contextual follow-up question when JSON parsing fails."""
+        try:
+            resp = self.client.messages.create(
+                model=self.model,
+                max_tokens=80,
+                messages=[{
+                    "role": "user",
+                    "content": (
+                        f"User asked: {user_message}\n\n"
+                        f"You responded with product recommendations.\n\n"
+                        f"Write ONE short follow-up question (max 20 words) to help refine "
+                        f"what they're looking for. Be specific to their query. No preamble."
+                    ),
+                }],
+            )
+            return resp.content[0].text.strip()
+        except Exception:
+            return "What else can I help you find?"
+
     # ── Main chat loop ───────────────────────────────────────────────────────
 
-    def chat(self, user_message: str, max_iterations: int = 5, image: bytes = None) -> Dict:
+    def chat(self, user_message: str, max_iterations: int = 5, image: bytes = None, trace_fn=None) -> Dict:
+        def _trace(msg: str):
+            print(f"  {msg}")
+            if trace_fn:
+                trace_fn(msg)
+
         image_analysis = None
         if image:
             queries, description, media_type, raw = self._analyze_image_and_create_query(image, user_message)
@@ -353,23 +424,34 @@ QUERIES: [comma-separated queries, one per product]"""
             user_message = f"{user_note} — {', '.join(queries)}" if user_note else ", ".join(queries)
 
         self.conversation_history.append({"role": "user", "content": user_message})
+        self._detect_and_set_locale(user_message, trace_fn=trace_fn)
 
         iteration, assistant_message, tool_call_log = 0, "", []
+        search_calls = 0
+        MAX_SEARCH_CALLS = 2
         chat_t0 = time.monotonic()
 
         while iteration < max_iterations:
-            iteration += 1
-            print(f"\n🔄 ReAct Iteration {iteration}/{max_iterations}")
+            _trace(f"🤔 Thinking... (iteration {iteration + 1})")
+
+            # Remove search tool once cap is reached so Claude writes the response
+            available_tools = [
+                t for t in self._get_tools()
+                if not (t["name"] == self._search_tool_name and search_calls >= MAX_SEARCH_CALLS)
+            ]
+
+            # Keep last 10 messages (5 user+assistant turns) to limit input tokens
+            trimmed_history = self.conversation_history[-10:] if len(self.conversation_history) > 10 else self.conversation_history
 
             claude_t0 = time.monotonic()
             response = self.client.messages.create(
                 model=self.model,
-                max_tokens=4096,
+                max_tokens=3500,
                 system=self.system_prompt,
-                tools=self._get_tools(),
-                messages=self.conversation_history,
+                tools=available_tools,
+                messages=trimmed_history,
             )
-            print(f"  ⏱  Claude: {_ms(claude_t0)} (in={response.usage.input_tokens}, out={response.usage.output_tokens})")
+            _trace(f"💬 Claude responded ({_ms(claude_t0)}, in={response.usage.input_tokens} out={response.usage.output_tokens} tokens)")
 
             assistant_message, tool_results, has_tool_use = "", [], False
 
@@ -379,21 +461,41 @@ QUERIES: [comma-separated queries, one per product]"""
                 elif block.type == "tool_use":
                     has_tool_use = True
                     t0 = time.monotonic()
-                    print(f"  🔧 Tool: {block.name}")
-                    result = self._execute_tool(block.name, block.input)
+
+                    if block.name == "create_todo":
+                        _trace(f"📋 Plan: {block.input.get('message', '')}")
+                    elif block.name == self._search_tool_name:
+                        search_calls += 1
+                        qs = block.input.get("queries", [])
+                        _trace(f"🔎 Searching catalog — {len(qs)} quer{'y' if len(qs)==1 else 'ies'} in parallel")
+                    elif block.name == "web_search":
+                        _trace(f"🌐 Web search: \"{block.input.get('query', '')}\"")
+
+                    result = self._execute_tool(block.name, block.input, trace_fn=trace_fn if block.name == self._search_tool_name else None)
                     duration = _ms(t0)
+                    _trace(f"  ↳ {block.name} done ({duration})")
                     tool_call_log.append({"tool": block.name, "input": block.input, "duration": duration})
                     tool_results.append({"type": "tool_result", "tool_use_id": block.id, "content": json.dumps(result)})
 
             self.conversation_history.append({"role": "assistant", "content": response.content})
 
             if not has_tool_use:
-                print("  ✅ Final response")
+                _trace("✅ Composing final response...")
                 break
 
             self.conversation_history.append({"role": "user", "content": tool_results})
 
-        print(f"\n⏱  TOTAL: {_ms(chat_t0)} across {iteration} iteration(s)")
+            # create_todo is a free planning step — don't count it against the iteration budget
+            only_todo = all(
+                next((b.name for b in response.content if b.type == "tool_use" and b.id == r["tool_use_id"]), "") == "create_todo"
+                for r in tool_results
+            )
+            if not only_todo:
+                iteration += 1
+
+        total = _ms(chat_t0)
+        _trace(f"⏱ Total: {total} across {iteration} iteration(s)")
+        print(f"\n⏱  TOTAL: {total} across {iteration} iteration(s)")
 
         cleaned = assistant_message.strip()
         for marker in ("```json", "```"):
@@ -410,10 +512,11 @@ QUERIES: [comma-separated queries, one per product]"""
             parsed["tool_call_log"] = tool_call_log
             return parsed
         except json.JSONDecodeError:
+            follow_up = self._generate_follow_up(user_message, assistant_message)
             fallback = {
                 "thought": "Raw response",
                 "response": [{"type": "markdown", "content": assistant_message}],
-                "follow_up": "How else can I help you find the right gear?",
+                "follow_up": follow_up,
                 "suggestions": [],
                 "tool_call_log": tool_call_log,
             }
@@ -426,21 +529,30 @@ QUERIES: [comma-separated queries, one per product]"""
 
 
 def main():
+    import argparse
     from dotenv import load_dotenv
+    from site_config import load_site_scapi_env
+
     load_dotenv()
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--site", default=None, help="Site ID (e.g. shiseido_us)")
+    args = parser.parse_args()
 
     api_key = os.getenv("ANTHROPIC_API_KEY")
     if not api_key:
         print("❌ ANTHROPIC_API_KEY not set")
         return
 
+    senv = load_site_scapi_env(args.site) if args.site else {}
     agent = NTOAgent(
         api_key=api_key,
         base_url=os.getenv("ANTHROPIC_BASE_URL"),
-        scapi_token_url=os.getenv("SCAPI_TOKEN_URL"),
-        scapi_client_credentials=os.getenv("SCAPI_CLIENT_CREDENTIALS"),
-        scapi_search_url=os.getenv("SCAPI_SEARCH_URL"),
-        scapi_site_id=os.getenv("SCAPI_SITE_ID", "NTOManaged"),
+        scapi_token_url=senv.get("SCAPI_TOKEN_URL") or os.getenv("SCAPI_TOKEN_URL"),
+        scapi_client_credentials=senv.get("SCAPI_CLIENT_CREDENTIALS") or os.getenv("SCAPI_CLIENT_CREDENTIALS"),
+        scapi_search_url=senv.get("SCAPI_SEARCH_URL") or os.getenv("SCAPI_SEARCH_URL"),
+        scapi_site_id=senv.get("SCAPI_SITE_ID") or os.getenv("SCAPI_SITE_ID", "NTOManaged"),
+        site_id=args.site,
     )
 
     print("🏔️  Northern Trail Outfitters Shopping Agent")

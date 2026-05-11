@@ -2,11 +2,13 @@
 CLI entry point for NTO agent evals.
 
 Usage (from nto-agent/ root):
-    python scripts/run_evals.py
-    python scripts/run_evals.py --customer NTOManaged
-    python scripts/run_evals.py --customer NTOManaged --sample 20
-    python scripts/run_evals.py --dataset data/nto_eval_dataset.json --output results/run1.json
-    python scripts/run_evals.py --workers 5 --metric cognitive_load
+    python scripts/run_evals.py --site NTOManaged
+    python scripts/run_evals.py --site shiseido_us
+    python scripts/run_evals.py --site NTOManaged --sample 20
+    python scripts/run_evals.py --site NTOManaged --output results/run1.json
+    python scripts/run_evals.py --site NTOManaged --workers 5 --metric cognitive_load
+
+Dataset defaults to sites/<site_id>/eval_dataset.json if --dataset is not specified.
 """
 
 import argparse
@@ -25,21 +27,21 @@ from evals.runner import run_evals, print_report
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Run NTO shopper agent evals",
+        description="Run shopper agent evals",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
     parser.add_argument(
-        "--customer",
+        "--site",
         default=None,
-        metavar="CUSTOMER_ID",
-        help="Customer profile to use (e.g. NTOManaged). Defaults to base prompt.",
+        metavar="SITE_ID",
+        help="Site ID to evaluate (e.g. NTOManaged, shiseido_us). Defaults to base prompt.",
     )
     parser.add_argument(
         "--dataset",
-        default="data/nto_eval_dataset.json",
+        default=None,
         metavar="PATH",
-        help="Path to the eval dataset JSON file (default: data/nto_eval_dataset.json)",
+        help="Path to eval dataset JSON. Defaults to sites/<site_id>/eval_dataset.json.",
     )
     parser.add_argument(
         "--sample",
@@ -58,7 +60,7 @@ def main():
         "--proxy",
         default=None,
         metavar="PROXY_NAME",
-        help="Filter dataset to a single proxy (e.g. constrained_choice_framing)",
+        help="Filter dataset to a single proxy",
     )
     parser.add_argument(
         "--output",
@@ -75,7 +77,14 @@ def main():
     )
     args = parser.parse_args()
 
-    dataset_path = Path(args.dataset)
+    # Resolve dataset path
+    if args.dataset:
+        dataset_path = Path(args.dataset)
+    elif args.site:
+        dataset_path = Path("sites") / args.site / "eval_dataset.json"
+    else:
+        dataset_path = Path("data/nto_eval_dataset.json")
+
     if not dataset_path.exists():
         print(f"Error: dataset not found: {dataset_path}", file=sys.stderr)
         sys.exit(1)
@@ -98,14 +107,14 @@ def main():
     if args.sample:
         dataset = dataset[: args.sample]
 
-    print(f"Customer  : {args.customer or '(base — no overlay)'}")
+    print(f"Site      : {args.site or '(base — no overlay)'}")
     print(f"Dataset   : {dataset_path} ({len(dataset)} cases)")
     if args.metric:
         print(f"Metric    : {args.metric}")
     if args.proxy:
         print(f"Proxy     : {args.proxy}")
 
-    result = run_evals(dataset, customer_id=args.customer, max_workers=args.workers)
+    result = run_evals(dataset, site_id=args.site, max_workers=args.workers)
     print_report(result)
 
     if args.output:

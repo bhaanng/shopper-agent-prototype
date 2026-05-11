@@ -1,0 +1,1310 @@
+[
+  {
+    "conversation_id": "NTO_001",
+    "query": "I need waterproof hiking boots",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "follow_up_offers_specific_choices",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "NTO_002",
+    "query": "Show me trail running shoes",
+    "semantic_category": "Category Browse",
+    "persona": "intermediate",
+    "proxy": "follow_up_offers_specific_choices",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "NTO_003",
+    "query": "I want a lightweight packable jacket",
+    "semantic_category": "Basic Search",
+    "persona": "experienced",
+    "proxy": "follow_up_offers_specific_choices",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "NTO_004",
+    "query": "Find me a warm jacket for winter camping",
+    "semantic_category": "Attribute Search",
+    "persona": "intermediate",
+    "proxy": "search_intent_transparency",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "NTO_005",
+    "query": "I need shoes for hiking in the rain",
+    "semantic_category": "Activity Specific",
+    "persona": "novice",
+    "proxy": "search_intent_transparency",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "NTO_006",
+    "query": "Looking for a sleeping bag for cold weather",
+    "semantic_category": "Attribute Search",
+    "persona": "intermediate",
+    "proxy": "search_intent_transparency",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "NTO_007",
+    "query": "What are the best hiking boots right now?",
+    "semantic_category": "Top Products",
+    "persona": "novice",
+    "proxy": "scannable_result_framing",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "NTO_008",
+    "query": "Show me waterproof trail shoes under 150",
+    "semantic_category": "Budget Constrained",
+    "persona": "intermediate",
+    "proxy": "scannable_result_framing",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "NTO_009",
+    "query": "I want a packable down jacket",
+    "semantic_category": "Category Browse",
+    "persona": "experienced",
+    "proxy": "scannable_result_framing",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "NTO_010",
+    "query": "I need new hiking gear",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "stacks_multiple_open_ended_questions",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "NTO_011",
+    "query": "What running shoes do you have?",
+    "semantic_category": "Category Browse",
+    "persona": "novice",
+    "proxy": "stacks_multiple_open_ended_questions",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "NTO_012",
+    "query": "I want outdoor clothes for a trip",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "stacks_multiple_open_ended_questions",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "NTO_013",
+    "query": "Show me all your rain jackets",
+    "semantic_category": "Category Browse",
+    "persona": "novice",
+    "proxy": "dumps_undifferentiated_product_list",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "NTO_014",
+    "query": "What hiking boots are under 200 dollars?",
+    "semantic_category": "Budget Constrained",
+    "persona": "novice",
+    "proxy": "dumps_undifferentiated_product_list",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "NTO_015",
+    "query": "Show me tents",
+    "semantic_category": "Category Browse",
+    "persona": "novice",
+    "proxy": "dumps_undifferentiated_product_list",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "NTO_016",
+    "query": "I need shoes specifically for rocky alpine terrain",
+    "semantic_category": "Attribute Search",
+    "persona": "experienced",
+    "proxy": "shows_results_mismatching_query_without_explanation",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "NTO_017",
+    "query": "Find me minimalist trail running shoes",
+    "semantic_category": "Attribute Search",
+    "persona": "experienced",
+    "proxy": "shows_results_mismatching_query_without_explanation",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "NTO_018",
+    "query": "I want a technical hardshell for mountaineering",
+    "semantic_category": "Attribute Search",
+    "persona": "experienced",
+    "proxy": "shows_results_mismatching_query_without_explanation",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "NTO_019",
+    "query": "I need new hiking boots",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "asks_foundational_attributes_before_secondary",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "NTO_020",
+    "query": "What backpack should I get?",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "asks_foundational_attributes_before_secondary",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "NTO_021",
+    "query": "I want a new tent",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "asks_foundational_attributes_before_secondary",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "NTO_022",
+    "query": "I want to get into backpacking \u2014 what do I need?",
+    "semantic_category": "Top of Funnel",
+    "persona": "novice",
+    "proxy": "questions_follow_logical_funnel_order",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "NTO_023",
+    "query": "Help me find gear for a week-long trip in Patagonia",
+    "semantic_category": "Complex",
+    "persona": "experienced",
+    "proxy": "questions_follow_logical_funnel_order",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "NTO_024",
+    "query": "I need a full kit for my first overnight hike",
+    "semantic_category": "Multi-Item",
+    "persona": "novice",
+    "proxy": "questions_follow_logical_funnel_order",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "NTO_025",
+    "query": "I need hiking boots",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "asks_most_critical_category_attribute_first",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "NTO_026",
+    "query": "Find me a sleeping bag",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "asks_most_critical_category_attribute_first",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "NTO_027",
+    "query": "I want a backpack for hiking",
+    "semantic_category": "Basic Search",
+    "persona": "intermediate",
+    "proxy": "asks_most_critical_category_attribute_first",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "NTO_028",
+    "query": "I am planning a trip to the Olympic Peninsula in November",
+    "semantic_category": "Activity Specific",
+    "persona": "intermediate",
+    "proxy": "targets_highest_value_situational_question",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "NTO_029",
+    "query": "I do ultramarathons on technical trails \u2014 need new shoes",
+    "semantic_category": "Activity Specific",
+    "persona": "experienced",
+    "proxy": "targets_highest_value_situational_question",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "NTO_030",
+    "query": "I am hiking the PCT section through the Sierra in July",
+    "semantic_category": "Activity Specific",
+    "persona": "experienced",
+    "proxy": "targets_highest_value_situational_question",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "NTO_031",
+    "query": "I need hiking boots",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "asks_specific_details_before_establishing_basics",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "NTO_032",
+    "query": "I want a new tent",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "asks_specific_details_before_establishing_basics",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "NTO_033",
+    "query": "Find me a sleeping bag",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "asks_specific_details_before_establishing_basics",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "NTO_034",
+    "query": "I need trail running shoes for racing",
+    "semantic_category": "Activity Specific",
+    "persona": "intermediate",
+    "proxy": "asks_aesthetic_attribute_before_functional_need",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "NTO_035",
+    "query": "I want hiking boots for rocky terrain",
+    "semantic_category": "Attribute Search",
+    "persona": "intermediate",
+    "proxy": "asks_aesthetic_attribute_before_functional_need",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "NTO_036",
+    "query": "Find me a rain jacket for mountain biking",
+    "semantic_category": "Activity Specific",
+    "persona": "intermediate",
+    "proxy": "asks_aesthetic_attribute_before_functional_need",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "NTO_037",
+    "query": "I need hiking boots for a 10-day backpacking trip",
+    "semantic_category": "Activity Specific",
+    "persona": "experienced",
+    "proxy": "asks_generic_question_ignoring_product_context",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "NTO_038",
+    "query": "Find me trail running shoes for ultra distances",
+    "semantic_category": "Activity Specific",
+    "persona": "experienced",
+    "proxy": "asks_generic_question_ignoring_product_context",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "NTO_039",
+    "query": "I want a sleeping bag for winter mountaineering",
+    "semantic_category": "Activity Specific",
+    "persona": "experienced",
+    "proxy": "asks_generic_question_ignoring_product_context",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "NTO_040",
+    "query": "What's the difference between trail runners and hiking boots for day hikes?",
+    "semantic_category": "Comparison",
+    "persona": "novice",
+    "proxy": "highlights_key_difference_to_guide_choice",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_041",
+    "query": "Should I get a 2-person or 3-person tent for solo trips?",
+    "semantic_category": "Comparison",
+    "persona": "novice",
+    "proxy": "highlights_key_difference_to_guide_choice",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_042",
+    "query": "Is a hardshell or softshell better for spring hiking?",
+    "semantic_category": "Comparison",
+    "persona": "intermediate",
+    "proxy": "highlights_key_difference_to_guide_choice",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_043",
+    "query": "I am looking at two down jackets",
+    "semantic_category": "Refinement",
+    "persona": "intermediate",
+    "proxy": "asks_narrow_feature_question_to_gauge_fit",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_044",
+    "query": "Help me choose between these two sleeping bags",
+    "semantic_category": "Refinement",
+    "persona": "intermediate",
+    "proxy": "asks_narrow_feature_question_to_gauge_fit",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_045",
+    "query": "I narrowed it down to two trail running shoes",
+    "semantic_category": "Refinement",
+    "persona": "experienced",
+    "proxy": "asks_narrow_feature_question_to_gauge_fit",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_046",
+    "query": "I need a waterproof down jacket under 100 dollars",
+    "semantic_category": "Zero Result",
+    "persona": "novice",
+    "proxy": "proposes_alternative_when_zero_results",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_047",
+    "query": "Find me a 1-person tent under 1 lb",
+    "semantic_category": "Zero Result",
+    "persona": "experienced",
+    "proxy": "proposes_alternative_when_zero_results",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_048",
+    "query": "I want carbon-fiber trekking poles under 50 dollars",
+    "semantic_category": "Zero Result",
+    "persona": "budget",
+    "proxy": "proposes_alternative_when_zero_results",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_049",
+    "query": "Show me waterproof hiking boots",
+    "semantic_category": "Category Browse",
+    "persona": "novice",
+    "proxy": "ends_turn_with_no_next_step_after_results",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_050",
+    "query": "Find me a lightweight sleeping pad",
+    "semantic_category": "Category Browse",
+    "persona": "intermediate",
+    "proxy": "ends_turn_with_no_next_step_after_results",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_051",
+    "query": "I want trail running shoes",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "ends_turn_with_no_next_step_after_results",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_052",
+    "query": "I need a three-season tent for solo backpacking",
+    "semantic_category": "Activity Specific",
+    "persona": "intermediate",
+    "proxy": "asks_vague_unfocused_question_after_results",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_053",
+    "query": "Find me a packable rain jacket",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "asks_vague_unfocused_question_after_results",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_054",
+    "query": "Show me trekking poles",
+    "semantic_category": "Category Browse",
+    "persona": "novice",
+    "proxy": "asks_vague_unfocused_question_after_results",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_055",
+    "query": "Compare the Salomon Speedcross and the Hoka Speedgoat",
+    "semantic_category": "Comparison",
+    "persona": "experienced",
+    "proxy": "lists_overwhelming_specs_without_framing_choice",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_056",
+    "query": "Tell me about the Osprey Atmos 65 backpack",
+    "semantic_category": "Product Detail",
+    "persona": "intermediate",
+    "proxy": "lists_overwhelming_specs_without_framing_choice",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_057",
+    "query": "What are the differences between 800-fill and 600-fill down sleeping bags?",
+    "semantic_category": "Comparison",
+    "persona": "novice",
+    "proxy": "lists_overwhelming_specs_without_framing_choice",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_058",
+    "query": "Show me rain jackets",
+    "semantic_category": "Category Browse",
+    "persona": "novice",
+    "proxy": "pushes_to_purchase_before_validating_fit",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_059",
+    "query": "Find me hiking boots under 200",
+    "semantic_category": "Budget Constrained",
+    "persona": "novice",
+    "proxy": "pushes_to_purchase_before_validating_fit",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_060",
+    "query": "I need a new backpack",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "pushes_to_purchase_before_validating_fit",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_061",
+    "query": "I am deciding between two pairs of trail runners",
+    "semantic_category": "Refinement",
+    "persona": "intermediate",
+    "proxy": "pivots_to_unrelated_category_mid_refinement",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_062",
+    "query": "Help me choose between two hardshell jackets",
+    "semantic_category": "Refinement",
+    "persona": "intermediate",
+    "proxy": "pivots_to_unrelated_category_mid_refinement",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_063",
+    "query": "I am close to choosing a sleeping bag",
+    "semantic_category": "Refinement",
+    "persona": "intermediate",
+    "proxy": "pivots_to_unrelated_category_mid_refinement",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "NTO_064",
+    "query": "What gear do I need for a technical alpine climb?",
+    "semantic_category": "Activity Specific",
+    "persona": "experienced",
+    "proxy": "uses_outdoor_brand_vocabulary_naturally",
+    "proxy_type": "positive",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "NTO_065",
+    "query": "I want to start trail running \u2014 where do I begin?",
+    "semantic_category": "Top of Funnel",
+    "persona": "novice",
+    "proxy": "uses_outdoor_brand_vocabulary_naturally",
+    "proxy_type": "positive",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "NTO_066",
+    "query": "Show me sustainable outdoor gear",
+    "semantic_category": "Category Browse",
+    "persona": "intermediate",
+    "proxy": "uses_outdoor_brand_vocabulary_naturally",
+    "proxy_type": "positive",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "NTO_067",
+    "query": "What hiking boots would you personally recommend?",
+    "semantic_category": "Opinion",
+    "persona": "novice",
+    "proxy": "uses_robotic_ai_boilerplate",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "NTO_068",
+    "query": "Do you have a favourite rain jacket?",
+    "semantic_category": "Opinion",
+    "persona": "novice",
+    "proxy": "uses_robotic_ai_boilerplate",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "NTO_069",
+    "query": "What would you wear for a rainy day hike?",
+    "semantic_category": "Opinion",
+    "persona": "intermediate",
+    "proxy": "uses_robotic_ai_boilerplate",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "NTO_070",
+    "query": "Are trail runners or hiking boots better for day hikes?",
+    "semantic_category": "Quick Question",
+    "persona": "novice",
+    "proxy": "gives_unsolicited_lengthy_explanation",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "NTO_071",
+    "query": "Is Gore-Tex worth the price?",
+    "semantic_category": "Quick Question",
+    "persona": "novice",
+    "proxy": "gives_unsolicited_lengthy_explanation",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "NTO_072",
+    "query": "How do I know what sleeping bag temperature rating I need?",
+    "semantic_category": "Quick Question",
+    "persona": "novice",
+    "proxy": "gives_unsolicited_lengthy_explanation",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "NTO_073",
+    "query": "These recommendations are all too expensive \u2014 this is unhelpful",
+    "semantic_category": "Frustration",
+    "persona": "novice",
+    "proxy": "responds_to_frustration_with_toxic_positivity_or_slang",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "NTO_074",
+    "query": "None of these boots fit what I asked for",
+    "semantic_category": "Frustration",
+    "persona": "intermediate",
+    "proxy": "responds_to_frustration_with_toxic_positivity_or_slang",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "NTO_075",
+    "query": "I asked for lightweight and everything you showed is heavy",
+    "semantic_category": "Frustration",
+    "persona": "experienced",
+    "proxy": "responds_to_frustration_with_toxic_positivity_or_slang",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "NTO_076",
+    "query": "I need hiking boots for a trip next week",
+    "semantic_category": "Urgent",
+    "persona": "novice",
+    "proxy": "buries_product_info_with_apologies_and_filler",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "NTO_077",
+    "query": "Just show me waterproof jackets under 150",
+    "semantic_category": "Direct Request",
+    "persona": "novice",
+    "proxy": "buries_product_info_with_apologies_and_filler",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "NTO_078",
+    "query": "Find me trekking poles \u2014 I know what I want",
+    "semantic_category": "Direct Request",
+    "persona": "experienced",
+    "proxy": "buries_product_info_with_apologies_and_filler",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "NTO_079",
+    "query": "I need hiking boots for a rainy Pacific Northwest trail",
+    "semantic_category": "Activity Specific",
+    "persona": "intermediate",
+    "proxy": "acknowledges_user_intent_before_results",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "NTO_080",
+    "query": "My feet hurt on long hikes \u2014 I need more supportive footwear",
+    "semantic_category": "Problem Statement",
+    "persona": "novice",
+    "proxy": "acknowledges_user_intent_before_results",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "NTO_081",
+    "query": "I want a jacket for a 3-day backpacking trip in the Cascades",
+    "semantic_category": "Activity Specific",
+    "persona": "experienced",
+    "proxy": "acknowledges_user_intent_before_results",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "NTO_082",
+    "query": "I need trail running shoes for technical terrain",
+    "semantic_category": "Attribute Search",
+    "persona": "experienced",
+    "proxy": "connects_each_product_feature_to_user_need",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "NTO_083",
+    "query": "Find me a sleeping bag for below-freezing nights",
+    "semantic_category": "Attribute Search",
+    "persona": "intermediate",
+    "proxy": "connects_each_product_feature_to_user_need",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "NTO_084",
+    "query": "I want a durable backpack for a month-long trip",
+    "semantic_category": "Attribute Search",
+    "persona": "experienced",
+    "proxy": "connects_each_product_feature_to_user_need",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "NTO_085",
+    "query": "I need hiking boots but not sure if I want leather or synthetic",
+    "semantic_category": "Comparison",
+    "persona": "novice",
+    "proxy": "covers_product_space_and_explains_differences",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "NTO_086",
+    "query": "What are my options for a 2-person tent under 400 dollars?",
+    "semantic_category": "Budget Constrained",
+    "persona": "intermediate",
+    "proxy": "covers_product_space_and_explains_differences",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "NTO_087",
+    "query": "Show me insulated jackets for winter hiking \u2014 budget and premium options",
+    "semantic_category": "Comparison",
+    "persona": "intermediate",
+    "proxy": "covers_product_space_and_explains_differences",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "NTO_088",
+    "query": "I need waterproof boots for a muddy trail race",
+    "semantic_category": "Activity Specific",
+    "persona": "experienced",
+    "proxy": "introduces_results_with_no_context_or_rationale",
+    "proxy_type": "negative",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "NTO_089",
+    "query": "Find me a fleece mid-layer for high-altitude backpacking",
+    "semantic_category": "Attribute Search",
+    "persona": "experienced",
+    "proxy": "introduces_results_with_no_context_or_rationale",
+    "proxy_type": "negative",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "NTO_090",
+    "query": "I want a packable down jacket under 150 dollars",
+    "semantic_category": "Budget Constrained",
+    "persona": "novice",
+    "proxy": "introduces_results_with_no_context_or_rationale",
+    "proxy_type": "negative",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "NTO_091",
+    "query": "My feet hurt on long hikes",
+    "semantic_category": "Problem Statement",
+    "persona": "novice",
+    "proxy": "translates_vague_symptom_to_product_goal",
+    "proxy_type": "positive",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "NTO_092",
+    "query": "I always feel cold even with my current jacket",
+    "semantic_category": "Problem Statement",
+    "persona": "novice",
+    "proxy": "translates_vague_symptom_to_product_goal",
+    "proxy_type": "positive",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "NTO_093",
+    "query": "I need athletic shoes",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "shows_products_before_establishing_use_case",
+    "proxy_type": "negative",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "NTO_094",
+    "query": "Find me a jacket",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "shows_products_before_establishing_use_case",
+    "proxy_type": "negative",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "NTO_095",
+    "query": "I need hiking boots specifically for wet conditions",
+    "semantic_category": "Attribute Search",
+    "persona": "intermediate",
+    "proxy": "ignores_explicitly_stated_primary_goal",
+    "proxy_type": "negative",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "NTO_096",
+    "query": "I want trail running shoes \u2014 not hiking boots \u2014 for my race",
+    "semantic_category": "Activity Specific",
+    "persona": "experienced",
+    "proxy": "ignores_explicitly_stated_primary_goal",
+    "proxy_type": "negative",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "NTO_097",
+    "query": "What's the difference between trail runners and hiking boots?",
+    "semantic_category": "Educational",
+    "persona": "novice",
+    "proxy": "misidentifies_user_purchase_funnel_stage",
+    "proxy_type": "negative",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "NTO_098",
+    "query": "How do I know what sleeping bag temperature rating I need?",
+    "semantic_category": "Educational",
+    "persona": "novice",
+    "proxy": "misidentifies_user_purchase_funnel_stage",
+    "proxy_type": "negative",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "NTO_099",
+    "query": "Which of these is better for wet conditions?",
+    "setup_queries": [
+      "I hike in the Pacific Northwest in autumn",
+      "I need trail running shoes"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "intermediate",
+    "proxy": "acknowledges_prior_constraints_in_next_question",
+    "proxy_type": "positive",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "NTO_100",
+    "query": "Do any of these have a wide fit?",
+    "setup_queries": [
+      "I have wide feet",
+      "Find me hiking boots"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "intermediate",
+    "proxy": "acknowledges_prior_constraints_in_next_question",
+    "proxy_type": "positive",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "NTO_101",
+    "query": "Great \u2014 can you show me more options like these?",
+    "setup_queries": [
+      "I am on a 150 dollar budget",
+      "I need waterproof hiking boots"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "intermediate",
+    "proxy": "applies_earlier_constraint_without_being_reminded",
+    "proxy_type": "positive",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "NTO_102",
+    "query": "Can you narrow it down further?",
+    "setup_queries": [
+      "I only want to see options under 200 dollars",
+      "Show me trail running shoes"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "experienced",
+    "proxy": "applies_earlier_constraint_without_being_reminded",
+    "proxy_type": "positive",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "NTO_103",
+    "query": "What else would you recommend for this trip?",
+    "setup_queries": [
+      "I am doing a 10-day backpacking trip in the Cascades",
+      "I have a bad knee from an old injury"
+    ],
+    "semantic_category": "Multi-turn",
+    "persona": "experienced",
+    "proxy": "combines_facts_from_multiple_turns_into_deduction",
+    "proxy_type": "positive",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "NTO_104",
+    "query": "Given everything I told you \u2014 what is the single best option?",
+    "setup_queries": [
+      "I run on rocky technical trails",
+      "I supinate and have had ankle sprains before"
+    ],
+    "semantic_category": "Multi-turn",
+    "persona": "intermediate",
+    "proxy": "combines_facts_from_multiple_turns_into_deduction",
+    "proxy_type": "positive",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "NTO_105",
+    "query": "Show me more boots like the ones you just suggested",
+    "setup_queries": [
+      "I need waterproof hiking boots in a size 10",
+      "Show me options under 200"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "intermediate",
+    "proxy": "re_asks_attribute_user_already_provided",
+    "proxy_type": "negative",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "NTO_106",
+    "query": "Can you filter to trail running shoes only?",
+    "setup_queries": [
+      "I only run trails \u2014 no roads",
+      "Find me running shoes with good traction"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "experienced",
+    "proxy": "re_asks_attribute_user_already_provided",
+    "proxy_type": "negative",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "NTO_107",
+    "query": "Yes I do multi-day trips \u2014 what else do you need to know?",
+    "setup_queries": [
+      "I am planning a 5-day backpacking trip in the Sierra",
+      "I need a new backpack"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "intermediate",
+    "proxy": "asks_question_already_answered_implicitly",
+    "proxy_type": "negative",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "NTO_108",
+    "query": "I already answered that \u2014 can we move on?",
+    "setup_queries": [
+      "I hike in the Pacific Northwest where it rains constantly",
+      "Find me a rain jacket"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "experienced",
+    "proxy": "asks_question_already_answered_implicitly",
+    "proxy_type": "negative",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "NTO_109",
+    "query": "What do you mean \u2014 do I need lightweight gear?",
+    "setup_queries": [
+      "I am doing a 300-mile thru-hike starting next month",
+      "I need to gear up"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "experienced",
+    "proxy": "fails_to_infer_obvious_implication_from_user_context",
+    "proxy_type": "negative",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "NTO_110",
+    "query": "Obviously I do \u2014 I told you that already",
+    "setup_queries": [
+      "I race trail ultras every weekend",
+      "I need running shoes that last"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "intermediate",
+    "proxy": "fails_to_infer_obvious_implication_from_user_context",
+    "proxy_type": "negative",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "NTO_111",
+    "query": "I need hiking boots, though I do get some ankle soreness on descents",
+    "semantic_category": "Primary + Secondary",
+    "persona": "intermediate",
+    "proxy": "abandons_primary_goal_to_chase_secondary_concern",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "NTO_112",
+    "query": "Find me trail running shoes \u2014 I mentioned my plantar fasciitis flares up sometimes",
+    "semantic_category": "Primary + Secondary",
+    "persona": "intermediate",
+    "proxy": "abandons_primary_goal_to_chase_secondary_concern",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "NTO_113",
+    "query": "That is interesting trivia but can I just see the gear?",
+    "semantic_category": "Off-topic",
+    "persona": "novice",
+    "proxy": "wastes_full_turn_on_off_topic_chat",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "NTO_114",
+    "query": "I appreciate the history lesson but I need running shoes",
+    "semantic_category": "Off-topic",
+    "persona": "intermediate",
+    "proxy": "wastes_full_turn_on_off_topic_chat",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "NTO_115",
+    "query": "My knees hurt after long runs \u2014 what shoes should I get?",
+    "semantic_category": "Medical Adjacent",
+    "persona": "novice",
+    "proxy": "gives_medical_or_training_advice_instead_of_gear",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "NTO_116",
+    "query": "I have shin splints \u2014 what running shoes will help?",
+    "semantic_category": "Medical Adjacent",
+    "persona": "novice",
+    "proxy": "gives_medical_or_training_advice_instead_of_gear",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "NTO_117",
+    "query": "I saw a jacket at REI that I liked \u2014 do you have something similar?",
+    "semantic_category": "Competitor",
+    "persona": "intermediate",
+    "proxy": "recommends_or_discusses_non_nto_products",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "NTO_118",
+    "query": "My friend got Salomon shoes from another store \u2014 are they better than yours?",
+    "semantic_category": "Competitor",
+    "persona": "novice",
+    "proxy": "recommends_or_discusses_non_nto_products",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "NTO_119",
+    "query": "I need hiking boots \u2014 I said I will deal with the rest later",
+    "semantic_category": "Primary Goal",
+    "persona": "intermediate",
+    "proxy": "promotes_add_ons_before_primary_goal_resolved",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "NTO_120",
+    "query": "Just the rain jacket for now \u2014 no need for the full kit yet",
+    "semantic_category": "Primary Goal",
+    "persona": "novice",
+    "proxy": "promotes_add_ons_before_primary_goal_resolved",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "NTO_121",
+    "query": "I want a lightweight packable jacket for casual hikes \u2014 nothing too technical",
+    "semantic_category": "Soft Constraint",
+    "persona": "novice",
+    "proxy": "soft_constraint_violation",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "NTO_122",
+    "query": "I need trail shoes with a roomy toe box \u2014 I like a natural feel",
+    "semantic_category": "Soft Constraint",
+    "persona": "experienced",
+    "proxy": "soft_constraint_violation",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "NTO_123",
+    "query": "Find me women's waterproof hiking boots under 150 dollars",
+    "semantic_category": "Hard Constraint",
+    "persona": "novice",
+    "proxy": "hard_constraint_violation",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "NTO_124",
+    "query": "I need hiking boots in a wide width \u2014 standard fit does not work for me",
+    "semantic_category": "Hard Constraint",
+    "persona": "intermediate",
+    "proxy": "hard_constraint_violation",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "NTO_125",
+    "query": "I need trail running shoes \u2014 not hiking boots",
+    "semantic_category": "Wrong Category",
+    "persona": "experienced",
+    "proxy": "returns_wrong_product_type_entirely",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "NTO_126",
+    "query": "I want a hardshell rain jacket \u2014 not a softshell",
+    "semantic_category": "Wrong Category",
+    "persona": "intermediate",
+    "proxy": "returns_wrong_product_type_entirely",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "NTO_127",
+    "query": "Show me hiking boots",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "filters_on_constraint_user_never_stated",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "NTO_128",
+    "query": "I want a sleeping bag for camping",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "filters_on_constraint_user_never_stated",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "NTO_129",
+    "query": "I need waterproof hiking boots for muddy trails",
+    "semantic_category": "Attribute Search",
+    "persona": "intermediate",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "NTO_130",
+    "query": "Find me a lightweight rain jacket for trail running",
+    "semantic_category": "Activity Specific",
+    "persona": "experienced",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "NTO_131",
+    "query": "I want a 3-season sleeping bag for backpacking",
+    "semantic_category": "Attribute Search",
+    "persona": "intermediate",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "NTO_132",
+    "query": "Show me trail running shoes for technical terrain",
+    "semantic_category": "Attribute Search",
+    "persona": "experienced",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "NTO_133",
+    "query": "I need a 50-liter backpack for a week-long trip",
+    "semantic_category": "Attribute Search",
+    "persona": "intermediate",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "NTO_134",
+    "query": "Find me trekking poles for steep mountain hikes",
+    "semantic_category": "Activity Specific",
+    "persona": "experienced",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "NTO_135",
+    "query": "I want a fleece mid-layer for cold-weather hiking",
+    "semantic_category": "Attribute Search",
+    "persona": "intermediate",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "NTO_136",
+    "query": "Show me a 2-person backpacking tent under 400",
+    "semantic_category": "Budget Constrained",
+    "persona": "intermediate",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "NTO_137",
+    "query": "I need merino wool base layers for winter hiking",
+    "semantic_category": "Attribute Search",
+    "persona": "experienced",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "NTO_138",
+    "query": "Find me trail running shoes for flat fire roads",
+    "semantic_category": "Activity Specific",
+    "persona": "intermediate",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "NTO_139",
+    "query": "I want a hardshell jacket for alpine climbing",
+    "semantic_category": "Activity Specific",
+    "persona": "experienced",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "NTO_140",
+    "query": "Show me camp shoes for after a long hiking day",
+    "semantic_category": "Activity Specific",
+    "persona": "intermediate",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  }
+]

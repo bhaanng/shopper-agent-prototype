@@ -17,6 +17,11 @@ try:
 except ImportError:
     yaml = None
 
+try:
+    from dotenv import dotenv_values
+except ImportError:
+    dotenv_values = None
+
 from system_prompt import get_system_prompt
 
 CUSTOMERS_DIR = Path(__file__).parent.parent / "customers"
@@ -108,6 +113,29 @@ def get_system_prompt_for_customer(customer_id: Optional[str] = None) -> str:
         result += _EXAMPLES_SECTION.format(examples=_render_examples(examples))
 
     return result
+
+
+def load_customer_scapi_env(customer_id: str) -> dict:
+    """Load SCAPI credentials from customers/<customer_id>.env.
+
+    Returns a dict with keys: SCAPI_TOKEN_URL, SCAPI_CLIENT_CREDENTIALS,
+    SCAPI_SEARCH_URL, SCAPI_SITE_ID. Values are None if the file is missing
+    or the key is absent — callers should fall back to os.environ as needed.
+    """
+    path = CUSTOMERS_DIR / f"{customer_id}.env"
+    if not path.exists():
+        return {}
+    if dotenv_values is None:
+        # Manual parser fallback
+        values = {}
+        for line in path.read_text().splitlines():
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            k, _, v = line.partition("=")
+            values[k.strip()] = v.strip()
+        return values
+    return dict(dotenv_values(path))
 
 
 def list_customers() -> list[str]:

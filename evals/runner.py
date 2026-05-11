@@ -36,6 +36,7 @@ from typing import Optional
 sys.path.insert(0, str(Path(__file__).parent.parent / "agent"))
 
 from nto_agent import NTOAgent
+from site_config import load_site_scapi_env
 from evals.metrics import PROXY_INDEX, METRIC_SCALES
 from evals.judge import LLMJudge, score_verdict, score_likert, score_ndcg
 
@@ -47,7 +48,7 @@ def _extract_text(response: dict) -> str:
     parts = [
         block.get("content", "")
         for block in response.get("response", [])
-        if block.get("type") == "markdown"
+        if isinstance(block, dict) and block.get("type") == "markdown"
     ]
     if response.get("follow_up"):
         parts.append(response["follow_up"])
@@ -56,7 +57,7 @@ def _extract_text(response: dict) -> str:
 
 def run_evals(
     dataset: list[dict],
-    customer_id: Optional[str] = None,
+    site_id: Optional[str] = None,
     max_workers: int = 3,
     agent_kwargs: dict = None,
 ) -> dict:
@@ -67,14 +68,16 @@ def run_evals(
     )
 
     def _build_agent():
+        senv = load_site_scapi_env(site_id) if site_id else {}
         return NTOAgent(
             api_key=os.getenv("ANTHROPIC_API_KEY"),
             base_url=os.getenv("ANTHROPIC_BASE_URL"),
-            scapi_token_url=os.getenv("SCAPI_TOKEN_URL"),
-            scapi_client_credentials=os.getenv("SCAPI_CLIENT_CREDENTIALS"),
-            scapi_search_url=os.getenv("SCAPI_SEARCH_URL"),
-            scapi_site_id=os.getenv("SCAPI_SITE_ID", "NTOManaged"),
-            customer_id=customer_id,
+            scapi_token_url=senv.get("SCAPI_TOKEN_URL") or os.getenv("SCAPI_TOKEN_URL"),
+            scapi_client_credentials=senv.get("SCAPI_CLIENT_CREDENTIALS") or os.getenv("SCAPI_CLIENT_CREDENTIALS"),
+            scapi_search_url=senv.get("SCAPI_SEARCH_URL") or os.getenv("SCAPI_SEARCH_URL"),
+            scapi_site_id=senv.get("SCAPI_SITE_ID") or os.getenv("SCAPI_SITE_ID", "NTOManaged"),
+            scapi_locale=senv.get("SCAPI_LOCALE") or os.getenv("SCAPI_LOCALE"),
+            site_id=site_id,
             **agent_kwargs,
         )
 

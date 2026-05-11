@@ -1,0 +1,1310 @@
+[
+  {
+    "conversation_id": "HIB_001",
+    "query": "I need new basketball shoes",
+    "semantic_category": "Basic Search",
+    "persona": "teen",
+    "proxy": "follow_up_offers_specific_choices",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "HIB_002",
+    "query": "Show me running shoes",
+    "semantic_category": "Category Browse",
+    "persona": "novice",
+    "proxy": "follow_up_offers_specific_choices",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "HIB_003",
+    "query": "I want athletic shoes for the gym",
+    "semantic_category": "Basic Search",
+    "persona": "intermediate",
+    "proxy": "follow_up_offers_specific_choices",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "HIB_004",
+    "query": "Find me outdoor basketball shoes with good traction",
+    "semantic_category": "Attribute Search",
+    "persona": "intermediate",
+    "proxy": "search_intent_transparency",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "HIB_005",
+    "query": "I need running shoes under 120 dollars",
+    "semantic_category": "Budget Constrained",
+    "persona": "novice",
+    "proxy": "search_intent_transparency",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "HIB_006",
+    "query": "Looking for lightweight training shoes for HIIT",
+    "semantic_category": "Activity Specific",
+    "persona": "intermediate",
+    "proxy": "search_intent_transparency",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "HIB_007",
+    "query": "What are the best basketball shoes right now?",
+    "semantic_category": "Top Products",
+    "persona": "teen",
+    "proxy": "scannable_result_framing",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "HIB_008",
+    "query": "Show me soccer cleats for a competitive league",
+    "semantic_category": "Activity Specific",
+    "persona": "intermediate",
+    "proxy": "scannable_result_framing",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "HIB_009",
+    "query": "Find me On Running shoes",
+    "semantic_category": "Brand Specific",
+    "persona": "intermediate",
+    "proxy": "scannable_result_framing",
+    "proxy_type": "positive",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "HIB_010",
+    "query": "I need new sneakers",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "stacks_multiple_open_ended_questions",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "HIB_011",
+    "query": "What soccer cleats do you have?",
+    "semantic_category": "Category Browse",
+    "persona": "parent",
+    "proxy": "stacks_multiple_open_ended_questions",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "HIB_012",
+    "query": "I want new workout clothes",
+    "semantic_category": "Basic Search",
+    "persona": "teen",
+    "proxy": "stacks_multiple_open_ended_questions",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "HIB_013",
+    "query": "Show me all your Nike shoes",
+    "semantic_category": "Brand Specific",
+    "persona": "teen",
+    "proxy": "dumps_undifferentiated_product_list",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "HIB_014",
+    "query": "What running shoes are under 100 dollars?",
+    "semantic_category": "Budget Constrained",
+    "persona": "novice",
+    "proxy": "dumps_undifferentiated_product_list",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "HIB_015",
+    "query": "Show me your Jordan collection",
+    "semantic_category": "Brand Specific",
+    "persona": "sneakerhead",
+    "proxy": "dumps_undifferentiated_product_list",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "HIB_016",
+    "query": "I need shoes specifically for indoor basketball on a hardwood court",
+    "semantic_category": "Activity Specific",
+    "persona": "intermediate",
+    "proxy": "shows_results_mismatching_query_without_explanation",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "HIB_017",
+    "query": "Find me minimalist running shoes for road racing",
+    "semantic_category": "Attribute Search",
+    "persona": "experienced",
+    "proxy": "shows_results_mismatching_query_without_explanation",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "HIB_018",
+    "query": "I want firm ground soccer cleats for natural grass",
+    "semantic_category": "Attribute Search",
+    "persona": "intermediate",
+    "proxy": "shows_results_mismatching_query_without_explanation",
+    "proxy_type": "negative",
+    "metric": "cognitive_load"
+  },
+  {
+    "conversation_id": "HIB_019",
+    "query": "I need new running shoes",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "asks_foundational_attributes_before_secondary",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "HIB_020",
+    "query": "What basketball shoes should I get?",
+    "semantic_category": "Basic Search",
+    "persona": "teen",
+    "proxy": "asks_foundational_attributes_before_secondary",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "HIB_021",
+    "query": "I want cleats for my league",
+    "semantic_category": "Basic Search",
+    "persona": "intermediate",
+    "proxy": "asks_foundational_attributes_before_secondary",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "HIB_022",
+    "query": "I want to get into running \u2014 what shoes do I need?",
+    "semantic_category": "Top of Funnel",
+    "persona": "novice",
+    "proxy": "questions_follow_logical_funnel_order",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "HIB_023",
+    "query": "My kid needs gear for football season",
+    "semantic_category": "Multi-Item",
+    "persona": "parent",
+    "proxy": "questions_follow_logical_funnel_order",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "HIB_024",
+    "query": "Help me build a gym outfit from scratch",
+    "semantic_category": "Multi-Item",
+    "persona": "teen",
+    "proxy": "questions_follow_logical_funnel_order",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "HIB_025",
+    "query": "I need basketball shoes",
+    "semantic_category": "Basic Search",
+    "persona": "teen",
+    "proxy": "asks_most_critical_category_attribute_first",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "HIB_026",
+    "query": "Find me running shoes",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "asks_most_critical_category_attribute_first",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "HIB_027",
+    "query": "I want football cleats",
+    "semantic_category": "Basic Search",
+    "persona": "intermediate",
+    "proxy": "asks_most_critical_category_attribute_first",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "HIB_028",
+    "query": "I play point guard on an outdoor court \u2014 need new shoes",
+    "semantic_category": "Activity Specific",
+    "persona": "experienced",
+    "proxy": "targets_highest_value_situational_question",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "HIB_029",
+    "query": "I run on pavement every morning \u2014 what shoes are best?",
+    "semantic_category": "Activity Specific",
+    "persona": "intermediate",
+    "proxy": "targets_highest_value_situational_question",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "HIB_030",
+    "query": "My son plays catcher in baseball \u2014 need cleats and gear",
+    "semantic_category": "Activity Specific",
+    "persona": "parent",
+    "proxy": "targets_highest_value_situational_question",
+    "proxy_type": "positive",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "HIB_031",
+    "query": "I need basketball shoes",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "asks_specific_details_before_establishing_basics",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "HIB_032",
+    "query": "Looking for soccer cleats",
+    "semantic_category": "Basic Search",
+    "persona": "parent",
+    "proxy": "asks_specific_details_before_establishing_basics",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "HIB_033",
+    "query": "I want new gym shoes",
+    "semantic_category": "Basic Search",
+    "persona": "teen",
+    "proxy": "asks_specific_details_before_establishing_basics",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "HIB_034",
+    "query": "I need shoes for playing basketball outdoors",
+    "semantic_category": "Activity Specific",
+    "persona": "teen",
+    "proxy": "asks_aesthetic_attribute_before_functional_need",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "HIB_035",
+    "query": "I want cleats for youth flag football",
+    "semantic_category": "Activity Specific",
+    "persona": "parent",
+    "proxy": "asks_aesthetic_attribute_before_functional_need",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "HIB_036",
+    "query": "Looking for training shoes for sprinting drills",
+    "semantic_category": "Activity Specific",
+    "persona": "intermediate",
+    "proxy": "asks_aesthetic_attribute_before_functional_need",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "HIB_037",
+    "query": "I need basketball shoes for an indoor league",
+    "semantic_category": "Activity Specific",
+    "persona": "intermediate",
+    "proxy": "asks_generic_question_ignoring_product_context",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "HIB_038",
+    "query": "Find me football cleats for a wide receiver",
+    "semantic_category": "Activity Specific",
+    "persona": "experienced",
+    "proxy": "asks_generic_question_ignoring_product_context",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "HIB_039",
+    "query": "I want running shoes for marathon training",
+    "semantic_category": "Activity Specific",
+    "persona": "experienced",
+    "proxy": "asks_generic_question_ignoring_product_context",
+    "proxy_type": "negative",
+    "metric": "information_gain"
+  },
+  {
+    "conversation_id": "HIB_040",
+    "query": "What is the difference between Nike React and ZoomX foam?",
+    "semantic_category": "Comparison",
+    "persona": "experienced",
+    "proxy": "highlights_key_difference_to_guide_choice",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_041",
+    "query": "Should I get the Jordan 1 or the Jordan 4?",
+    "semantic_category": "Comparison",
+    "persona": "sneakerhead",
+    "proxy": "highlights_key_difference_to_guide_choice",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_042",
+    "query": "Is Adidas Ultraboost or New Balance Fresh Foam better for long runs?",
+    "semantic_category": "Comparison",
+    "persona": "intermediate",
+    "proxy": "highlights_key_difference_to_guide_choice",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_043",
+    "query": "I am looking at the Nike Air Max 270 and the 97",
+    "semantic_category": "Refinement",
+    "persona": "sneakerhead",
+    "proxy": "asks_narrow_feature_question_to_gauge_fit",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_044",
+    "query": "I narrowed it down to the LeBron 21 and the KD 16",
+    "semantic_category": "Refinement",
+    "persona": "intermediate",
+    "proxy": "asks_narrow_feature_question_to_gauge_fit",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_045",
+    "query": "Choosing between the Adidas Ultraboost and New Balance 1080",
+    "semantic_category": "Refinement",
+    "persona": "experienced",
+    "proxy": "asks_narrow_feature_question_to_gauge_fit",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_046",
+    "query": "I need the Travis Scott Jordan 1 in size 9.5 under 200 dollars",
+    "semantic_category": "Zero Result",
+    "persona": "sneakerhead",
+    "proxy": "proposes_alternative_when_zero_results",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_047",
+    "query": "Find me vegan leather basketball shoes under 80 dollars",
+    "semantic_category": "Zero Result",
+    "persona": "novice",
+    "proxy": "proposes_alternative_when_zero_results",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_048",
+    "query": "I want carbon-plate running shoes under 50 dollars",
+    "semantic_category": "Zero Result",
+    "persona": "budget",
+    "proxy": "proposes_alternative_when_zero_results",
+    "proxy_type": "positive",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_049",
+    "query": "Show me New Balance running shoes",
+    "semantic_category": "Category Browse",
+    "persona": "intermediate",
+    "proxy": "ends_turn_with_no_next_step_after_results",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_050",
+    "query": "Find me basketball shoes under 150",
+    "semantic_category": "Budget Constrained",
+    "persona": "teen",
+    "proxy": "ends_turn_with_no_next_step_after_results",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_051",
+    "query": "Show me soccer cleats for youth players",
+    "semantic_category": "Category Browse",
+    "persona": "parent",
+    "proxy": "ends_turn_with_no_next_step_after_results",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_052",
+    "query": "I need shoes for a half marathon",
+    "semantic_category": "Activity Specific",
+    "persona": "intermediate",
+    "proxy": "asks_vague_unfocused_question_after_results",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_053",
+    "query": "Show me lifestyle sneakers I can wear every day",
+    "semantic_category": "Category Browse",
+    "persona": "teen",
+    "proxy": "asks_vague_unfocused_question_after_results",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_054",
+    "query": "Looking for football cleats size 10",
+    "semantic_category": "Attribute Search",
+    "persona": "intermediate",
+    "proxy": "asks_vague_unfocused_question_after_results",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_055",
+    "query": "Compare the Nike Pegasus 41 and the Brooks Ghost 16",
+    "semantic_category": "Comparison",
+    "persona": "intermediate",
+    "proxy": "lists_overwhelming_specs_without_framing_choice",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_056",
+    "query": "Tell me about the Adidas Predator cleats",
+    "semantic_category": "Product Detail",
+    "persona": "intermediate",
+    "proxy": "lists_overwhelming_specs_without_framing_choice",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_057",
+    "query": "What are the differences between the LeBron 21 and LeBron 22?",
+    "semantic_category": "Comparison",
+    "persona": "experienced",
+    "proxy": "lists_overwhelming_specs_without_framing_choice",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_058",
+    "query": "Show me Nike basketball shoes",
+    "semantic_category": "Category Browse",
+    "persona": "novice",
+    "proxy": "pushes_to_purchase_before_validating_fit",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_059",
+    "query": "Find me the best soccer cleats",
+    "semantic_category": "Top Products",
+    "persona": "intermediate",
+    "proxy": "pushes_to_purchase_before_validating_fit",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_060",
+    "query": "What are popular sneakers for teens right now?",
+    "semantic_category": "Top Products",
+    "persona": "parent",
+    "proxy": "pushes_to_purchase_before_validating_fit",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_061",
+    "query": "I am deciding between two pairs of running shoes",
+    "semantic_category": "Refinement",
+    "persona": "intermediate",
+    "proxy": "pivots_to_unrelated_category_mid_refinement",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_062",
+    "query": "Help me choose between these two basketball sneakers",
+    "semantic_category": "Refinement",
+    "persona": "teen",
+    "proxy": "pivots_to_unrelated_category_mid_refinement",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_063",
+    "query": "I am close to choosing a pair of cleats",
+    "semantic_category": "Refinement",
+    "persona": "intermediate",
+    "proxy": "pivots_to_unrelated_category_mid_refinement",
+    "proxy_type": "negative",
+    "metric": "refinement_quality"
+  },
+  {
+    "conversation_id": "HIB_064",
+    "query": "What drops are coming this week?",
+    "semantic_category": "Release Info",
+    "persona": "sneakerhead",
+    "proxy": "uses_outdoor_brand_vocabulary_naturally",
+    "proxy_type": "positive",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "HIB_065",
+    "query": "I want something clean for on and off the court",
+    "semantic_category": "Lifestyle",
+    "persona": "teen",
+    "proxy": "uses_outdoor_brand_vocabulary_naturally",
+    "proxy_type": "positive",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "HIB_066",
+    "query": "What are the hottest basketball shoes this season?",
+    "semantic_category": "Top Products",
+    "persona": "teen",
+    "proxy": "uses_outdoor_brand_vocabulary_naturally",
+    "proxy_type": "positive",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "HIB_067",
+    "query": "What would you wear for an outdoor pickup game?",
+    "semantic_category": "Opinion",
+    "persona": "teen",
+    "proxy": "uses_robotic_ai_boilerplate",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "HIB_068",
+    "query": "Do you have any opinions on the best running shoes?",
+    "semantic_category": "Opinion",
+    "persona": "intermediate",
+    "proxy": "uses_robotic_ai_boilerplate",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "HIB_069",
+    "query": "Is the Nike Pegasus actually a good shoe?",
+    "semantic_category": "Opinion",
+    "persona": "novice",
+    "proxy": "uses_robotic_ai_boilerplate",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "HIB_070",
+    "query": "Are Jordan 1s true to size?",
+    "semantic_category": "Quick Question",
+    "persona": "teen",
+    "proxy": "gives_unsolicited_lengthy_explanation",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "HIB_071",
+    "query": "Do I need cleats or turf shoes for artificial grass?",
+    "semantic_category": "Quick Question",
+    "persona": "parent",
+    "proxy": "gives_unsolicited_lengthy_explanation",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "HIB_072",
+    "query": "Is Nike or Adidas better for running?",
+    "semantic_category": "Quick Question",
+    "persona": "novice",
+    "proxy": "gives_unsolicited_lengthy_explanation",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "HIB_073",
+    "query": "These shoes you recommended are way out of my budget",
+    "semantic_category": "Frustration",
+    "persona": "novice",
+    "proxy": "responds_to_frustration_with_toxic_positivity_or_slang",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "HIB_074",
+    "query": "I asked for wide shoes and you keep showing narrow ones",
+    "semantic_category": "Frustration",
+    "persona": "intermediate",
+    "proxy": "responds_to_frustration_with_toxic_positivity_or_slang",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "HIB_075",
+    "query": "None of these styles are what I am looking for",
+    "semantic_category": "Frustration",
+    "persona": "teen",
+    "proxy": "responds_to_frustration_with_toxic_positivity_or_slang",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "HIB_076",
+    "query": "I need basketball shoes for my tournament this weekend",
+    "semantic_category": "Urgent",
+    "persona": "teen",
+    "proxy": "buries_product_info_with_apologies_and_filler",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "HIB_077",
+    "query": "Just show me running shoes under 100",
+    "semantic_category": "Direct Request",
+    "persona": "novice",
+    "proxy": "buries_product_info_with_apologies_and_filler",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "HIB_078",
+    "query": "I know what I want \u2014 Jordan 4s in white",
+    "semantic_category": "Direct Request",
+    "persona": "sneakerhead",
+    "proxy": "buries_product_info_with_apologies_and_filler",
+    "proxy_type": "negative",
+    "metric": "tone_persona"
+  },
+  {
+    "conversation_id": "HIB_079",
+    "query": "I need shoes for playing basketball on outdoor courts",
+    "semantic_category": "Activity Specific",
+    "persona": "intermediate",
+    "proxy": "acknowledges_user_intent_before_results",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "HIB_080",
+    "query": "Find me lightweight cleats \u2014 I am a wide receiver",
+    "semantic_category": "Activity Specific",
+    "persona": "experienced",
+    "proxy": "acknowledges_user_intent_before_results",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "HIB_081",
+    "query": "I want cushioned running shoes for my joint pain",
+    "semantic_category": "Problem Statement",
+    "persona": "novice",
+    "proxy": "acknowledges_user_intent_before_results",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "HIB_082",
+    "query": "I need stable shoes for lateral movements in the gym",
+    "semantic_category": "Activity Specific",
+    "persona": "intermediate",
+    "proxy": "connects_each_product_feature_to_user_need",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "HIB_083",
+    "query": "Looking for basketball shoes that help with ankle support",
+    "semantic_category": "Attribute Search",
+    "persona": "intermediate",
+    "proxy": "connects_each_product_feature_to_user_need",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "HIB_084",
+    "query": "Find me cleats with good traction for wet grass fields",
+    "semantic_category": "Attribute Search",
+    "persona": "intermediate",
+    "proxy": "connects_each_product_feature_to_user_need",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "HIB_085",
+    "query": "Show me mid-top vs low-top basketball shoes",
+    "semantic_category": "Comparison",
+    "persona": "teen",
+    "proxy": "covers_product_space_and_explains_differences",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "HIB_086",
+    "query": "I want to see budget vs premium soccer cleats",
+    "semantic_category": "Comparison",
+    "persona": "parent",
+    "proxy": "covers_product_space_and_explains_differences",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "HIB_087",
+    "query": "What are my trail running shoe options?",
+    "semantic_category": "Category Browse",
+    "persona": "novice",
+    "proxy": "covers_product_space_and_explains_differences",
+    "proxy_type": "positive",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "HIB_088",
+    "query": "I need shoes for a marathon",
+    "semantic_category": "Activity Specific",
+    "persona": "intermediate",
+    "proxy": "introduces_results_with_no_context_or_rationale",
+    "proxy_type": "negative",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "HIB_089",
+    "query": "Find me basketball shoes for a center",
+    "semantic_category": "Activity Specific",
+    "persona": "experienced",
+    "proxy": "introduces_results_with_no_context_or_rationale",
+    "proxy_type": "negative",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "HIB_090",
+    "query": "Looking for cross-training shoes for a boot camp class",
+    "semantic_category": "Activity Specific",
+    "persona": "novice",
+    "proxy": "introduces_results_with_no_context_or_rationale",
+    "proxy_type": "negative",
+    "metric": "rationale_quality"
+  },
+  {
+    "conversation_id": "HIB_091",
+    "query": "My knees hurt when I run \u2014 what shoes help?",
+    "semantic_category": "Problem Statement",
+    "persona": "novice",
+    "proxy": "translates_vague_symptom_to_product_goal",
+    "proxy_type": "positive",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "HIB_092",
+    "query": "I keep rolling my ankles playing ball",
+    "semantic_category": "Problem Statement",
+    "persona": "teen",
+    "proxy": "translates_vague_symptom_to_product_goal",
+    "proxy_type": "positive",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "HIB_093",
+    "query": "I need athletic shoes",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "shows_products_before_establishing_use_case",
+    "proxy_type": "negative",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "HIB_094",
+    "query": "Find me cleats",
+    "semantic_category": "Basic Search",
+    "persona": "parent",
+    "proxy": "shows_products_before_establishing_use_case",
+    "proxy_type": "negative",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "HIB_095",
+    "query": "I need basketball shoes specifically for outdoor courts",
+    "semantic_category": "Activity Specific",
+    "persona": "intermediate",
+    "proxy": "ignores_explicitly_stated_primary_goal",
+    "proxy_type": "negative",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "HIB_096",
+    "query": "I need cleats for flag football not tackle football",
+    "semantic_category": "Activity Specific",
+    "persona": "intermediate",
+    "proxy": "ignores_explicitly_stated_primary_goal",
+    "proxy_type": "negative",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "HIB_097",
+    "query": "What is the difference between Nike React and Zoom Air cushioning?",
+    "semantic_category": "Educational",
+    "persona": "novice",
+    "proxy": "misidentifies_user_purchase_funnel_stage",
+    "proxy_type": "negative",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "HIB_098",
+    "query": "Are high-top basketball shoes actually better for ankle support?",
+    "semantic_category": "Educational",
+    "persona": "teen",
+    "proxy": "misidentifies_user_purchase_funnel_stage",
+    "proxy_type": "negative",
+    "metric": "goal_identification"
+  },
+  {
+    "conversation_id": "HIB_099",
+    "query": "Which of these has better outdoor traction?",
+    "setup_queries": [
+      "I play outdoor basketball on concrete courts",
+      "Find me basketball shoes"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "intermediate",
+    "proxy": "acknowledges_prior_constraints_in_next_question",
+    "proxy_type": "positive",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "HIB_100",
+    "query": "Do any of these come in wide width?",
+    "setup_queries": [
+      "I have wide feet",
+      "Show me running shoes"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "intermediate",
+    "proxy": "acknowledges_prior_constraints_in_next_question",
+    "proxy_type": "positive",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "HIB_101",
+    "query": "Can you show me more like these?",
+    "setup_queries": [
+      "My budget is 130 dollars",
+      "Find me basketball shoes"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "teen",
+    "proxy": "applies_earlier_constraint_without_being_reminded",
+    "proxy_type": "positive",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "HIB_102",
+    "query": "Narrow it down to the top two",
+    "setup_queries": [
+      "I only want Nike or Jordan brand",
+      "Show me basketball shoes under 180"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "intermediate",
+    "proxy": "applies_earlier_constraint_without_being_reminded",
+    "proxy_type": "positive",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "HIB_103",
+    "query": "What would you recommend based on everything I told you?",
+    "setup_queries": [
+      "I play point guard and make a lot of quick cuts",
+      "I have had two ankle sprains in the past year"
+    ],
+    "semantic_category": "Multi-turn",
+    "persona": "experienced",
+    "proxy": "combines_facts_from_multiple_turns_into_deduction",
+    "proxy_type": "positive",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "HIB_104",
+    "query": "Given all that \u2014 what is the best cleat for me?",
+    "setup_queries": [
+      "I am a wide receiver who runs a lot of routes",
+      "I play on artificial turf mostly"
+    ],
+    "semantic_category": "Multi-turn",
+    "persona": "intermediate",
+    "proxy": "combines_facts_from_multiple_turns_into_deduction",
+    "proxy_type": "positive",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "HIB_105",
+    "query": "Show me more options",
+    "setup_queries": [
+      "I need size 10 basketball shoes",
+      "Find me Jordan shoes under 200"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "teen",
+    "proxy": "re_asks_attribute_user_already_provided",
+    "proxy_type": "negative",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "HIB_106",
+    "query": "Can you filter to trail running only?",
+    "setup_queries": [
+      "I only run trails \u2014 never roads",
+      "Find me running shoes with grip"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "experienced",
+    "proxy": "re_asks_attribute_user_already_provided",
+    "proxy_type": "negative",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "HIB_107",
+    "query": "Yes obviously \u2014 I play competitive basketball",
+    "setup_queries": [
+      "I am on a high school varsity basketball team",
+      "I need new basketball shoes"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "intermediate",
+    "proxy": "asks_question_already_answered_implicitly",
+    "proxy_type": "negative",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "HIB_108",
+    "query": "I told you I play on turf \u2014 why are you asking again?",
+    "setup_queries": [
+      "My son plays soccer on artificial turf every weekend",
+      "Find him cleats"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "parent",
+    "proxy": "asks_question_already_answered_implicitly",
+    "proxy_type": "negative",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "HIB_109",
+    "query": "Do I need lightweight shoes \u2014 I said I am a sprinter",
+    "setup_queries": [
+      "I compete in track sprints at the collegiate level",
+      "I need new track shoes"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "experienced",
+    "proxy": "fails_to_infer_obvious_implication_from_user_context",
+    "proxy_type": "negative",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "HIB_110",
+    "query": "Clearly I do \u2014 I play 3 hours a day",
+    "setup_queries": [
+      "I play pickup basketball outdoors every single day",
+      "Find me durable basketball shoes"
+    ],
+    "semantic_category": "Follow-up",
+    "persona": "intermediate",
+    "proxy": "fails_to_infer_obvious_implication_from_user_context",
+    "proxy_type": "negative",
+    "metric": "redundancy_avoidance"
+  },
+  {
+    "conversation_id": "HIB_111",
+    "query": "I need basketball shoes, though my ankle has been a bit sore lately",
+    "semantic_category": "Primary + Secondary",
+    "persona": "intermediate",
+    "proxy": "abandons_primary_goal_to_chase_secondary_concern",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "HIB_112",
+    "query": "Find me running shoes \u2014 I mentioned I have been dealing with shin splints",
+    "semantic_category": "Primary + Secondary",
+    "persona": "intermediate",
+    "proxy": "abandons_primary_goal_to_chase_secondary_concern",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "HIB_113",
+    "query": "Interesting but I just need shoes for my game tonight",
+    "semantic_category": "Off-topic",
+    "persona": "teen",
+    "proxy": "wastes_full_turn_on_off_topic_chat",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "HIB_114",
+    "query": "Can we get back to finding cleats for my son?",
+    "semantic_category": "Off-topic",
+    "persona": "parent",
+    "proxy": "wastes_full_turn_on_off_topic_chat",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "HIB_115",
+    "query": "My Achilles has been tight \u2014 what shoes help?",
+    "semantic_category": "Medical Adjacent",
+    "persona": "intermediate",
+    "proxy": "gives_medical_or_training_advice_instead_of_gear",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "HIB_116",
+    "query": "I get knee pain after runs \u2014 is it my shoes?",
+    "semantic_category": "Medical Adjacent",
+    "persona": "novice",
+    "proxy": "gives_medical_or_training_advice_instead_of_gear",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "HIB_117",
+    "query": "I saw these shoes at Foot Locker \u2014 do you carry them?",
+    "semantic_category": "Competitor",
+    "persona": "teen",
+    "proxy": "recommends_or_discusses_non_nto_products",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "HIB_118",
+    "query": "My friend got Saucony shoes from Running Warehouse \u2014 are those good?",
+    "semantic_category": "Competitor",
+    "persona": "novice",
+    "proxy": "recommends_or_discusses_non_nto_products",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "HIB_119",
+    "query": "I need basketball shoes first \u2014 the socks can wait",
+    "semantic_category": "Primary Goal",
+    "persona": "teen",
+    "proxy": "promotes_add_ons_before_primary_goal_resolved",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "HIB_120",
+    "query": "Can we find the cleats before we talk about shin guards?",
+    "semantic_category": "Primary Goal",
+    "persona": "parent",
+    "proxy": "promotes_add_ons_before_primary_goal_resolved",
+    "proxy_type": "negative",
+    "metric": "drift_avoidance"
+  },
+  {
+    "conversation_id": "HIB_121",
+    "query": "I want lifestyle sneakers for everyday wear \u2014 nothing too sporty looking",
+    "semantic_category": "Soft Constraint",
+    "persona": "teen",
+    "proxy": "soft_constraint_violation",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "HIB_122",
+    "query": "I need casual athletic shoes \u2014 not super technical running gear",
+    "semantic_category": "Soft Constraint",
+    "persona": "novice",
+    "proxy": "soft_constraint_violation",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "HIB_123",
+    "query": "Find me women's basketball shoes only",
+    "semantic_category": "Hard Constraint",
+    "persona": "teen",
+    "proxy": "hard_constraint_violation",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "HIB_124",
+    "query": "I need running shoes under 80 dollars \u2014 nothing over that",
+    "semantic_category": "Hard Constraint",
+    "persona": "novice",
+    "proxy": "hard_constraint_violation",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "HIB_125",
+    "query": "I need running shoes not training shoes",
+    "semantic_category": "Wrong Category",
+    "persona": "intermediate",
+    "proxy": "returns_wrong_product_type_entirely",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "HIB_126",
+    "query": "I asked for soccer cleats not football cleats",
+    "semantic_category": "Wrong Category",
+    "persona": "parent",
+    "proxy": "returns_wrong_product_type_entirely",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "HIB_127",
+    "query": "Show me basketball shoes",
+    "semantic_category": "Basic Search",
+    "persona": "teen",
+    "proxy": "filters_on_constraint_user_never_stated",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "HIB_128",
+    "query": "Find me running shoes",
+    "semantic_category": "Basic Search",
+    "persona": "novice",
+    "proxy": "filters_on_constraint_user_never_stated",
+    "proxy_type": "negative",
+    "metric": "constraint_satisfaction"
+  },
+  {
+    "conversation_id": "HIB_129",
+    "query": "I need outdoor basketball shoes with durable rubber outsole",
+    "semantic_category": "Attribute Search",
+    "persona": "intermediate",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "HIB_130",
+    "query": "Find me lightweight wide receiver cleats for turf",
+    "semantic_category": "Activity Specific",
+    "persona": "experienced",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "HIB_131",
+    "query": "Show me Jordan 4 retro sneakers",
+    "semantic_category": "Brand Specific",
+    "persona": "sneakerhead",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "HIB_132",
+    "query": "I want Nike running shoes for road marathon training",
+    "semantic_category": "Activity Specific",
+    "persona": "experienced",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "HIB_133",
+    "query": "Find me youth soccer cleats for firm ground",
+    "semantic_category": "Activity Specific",
+    "persona": "parent",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "HIB_134",
+    "query": "Show me high-top basketball shoes for a center",
+    "semantic_category": "Activity Specific",
+    "persona": "intermediate",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "HIB_135",
+    "query": "I need cross-training shoes for HIIT workouts",
+    "semantic_category": "Activity Specific",
+    "persona": "intermediate",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "HIB_136",
+    "query": "Find me Adidas Ultraboost running shoes",
+    "semantic_category": "Brand Specific",
+    "persona": "intermediate",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "HIB_137",
+    "query": "I want low-top basketball shoes for a point guard",
+    "semantic_category": "Activity Specific",
+    "persona": "experienced",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "HIB_138",
+    "query": "Show me football cleats for a linebacker",
+    "semantic_category": "Activity Specific",
+    "persona": "experienced",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "HIB_139",
+    "query": "Find me comfortable everyday sneakers under 100 dollars",
+    "semantic_category": "Budget Constrained",
+    "persona": "novice",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  },
+  {
+    "conversation_id": "HIB_140",
+    "query": "I need wide-width running shoes for long distances",
+    "semantic_category": "Attribute Search",
+    "persona": "intermediate",
+    "proxy": "ndcg_at_3",
+    "proxy_type": "positive",
+    "metric": "product_relevancy"
+  }
+]
