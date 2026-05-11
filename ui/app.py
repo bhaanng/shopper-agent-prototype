@@ -12,7 +12,7 @@ import os
 from pathlib import Path
 
 # Add parent directory to path to import agent
-sys.path.append(str(Path(__file__).parent.parent / "agent"))
+sys.path.append(str(Path(__file__).parent.parent / "core"))
 
 from nto_agent import NTOAgent
 from site_config import list_sites, load_site_scapi_env, get_site_ui

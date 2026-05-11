@@ -22,7 +22,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "agent"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "core"))
 
 from site_config import (
     get_system_prompt_for_site,

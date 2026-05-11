@@ -7,7 +7,7 @@ import os
 from pathlib import Path
 
 # Add agent directory to path
-sys.path.append(str(Path(__file__).parent / "agent"))
+sys.path.append(str(Path(__file__).parent / "core"))
 
 from sephora_agent import SephoraAgent
 from dotenv import load_dotenv

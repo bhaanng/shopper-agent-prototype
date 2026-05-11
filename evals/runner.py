@@ -33,7 +33,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Optional
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "agent"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "core"))
 
 from nto_agent import NTOAgent
 from site_config import load_site_scapi_env

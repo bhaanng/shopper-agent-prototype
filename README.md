@@ -6,7 +6,7 @@ A multi-brand AI shopping advisor built on Claude and Salesforce Commerce Cloud 
 
 ```
 shopper-agent-prototype/
-├── agent/                        # Shared runtime (all agents use this)
+├── core/                         # Shared runtime (all agents use this)
 │   ├── nto_agent.py              # ReAct loop, SCAPI calls, response parsing
 │   ├── site_config.py            # Per-agent config loader
 │   └── system_prompt.py          # Base system prompt
