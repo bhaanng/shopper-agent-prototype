@@ -1,16 +1,40 @@
 # Shopper Agent Prototype
 
-An AI-powered shopping advisor platform built on Claude and Salesforce Commerce Cloud (SCAPI). It lets you rapidly spin up branded demo agents for any SFCC storefront — each with its own identity, system prompt, product catalog, and eval dataset.
+A Claude Code skill that lets you spin up a branded AI shopping advisor for any Salesforce Commerce Cloud (SCAPI) storefront in minutes — no coding required.
 
-## What This Repo Helps You Do
+## What It Does
 
-**Run live product discovery demos** — shoppers can chat naturally ("I need waterproof boots for hiking in the rain"), and the agent searches the real SCAPI catalog, surfaces relevant products with pricing, and guides the conversation with follow-up questions and suggestions.
+Once installed, you get a `/demo-shopper-agent` command in Claude Code that walks you through creating a fully working shopping advisor demo: clone an existing agent, customise the branding, add SCAPI credentials, and launch — all from a single conversation.
 
-**Onboard new brands in minutes** — use the scaffold script or Claude Code skill to clone an existing agent, customise the branding and system prompt, drop in SCAPI credentials, and launch. No code changes required for new storefronts.
+The advisor itself is a conversational product discovery agent. Shoppers describe what they're looking for in natural language, and it searches the live SCAPI catalog, surfaces relevant products with pricing, and guides the conversation with follow-up questions. It auto-detects the shopper's language and switches locale accordingly (e.g. Japanese input → `ja_JP` catalog queries).
 
-**Evaluate and improve agent quality** — every session is logged automatically. After a conversation, click "Eval This Session" to score it across quality metrics (relevance, tone, product accuracy, cognitive load) using an LLM judge running in parallel. Use GEPA to auto-optimise the system prompt overlay against your eval dataset.
+Every session is logged and can be scored against quality metrics (relevance, tone, product accuracy, cognitive load) with one click — so you can measure and improve the experience over time.
 
-**Support multiple languages** — agents detect the shopper's language from their first message and automatically switch the SCAPI locale (e.g. Japanese → `ja_JP`, French → `fr_FR`) so product results match.
+## Get Started
+
+Run this one command in your terminal:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/bhaanng/shopper-agent-prototype/main/scripts/install_skill.sh | bash
+```
+
+This clones the repo to `~/shopper-agent-prototype`, installs dependencies, and wires up the Claude Code skill. Then:
+
+1. Restart Claude Code
+2. Open Claude Code in `~/shopper-agent-prototype`
+3. Type `/demo-shopper-agent`
+
+Claude will ask for your brand name and SCAPI credentials and have your agent running in a browser within minutes.
+
+## Included Agents
+
+| Agent | Brand | Description |
+|-------|-------|-------------|
+| `NTOManaged` | Northern Trail Outfitters | Outdoor gear, hiking, camping, climbing — base demo |
+| `shiseido_us` | Shiseido | Prestige Japanese beauty — skincare, makeup, fragrance |
+| `hibbett` | Hibbett Sports | Athletic footwear, sneakers, apparel, team sports gear |
+
+Each agent has its own system prompt, branding, locales, and eval dataset in `agents/<id>/config.yaml`.
 
 ## Repo Structure
 
@@ -35,7 +59,7 @@ shopper-agent-prototype/
 │   └── session_logger.py         # Per-session JSONL logging (30-day TTL)
 ├── scripts/
 │   ├── new_agent.py              # Scaffold a new branded agent
-│   ├── install_skill.sh          # Install the Claude Code skill
+│   ├── install_skill.sh          # One-command install (clone + deps + skill)
 │   ├── run_evals.py              # Run evals from CLI
 │   └── gepa_optimize.py          # GEPA prompt optimizer
 ├── .claude/skills/
@@ -43,46 +67,6 @@ shopper-agent-prototype/
 ├── start.sh                      # Launch one or all agents
 └── requirements.txt
 ```
-
-## Included Agents
-
-| Agent | Brand | Description |
-|-------|-------|-------------|
-| `NTOManaged` | Northern Trail Outfitters | Outdoor gear, hiking, camping, climbing — base demo |
-| `shiseido_us` | Shiseido | Prestige Japanese beauty — skincare, makeup, fragrance |
-| `hibbett` | Hibbett Sports | Athletic footwear, sneakers, apparel, team sports gear |
-
-Each agent has its own system prompt, branding, locales, and eval dataset in `agents/<id>/config.yaml`.
-
-## Quick Start
-
-```bash
-pip install -r requirements.txt
-cp .env.example .env              # add your ANTHROPIC_API_KEY
-./start.sh NTOManaged             # start NTO demo
-```
-
-Open the URL printed in the terminal (ports assigned alphabetically from 8501).
-
-## Creating a New Branded Agent
-
-### Option A — CLI
-
-```bash
-python scripts/new_agent.py acme_us --from shiseido_us
-```
-
-Copies the source agent, clears credentials, and prompts for branding. Then fill in `agents/acme_us/config.env` and run `./start.sh acme_us`.
-
-### Option B — Claude Code skill
-
-Install once after cloning:
-
-```bash
-./scripts/install_skill.sh
-```
-
-Then type `/demo-shopper-agent` in Claude Code and follow the interactive prompts.
 
 ## Agent Configuration
 
