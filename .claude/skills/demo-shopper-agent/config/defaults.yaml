@@ -1,0 +1,20 @@
+# Default configuration for demo-shopper-agent skill.
+#
+# These values are read by the skill at runtime.
+
+# Which agent to clone from when the user doesn't specify a source.
+# Any agent folder under agents/ with a config.yaml is a valid source.
+default_source: NTOManaged
+
+# SCAPI fields the user must provide to enable product search.
+required_env_vars:
+  - SCAPI_TOKEN_URL
+  - SCAPI_CLIENT_CREDENTIALS
+  - SCAPI_SEARCH_URL
+  - SCAPI_SITE_ID
+
+# Starting port for agent UIs (assigned sequentially, alphabetical by agent ID).
+base_port: 8501
+
+# Whether to auto-launch the agent after scaffolding (ask the user first).
+auto_launch: false
