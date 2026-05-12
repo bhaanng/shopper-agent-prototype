@@ -1,5 +1,5 @@
 ---
-name: demo-shopper-agent
+name: shopper-agent-prototype
 description: |
   Scaffold, configure, and launch a branded shopper agent demo in minutes. Gathers brand
   inputs, generates or clones a contextualised system prompt, sets up SCAPI credentials,
