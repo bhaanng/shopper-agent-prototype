@@ -130,6 +130,59 @@ class NTOAgent:
         """Return the session locale if detected, else fall back to site default."""
         return self._session_locale or self.scapi_locale
 
+    # ── SCAPI product detail ────────────────────────────────────────────────
+
+    def fetch_product_detail(self, product_id: str) -> Dict:
+        """Fetch rich product detail from SCAPI shopper-products API."""
+        try:
+            token = self._get_access_token()
+            # Derive shopper-products base from search URL
+            # search: .../search/shopper-search/v1/organizations/<org>/product-search
+            # detail: .../product/shopper-products/v1/organizations/<org>/products/<id>
+            base = re.sub(r"/search/shopper-search/.*", "", self.scapi_search_url)
+            org = re.search(r"/organizations/([^/]+)/", self.scapi_search_url)
+            org_id = org.group(1) if org else ""
+            url = f"{base}/product/shopper-products/v1/organizations/{org_id}/products/{product_id}"
+            params = {"siteId": self.scapi_site_id, "allImages": "true"}
+            if self._active_locale:
+                params["locale"] = self._active_locale.replace("_", "-")
+            resp = requests.get(url, params=params,
+                                headers={"Authorization": f"Bearer {token}"}, timeout=15)
+            if resp.status_code != 200:
+                return self.product_cache.get(product_id, {})
+            data = resp.json()
+            # Extract variation images keyed by color/size
+            images = []
+            for img_group in data.get("imageGroups", []):
+                view = img_group.get("viewType", "")
+                for img in img_group.get("images", []):
+                    link = img.get("disBaseLink") or img.get("link", "")
+                    if link:
+                        images.append({
+                            "url": link if link.startswith("http") else "https:" + link,
+                            "alt": img.get("alt", ""),
+                            "view": view,
+                        })
+            # Variation attributes (color, size, etc.)
+            variations = []
+            for va in data.get("variationAttributes", []):
+                variations.append({
+                    "name": va.get("name", ""),
+                    "values": [v.get("name", v.get("value", "")) for v in va.get("values", [])],
+                })
+            detail = {**self.product_cache.get(product_id, {}),
+                "description": self._clean_html(data.get("longDescription") or data.get("shortDescription", "")),
+                "images": images,
+                "variations": variations,
+                "currency": data.get("currency", "USD"),
+                "page_title": data.get("pageTitle", ""),
+            }
+            self.product_cache[product_id] = detail
+            return detail
+        except Exception as e:
+            print(f"[WARN] fetch_product_detail {product_id}: {e}")
+            return self.product_cache.get(product_id, {})
+
     # ── SCAPI product search ────────────────────────────────────────────────
 
     def _call_scapi_search(self, query_text: str, category: str = None,
@@ -167,17 +220,23 @@ class NTOAgent:
                     if price < min_price or price > max_price:
                         continue
 
+                raw_img = hit.get("c_imageUrl") or hit.get("image", {}).get("link", "")
+                # Normalise protocol-relative URLs
+                if raw_img and raw_img.startswith("//"):
+                    raw_img = "https:" + raw_img
                 product = {
                     "id": hit.get("productId", ""),
                     "name": hit.get("productName", ""),
-                    "brand": "",  # SCAPI doesn't surface brand at search level
+                    "brand": "",
                     "price": price,
                     "category": self._extract_category(hit),
-                    "description": self._clean_html(hit.get("c_description", "")),
-                    "image_url": hit.get("c_imageUrl", hit.get("image", {}).get("link", "")),
+                    "description": self._clean_html(hit.get("c_description", hit.get("shortDescription", ""))),
+                    "image_url": raw_img,
                     "rating": None,
                     "product_url": hit.get("c_productUrl", ""),
                 }
+                if not raw_img:
+                    print(f"[DEBUG] No image for {product['id']} — hit keys: {list(hit.keys())}")
                 products.append(product)
                 if product["id"]:
                     self.product_cache[product["id"]] = product
@@ -448,11 +507,21 @@ QUERIES: [comma-separated queries, one per product]"""
             response = self.client.messages.create(
                 model=self.model,
                 max_tokens=3500,
-                system=self.system_prompt,
+                system=[
+                    {
+                        "type": "text",
+                        "text": self.system_prompt,
+                        "cache_control": {"type": "ephemeral"},
+                    }
+                ],
                 tools=available_tools,
                 messages=trimmed_history,
             )
-            _trace(f"💬 Claude responded ({_ms(claude_t0)}, in={response.usage.input_tokens} out={response.usage.output_tokens} tokens)")
+            u = response.usage
+            cache_read = getattr(u, "cache_read_input_tokens", 0) or 0
+            cache_write = getattr(u, "cache_creation_input_tokens", 0) or 0
+            cache_tag = f" 💾 cache_hit={cache_read}" if cache_read else (f" ✍️ cache_write={cache_write}" if cache_write else "")
+            _trace(f"💬 Claude responded ({_ms(claude_t0)}, in={u.input_tokens} out={u.output_tokens} tokens{cache_tag})")
 
             assistant_message, tool_results, has_tool_use = "", [], False
 
@@ -500,16 +569,21 @@ QUERIES: [comma-separated queries, one per product]"""
 
         # Extract JSON from response — handle prose prefix before ```json fence
         cleaned = assistant_message.strip()
+        # 1. Fenced ```json ... ```
         m = re.search(r"```json\s*(.*?)```", cleaned, re.DOTALL)
         if m:
             cleaned = m.group(1).strip()
         else:
-            for marker in ("```json", "```"):
-                if cleaned.startswith(marker):
-                    cleaned = cleaned[len(marker):]
-            if cleaned.endswith("```"):
-                cleaned = cleaned[:-3]
-            cleaned = cleaned.strip()
+            # 2. Bare ``` ... ```
+            m = re.search(r"```\s*(\{.*?\})\s*```", cleaned, re.DOTALL)
+            if m:
+                cleaned = m.group(1).strip()
+            else:
+                # 3. Prose before the JSON object — find first { and last }
+                start = cleaned.find('{')
+                end = cleaned.rfind('}')
+                if start != -1 and end != -1 and end > start:
+                    cleaned = cleaned[start:end + 1]
 
         try:
             parsed = json.loads(cleaned)

@@ -223,8 +223,9 @@ METRICS: dict[str, list[dict]] = {
             "name": "uses_outdoor_brand_vocabulary_naturally",
             "type": "positive",
             "definition": (
-                "The agent naturally uses NTO's outdoor-focused brand vocabulary "
-                "(trail, adventure, gear, conditions, activity) without sounding forced."
+                "The agent naturally uses vocabulary appropriate to the brand's domain "
+                "(e.g. trail/adventure/gear for outdoor retailers, skincare/routine/formulation "
+                "for beauty brands) without sounding forced."
             ),
         },
         {
@@ -428,7 +429,7 @@ METRICS: dict[str, list[dict]] = {
             "definition": (
                 "The agent gets distracted by a user mentioning a competitor's "
                 "product and either recommends that competitor or discusses "
-                "non-NTO inventory."
+                "products outside the brand's own catalog."
             ),
         },
         {

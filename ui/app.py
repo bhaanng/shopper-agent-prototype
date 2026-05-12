@@ -67,7 +67,6 @@ st.markdown("""
 .phone-bot-avatar {
     width: 42px;
     height: 42px;
-    background: #1a1a1a;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -134,21 +133,61 @@ div[data-testid="stHorizontalBlock"] .stButton > button:hover {
 .product-scroll::-webkit-scrollbar { display: none; }
 
 .product-card {
-    min-width: 190px;
     background: white;
     border: 1px solid #f1f5f9;
-    border-radius: 24px;
-    padding: 16px;
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
     box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+}
+.product-card-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    background: #f8fafc;
+    display: block;
     flex-shrink: 0;
 }
-.product-card-brand { font-size: 9px; font-weight: 800; text-transform: uppercase;
-    letter-spacing: 0.15em; color: #94a3b8; margin-bottom: 4px; }
+.product-card-img-placeholder {
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    flex-shrink: 0;
+}
+.product-card-body {
+    padding: 10px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+}
 .product-card-name { font-size: 12px; font-weight: 700; color: #1a1a1a;
-    margin-bottom: 8px; line-height: 1.3; }
-.product-card-price { font-size: 18px; font-weight: 900; color: #1a1a1a;
-    letter-spacing: -0.5px; }
-.product-card-rating { font-size: 11px; color: #64748b; margin-top: 4px; }
+    margin-bottom: 4px; line-height: 1.35; }
+.product-card-desc { font-size: 11px; color: #64748b; line-height: 1.4;
+    margin-bottom: 6px; flex: 1; overflow: hidden; }
+.product-card-price { font-size: 16px; font-weight: 900; color: #1a1a1a;
+    letter-spacing: -0.5px; margin-top: auto; }
+
+/* Details button sits flush below the card */
+[data-testid="stColumn"] .stButton { margin-top: 0 !important; }
+[data-testid="stColumn"] .stButton > button {
+    border-radius: 0 0 20px 20px !important;
+    border: 1px solid #f1f5f9 !important;
+    border-top: none !important;
+    background: #f8fafc !important;
+    color: #475569 !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    padding: 8px !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06) !important;
+    margin-top: -8px !important;
+}
 
 /* ── Trace panel ───────────────────────────────────────────── */
 .trace-outer {
@@ -286,31 +325,101 @@ def _build_agent(site_id: str) -> NTOAgent:
     )
 
 
-def _render_product_cards(products, product_cache, accent_color="#1a1a1a"):
+@st.dialog("Product Details", width="large")
+def _show_product_modal(product_id: str, agent):
+    detail = agent.fetch_product_detail(product_id)
+    name = detail.get('name', 'Product')
+    price = detail.get('price')
+    desc = detail.get('description', '')
+    images = detail.get('images', [])
+    variations = detail.get('variations', [])
+    price_str = f"${price:,.0f}" if price else "—"
+
+    # Filter to large/hi-res images (prefer swatch or large view types)
+    display_images = [i for i in images if i.get('view') in ('large', 'hi-res', '')] or images
+    # Deduplicate by URL
+    seen, unique_images = set(), []
+    for img in display_images:
+        if img['url'] not in seen:
+            seen.add(img['url'])
+            unique_images.append(img)
+
+    col_img, col_info = st.columns([1, 1])
+
+    with col_img:
+        if unique_images:
+            if 'modal_img_idx' not in st.session_state or st.session_state.get('modal_product_id') != product_id:
+                st.session_state.modal_img_idx = 0
+                st.session_state.modal_product_id = product_id
+            idx = st.session_state.modal_img_idx
+            st.image(unique_images[idx]['url'], use_container_width=True)
+            if len(unique_images) > 1:
+                thumb_cols = st.columns(min(len(unique_images), 6))
+                for i, img in enumerate(unique_images[:6]):
+                    with thumb_cols[i]:
+                        if st.button("●" if i == idx else "○", key=f"thumb_{product_id}_{i}",
+                                     help=img.get('alt', f'Image {i+1}')):
+                            st.session_state.modal_img_idx = i
+                            st.rerun()
+        else:
+            st.markdown('<div style="height:200px;background:#f8fafc;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:48px">🛍️</div>', unsafe_allow_html=True)
+
+    with col_info:
+        st.markdown(f"### {name}")
+        st.markdown(f"**{price_str}**")
+        if desc:
+            st.markdown(desc)
+        for var in variations:
+            var_name = var.get('name', '')
+            values = var.get('values', [])
+            if values:
+                st.markdown(f"**{var_name}:** {' · '.join(str(v) for v in values[:10])}")
+        product_url = detail.get('product_url', '')
+        if product_url:
+            st.link_button("View on site →", product_url)
+
+
+def _render_product_cards(products, product_cache, accent_color="#1a1a1a", card_key_prefix="card"):
+    import html as _html
     if not products:
         return
-    product_ids = [p.get('id') for p in products if p.get('id')]
-    display_products = [product_cache.get(pid) for pid in product_ids[:6] if pid in product_cache]
+    product_ids = [p.get('id') for p in products if isinstance(p, dict) and p.get('id')]
+    display_products = [(pid, product_cache.get(pid)) for pid in product_ids[:6] if pid in product_cache]
     if not display_products:
         return
 
-    cards_html = '<div class="product-scroll">'
-    for details in display_products:
-        name = details.get('name', 'Unknown Product')
-        brand = details.get('brand', '')
+    cols = st.columns(len(display_products))
+    for col, (pid, details) in zip(cols, display_products):
+        name = _html.escape(details.get('name', 'Unknown Product'))
         price = details.get('price')
-        rating = details.get('rating')
-        price_str = f"${int(price)}" if price else "—"
-        rating_str = f"⭐ {rating}" if rating else ""
-        cards_html += f"""
-        <div class="product-card">
-            <div class="product-card-brand">{brand}</div>
-            <div class="product-card-name">{name[:55]}{'…' if len(name) > 55 else ''}</div>
-            <div class="product-card-price" style="color:{accent_color}">{price_str}</div>
-            <div class="product-card-rating">{rating_str}</div>
-        </div>"""
-    cards_html += '</div>'
-    st.markdown(cards_html, unsafe_allow_html=True)
+        desc = _html.escape(details.get('description', ''))
+        image_url = details.get('image_url', '')
+        price_str = f"${price:,.0f}" if price else "—"
+        short_desc = (desc[:70] + '…') if len(desc) > 70 else desc
+
+        if image_url:
+            img_html = f'<img class="product-card-img" src="{_html.escape(image_url)}" alt="{name}" loading="lazy" onerror="this.style.display=\'none\';this.nextSibling.style.display=\'flex\'">'
+            img_fallback = '<div class="product-card-img-placeholder" style="display:none">🛍️</div>'
+        else:
+            img_html = ''
+            img_fallback = '<div class="product-card-img-placeholder">🛍️</div>'
+
+        with col:
+            name_trunc = name[:55] + ("…" if len(name) > 55 else "")
+            desc_html = f'<div class="product-card-desc">{short_desc}</div>' if short_desc else ""
+            card_html = (
+                f'<div class="product-card">'
+                f'{img_html}{img_fallback}'
+                f'<div class="product-card-body">'
+                f'<div class="product-card-name">{name_trunc}</div>'
+                f'{desc_html}'
+                f'<div class="product-card-price" style="color:{accent_color}">{price_str}</div>'
+                f'</div></div>'
+            )
+            st.markdown(card_html, unsafe_allow_html=True)
+            if st.button("Details", key=f"{card_key_prefix}_{pid}", use_container_width=True):
+                st.session_state.modal_product_id = pid
+                st.rerun()
 
 
 # ── Session state ──────────────────────────────────────────────────────────────
@@ -338,8 +447,15 @@ if 'last_tool_calls' not in st.session_state:
     st.session_state.last_tool_calls = []
 if 'last_trace_lines' not in st.session_state:
     st.session_state.last_trace_lines = []
+if 'modal_product_id' not in st.session_state:
+    st.session_state.modal_product_id = None
 
 _site_ui = get_site_ui(_PINNED_SITE or st.session_state.site_id)
+
+# ── Product detail modal ───────────────────────────────────────────────────────
+if st.session_state.modal_product_id:
+    _show_product_modal(st.session_state.modal_product_id, st.session_state.agent)
+    st.session_state.modal_product_id = None
 
 # ── Left sidebar ───────────────────────────────────────────────────────────────
 with st.sidebar:
@@ -451,7 +567,7 @@ with col_trace:
             duration = call["duration"]
             if tool.startswith("search_"):
                 queries = inp.get("queries", [])
-                detail = " · ".join(f"`{q.get('q','')}`" for q in queries[:2])
+                detail = " · ".join(f"`{q.get('q','')}`" for q in queries[:2] if isinstance(q, dict))
             elif tool == "web_search":
                 detail = inp.get("query", "")[:60]
             elif tool == "create_todo":
@@ -481,7 +597,7 @@ with col_chat:
     st.markdown(f"""
     <div class="phone-container">
         <div class="phone-header">
-            <div class="phone-bot-avatar">{_site_ui["icon"]}</div>
+            <div class="phone-bot-avatar" style="background:{_site_ui['brand_color']}">{_site_ui["icon"]}</div>
             <div>
                 <div class="phone-title">{_site_ui["title"]}</div>
                 <div class="phone-subtitle">
@@ -493,6 +609,7 @@ with col_chat:
     """, unsafe_allow_html=True)
 
     # Chat history
+    import traceback as _tb
     assistant_message_count = 0
     for idx, message in enumerate(st.session_state.messages):
         if message["role"] == "user":
@@ -508,21 +625,27 @@ with col_chat:
                         for block in response_data['response']:
                             if not isinstance(block, dict):
                                 continue
-                            if block['type'] == 'markdown':
-                                content = block['content'].replace('$', '\\$')
-                                st.markdown(content)
-                            elif block['type'] == 'product_table':
+                            btype = block.get('type', '')
+                            if btype == 'markdown':
+                                raw = block.get('content', '')
+                                if isinstance(raw, str) and raw:
+                                    st.markdown(raw.replace('$', '\\$'))
+                            elif btype == 'product_table':
                                 table_data = block.get('content', {})
+                                if not isinstance(table_data, dict):
+                                    continue
                                 title = table_data.get('title', 'Products')
                                 products = table_data.get('products', [])
-                                if products:
+                                if isinstance(products, list) and products:
                                     st.markdown(f"**{title}**")
                                     _render_product_cards(
                                         products,
-                                        st.session_state.agent.product_cache
+                                        st.session_state.agent.product_cache,
+                                        card_key_prefix=f"hist_{assistant_message_count}"
                                     )
-                        if response_data.get('follow_up'):
-                            st.markdown(f"\n❓ **{response_data['follow_up']}**")
+                        follow_up = response_data.get('follow_up', '')
+                        if isinstance(follow_up, str) and follow_up:
+                            st.markdown(f"\n❓ **{follow_up}**")
                     else:
                         content = response_data if isinstance(response_data, str) else message["content"]
                         st.markdown(content)
@@ -608,27 +731,42 @@ if user_input:
 
     trace_lines = []
     with col_chat:
-        with st.spinner(_site_ui["search_label"]):
-            while thread.is_alive() or not trace_queue.empty():
-                updated = False
-                while True:
-                    try:
-                        msg = trace_queue.get_nowait()
-                        trace_lines.append(msg)
-                        updated = True
-                    except queue.Empty:
-                        break
-                if updated:
-                    trace_md = "\n\n".join(trace_lines)
-                    live_trace_placeholder.markdown(
-                        f'<div style="background:#0a0a0a;padding:12px 16px;border-radius:8px;">'
-                        f'<div style="font-size:11px;color:#60a5fa;font-family:monospace;'
-                        f'line-height:1.6;">{trace_md}</div></div>',
-                        unsafe_allow_html=True
-                    )
-                time.sleep(0.1)
+        inline_trace = st.empty()
+        while thread.is_alive() or not trace_queue.empty():
+            updated = False
+            while True:
+                try:
+                    msg = trace_queue.get_nowait()
+                    trace_lines.append(msg)
+                    updated = True
+                except queue.Empty:
+                    break
+            if updated:
+                visible = trace_lines[-3:]
+                lines_html = "".join(
+                    f'<div style="margin-bottom:3px">{line}</div>'
+                    for line in visible
+                )
+                inline_trace.markdown(
+                    f'<div style="font-size:12px;color:#64748b;font-family:monospace;'
+                    f'line-height:1.5;padding:6px 12px;background:#f8fafc;'
+                    f'border-left:3px solid #e2e8f0;border-radius:4px;">{lines_html}</div>',
+                    unsafe_allow_html=True
+                )
+            time.sleep(0.1)
+        inline_trace.empty()
 
     thread.join()
+
+    # Also update the right-panel trace
+    if trace_lines:
+        trace_md = "\n\n".join(trace_lines)
+        live_trace_placeholder.markdown(
+            f'<div style="background:#0a0a0a;padding:12px 16px;border-radius:8px;">'
+            f'<div style="font-size:11px;color:#60a5fa;font-family:monospace;'
+            f'line-height:1.6;">{trace_md}</div></div>',
+            unsafe_allow_html=True
+        )
 
     if "error" in result_box:
         with col_chat:
@@ -656,27 +794,36 @@ if user_input:
                 for block in response['response']:
                     if not isinstance(block, dict):
                         continue
-                    if block['type'] == 'markdown':
-                        content = block['content'].replace('$', '\\$')
-                        st.markdown(content)
-                        response_text_for_history += block['content'] + "\n\n"
-                    elif block['type'] == 'product_table':
+                    btype = block.get('type', '')
+                    if btype == 'markdown':
+                        raw = block.get('content', '')
+                        if isinstance(raw, str) and raw:
+                            content = raw.replace('$', '\\$')
+                            st.markdown(content)
+                            response_text_for_history += raw + "\n\n"
+                    elif btype == 'product_table':
                         table_data = block.get('content', {})
+                        if not isinstance(table_data, dict):
+                            continue
                         title = table_data.get('title', 'Products')
                         products = table_data.get('products', [])
-                        if products:
+                        if isinstance(products, list) and products:
                             st.markdown(f"**{title}**")
-                            _render_product_cards(products, st.session_state.agent.product_cache)
+                            _render_product_cards(products, st.session_state.agent.product_cache,
+                                                  card_key_prefix="live")
                             response_text_for_history += f"\n\n**{title}** ({len(products)} products)\n"
 
-            if response.get('follow_up'):
-                st.markdown(f"\n❓ **{response['follow_up']}**")
-                response_text_for_history += f"\n\n❓ {response['follow_up']}"
+            follow_up = response.get('follow_up', '')
+            if isinstance(follow_up, str) and follow_up:
+                st.markdown(f"\n❓ **{follow_up}**")
+                response_text_for_history += f"\n\n❓ {follow_up}"
 
     st.session_state.messages.append({"role": "assistant", "content": response_text_for_history})
     st.session_state.message_responses.append(response)
-    st.session_state.suggestions = response.get('suggestions', [])
-    st.session_state.last_tool_calls = response.get('tool_call_log', [])
+    suggestions = response.get('suggestions', [])
+    st.session_state.suggestions = suggestions if isinstance(suggestions, list) else []
+    tool_log = response.get('tool_call_log', [])
+    st.session_state.last_tool_calls = tool_log if isinstance(tool_log, list) else []
     st.session_state.last_trace_lines = trace_lines
 
     active_locale = getattr(st.session_state.agent, "_active_locale", None)

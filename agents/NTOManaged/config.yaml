@@ -13,6 +13,7 @@ ui:
   title: "NTO Trail Advisor"
   subtitle: "Gear up for your next adventure — hiking, camping, climbing & more"
   icon: "🏔️"
+  brand_color: "#2563eb"
   search_label: "🔍 Searching NTO catalog..."
   chat_placeholder: "Ask me about hiking boots, camping gear, jackets..."
   about: |

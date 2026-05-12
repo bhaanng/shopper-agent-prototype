@@ -27,6 +27,7 @@ ui:
   title: "Shiseido Beauty Advisor"
   subtitle: "Discover skincare, makeup & fragrance — 150 years of Japanese innovation"
   icon: "🌸"
+  brand_color: "#c41e3a"
   search_label: "🔍 Searching Shiseido catalog..."
   chat_placeholder: "Ask me about skincare routines, serums, moisturizers..."
   about: |

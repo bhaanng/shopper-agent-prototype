@@ -103,6 +103,7 @@ def get_site_ui(site_id: Optional[str] = None) -> dict:
         "title": "NTO Trail Advisor",
         "subtitle": "Gear up for your next adventure — hiking, camping, climbing & more",
         "icon": "🏔️",
+        "brand_color": "#2563eb",
         "search_label": "🔍 Searching catalog...",
         "about": "Your shopping advisor.",
         "starter_queries": [],

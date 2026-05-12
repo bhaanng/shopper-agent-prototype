@@ -65,6 +65,7 @@ def run_evals(
     judge = LLMJudge(
         api_key=os.getenv("ANTHROPIC_API_KEY"),
         base_url=os.getenv("ANTHROPIC_BASE_URL"),
+        site_id=site_id,
     )
 
     def _build_agent():

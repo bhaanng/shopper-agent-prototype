@@ -19,8 +19,7 @@ from anthropic import Anthropic
 # ── Binary judge ─────────────────────────────────────────────────────────────
 
 _BINARY_SYSTEM = """\
-You are an expert evaluator assessing the quality of an AI shopping assistant for \
-Northern Trail Outfitters (NTO), an outdoor gear retailer.
+You are an expert evaluator assessing the quality of an AI shopping assistant for {brand}.
 
 You will be given:
 1. The user's query
@@ -51,8 +50,7 @@ BEHAVIOUR TO CHECK:
 # ── Likert judge ──────────────────────────────────────────────────────────────
 
 _LIKERT_SYSTEM = """\
-You are an expert evaluator assessing the quality of an AI shopping assistant for \
-Northern Trail Outfitters (NTO), an outdoor gear retailer.
+You are an expert evaluator assessing the quality of an AI shopping assistant for {brand}.
 
 Score the response on this 1–5 scale:
   5 = Exemplary — fully satisfies the dimension, no improvement needed
@@ -81,7 +79,7 @@ QUALITY DIMENSION TO ASSESS:
 # ── NDCG judge ────────────────────────────────────────────────────────────────
 
 _NDCG_SYSTEM = """\
-You are a product relevance evaluator for Northern Trail Outfitters (NTO).
+You are a product relevance evaluator for {brand}.
 
 Given a user query and up to 3 products from the agent's response, score each product on:
 
@@ -127,15 +125,23 @@ _REL_WEIGHTS = {
 }
 
 
+_BRAND_DESCRIPTIONS = {
+    "NTOManaged": "Northern Trail Outfitters (NTO), an outdoor gear retailer specialising in hiking, camping, climbing, and trail sports",
+    "shiseido_us": "Shiseido, a prestige Japanese beauty brand specialising in skincare, makeup, and fragrance",
+    "hibbett": "Hibbett Sports, an athletic footwear and sportswear retailer",
+}
+
+
 class LLMJudge:
     def __init__(self, api_key: str = None, base_url: str = None,
-                 model: str = "claude-opus-4-7"):
+                 model: str = "claude-opus-4-7", site_id: str = None):
         api_key = api_key or os.getenv("ANTHROPIC_API_KEY")
         if base_url:
             self.client = Anthropic(api_key=api_key, base_url=base_url)
         else:
             self.client = Anthropic(api_key=api_key)
         self.model = model
+        self.brand = _BRAND_DESCRIPTIONS.get(site_id, f"a retail brand ({site_id or 'unknown'})")
 
     def judge(self, query: str, agent_response: str, proxy_definition: str,
               scale: str = "binary") -> dict:
@@ -149,7 +155,7 @@ class LLMJudge:
     def _judge_binary(self, query: str, agent_response: str,
                       proxy_definition: str) -> dict:
         raw = self._call(
-            _BINARY_SYSTEM,
+            _BINARY_SYSTEM.format(brand=self.brand),
             _BINARY_USER.format(query=query, response=agent_response[:3000],
                                 definition=proxy_definition),
             max_tokens=256,
@@ -160,7 +166,7 @@ class LLMJudge:
     def _judge_likert(self, query: str, agent_response: str,
                       proxy_definition: str) -> dict:
         raw = self._call(
-            _LIKERT_SYSTEM,
+            _LIKERT_SYSTEM.format(brand=self.brand),
             _LIKERT_USER.format(query=query, response=agent_response[:3000],
                                 definition=proxy_definition),
             max_tokens=384,
@@ -171,7 +177,7 @@ class LLMJudge:
 
     def _judge_ndcg(self, query: str, agent_response: str) -> dict:
         raw = self._call(
-            _NDCG_SYSTEM,
+            _NDCG_SYSTEM.format(brand=self.brand),
             _NDCG_USER.format(query=query, response=agent_response[:3000]),
             max_tokens=512,
         )
