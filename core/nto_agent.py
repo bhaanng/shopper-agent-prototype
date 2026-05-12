@@ -513,11 +513,14 @@ QUERIES: [comma-separated queries, one per product]"""
 
         try:
             parsed = json.loads(cleaned)
+            if not isinstance(parsed, dict):
+                raise ValueError("JSON root is not an object")
             if image_analysis:
                 parsed["image_analysis"] = image_analysis
             parsed["tool_call_log"] = tool_call_log
             return parsed
-        except json.JSONDecodeError:
+        except (json.JSONDecodeError, ValueError):
+            print(f"[WARN] JSON parse failed — raw assistant_message:\n{assistant_message[:400]}")
             follow_up = self._generate_follow_up(user_message, assistant_message)
             fallback = {
                 "thought": "Raw response",
