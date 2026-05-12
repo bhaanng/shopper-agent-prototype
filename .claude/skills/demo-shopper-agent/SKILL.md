@@ -51,11 +51,10 @@ Ask these questions **one conversation turn** (not one at a time — batch them)
 
 > *"Let's set up your branded agent. Tell me about the brand:*
 > 1. *What's the brand name?*
-> 2. *What's the storefront URL? (helps me understand the product range)*
-> 3. *How would you describe the brand's voice and tone? (e.g. premium and expert, fun and youthful, practical and no-nonsense)*
-> 4. *What's the agent ID you'd like to use?* (short slug, no spaces — e.g. `acme_us`)"
+> 2. *How would you describe the brand's voice and tone? (e.g. premium and expert, fun and youthful, practical and no-nonsense)*
+> 3. *What's the agent ID you'd like to use?* (short slug, no spaces — e.g. `acme_us`)"
 
-Use these inputs to infer the brand's domain and product focus. You don't need to ask about product categories — infer them from the brand name, URL, and any context the user gives.
+Use these inputs to infer the brand's domain and product focus. You don't need to ask about product categories or the storefront URL — infer them from the brand name and any context the user gives.
 
 ---
 
