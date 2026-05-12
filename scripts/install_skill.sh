@@ -23,7 +23,20 @@ fi
 # ── Step 2: Install Python dependencies ──────────────────────────────────────
 echo ""
 echo "🐍 Installing Python dependencies..."
-pip install -r "$REPO_DIR/requirements.txt" --quiet
+PIP_CMD=""
+if command -v pip3 &>/dev/null; then
+  PIP_CMD="pip3"
+elif command -v pip &>/dev/null; then
+  PIP_CMD="pip"
+elif command -v python3 &>/dev/null; then
+  PIP_CMD="python3 -m pip"
+elif command -v python &>/dev/null; then
+  PIP_CMD="python -m pip"
+else
+  echo "  ❌ Could not find pip or python. Install Python 3.10+ and re-run."
+  exit 1
+fi
+$PIP_CMD install -r "$REPO_DIR/requirements.txt" --quiet
 
 # ── Step 3: Install the Claude Code skill ────────────────────────────────────
 SKILL_SRC="$REPO_DIR/.claude/skills/demo-shopper-agent"
