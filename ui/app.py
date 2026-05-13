@@ -383,6 +383,10 @@ def _render_product_cards(products, product_cache, accent_color="#1a1a1a", card_
     import html as _html
     if not products:
         return
+    # Defensive: ensure products is a list
+    if not isinstance(products, list):
+        st.error(f"❌ Invalid products format: expected list, got {type(products).__name__}")
+        return
     product_ids = [p.get('id') for p in products if isinstance(p, dict) and p.get('id')]
     display_products = [(pid, product_cache.get(pid)) for pid in product_ids[:6] if pid in product_cache]
     if not display_products:

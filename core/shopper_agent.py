@@ -264,6 +264,10 @@ class ShopperAgent:
                 if product["id"]:
                     self.product_cache[product["id"]] = product
 
+                # Limit to 5 products per query to reduce token count
+                if len(products) >= 5:
+                    break
+
             return products
 
         except Exception as e:
@@ -285,6 +289,38 @@ class ShopperAgent:
         """Strip basic HTML tags for clean description text."""
         import re
         return re.sub(r"<[^>]+>", " ", text).strip()[:300]
+
+    def _compact_tool_result(self, tool_name: str, result: Any) -> Any:
+        """Strip heavy fields from tool results to reduce token count sent to Claude."""
+        if tool_name == self._search_tool_name or tool_name == "get_product_details":
+            # Keep only essential fields for product results
+            if isinstance(result, dict) and "hits" in result:
+                compact_hits = []
+                for product in result.get("hits", []):
+                    if not isinstance(product, dict):
+                        compact_hits.append(product)
+                        continue
+                    # Keep only: id, name, price, image_url, brand, category
+                    compact = {
+                        k: v for k, v in product.items()
+                        if k in ["id", "name", "price", "image_url", "brand", "category"]
+                    }
+                    compact_hits.append(compact)
+                return {"hits": compact_hits}
+            # For get_product_details, strip descriptions from nested structure
+            elif isinstance(result, dict):
+                compact = {}
+                for pid, details in result.items():
+                    if isinstance(details, dict):
+                        compact[pid] = {
+                            k: v for k, v in details.items()
+                            if k in ["id", "name", "price", "image_url", "images", "brand", "variations"]
+                        }
+                    else:
+                        compact[pid] = details
+                return compact
+        # Return other tool results unchanged
+        return result
 
     # ── Agent tools ─────────────────────────────────────────────────────────
 
@@ -408,8 +444,16 @@ class ShopperAgent:
         elif tool_name == "get_product_details":
             product_ids = tool_input.get("product_ids", [])[:5]  # max 5
             results = {}
-            for pid in product_ids:
-                results[pid] = self.fetch_product_detail(pid)
+            # Fetch in parallel for speed
+            with ThreadPoolExecutor(max_workers=5) as executor:
+                futures = {executor.submit(self.fetch_product_detail, pid): pid for pid in product_ids}
+                for future in as_completed(futures):
+                    pid = futures[future]
+                    try:
+                        results[pid] = future.result()
+                    except Exception as e:
+                        print(f"[WARN] get_product_details {pid}: {e}")
+                        results[pid] = {"error": str(e)}
             return results
         else:
             return {"error": f"Unknown tool: {tool_name}"}
@@ -546,7 +590,7 @@ QUERIES: [comma-separated queries, one per product]"""
             ]
 
             # Keep last 10 messages (5 user+assistant turns) to limit input tokens
-            trimmed_history = self.conversation_history[-10:] if len(self.conversation_history) > 10 else self.conversation_history
+            trimmed_history = self.conversation_history[-6:] if len(self.conversation_history) > 6 else self.conversation_history
 
             claude_t0 = time.monotonic()
             response = self.client.messages.create(
@@ -590,7 +634,10 @@ QUERIES: [comma-separated queries, one per product]"""
                     duration = _ms(t0)
                     _trace(f"  ↳ {block.name} done ({duration})")
                     tool_call_log.append({"tool": block.name, "input": block.input, "duration": duration})
-                    tool_results.append({"type": "tool_result", "tool_use_id": block.id, "content": json.dumps(result)})
+
+                    # Strip heavy fields from tool results to reduce input tokens
+                    compact_result = self._compact_tool_result(block.name, result)
+                    tool_results.append({"type": "tool_result", "tool_use_id": block.id, "content": json.dumps(compact_result)})
 
             self.conversation_history.append({"role": "assistant", "content": response.content})
 
