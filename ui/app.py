@@ -545,14 +545,22 @@ with col_trace:
     turns = st.session_state.session_logger.turn if hasattr(st.session_state.get("session_logger", object()), "turn") else 0
 
     # Live trace — collapsible, at the top
-    with st.expander("🔍 Live Trace", expanded=False):
+    with st.expander("🔍 Live Trace", expanded=True):
         live_trace_placeholder = st.empty()
+        # Store in session state so we can update it during agent execution
+        st.session_state.live_trace_placeholder = live_trace_placeholder
+
         if st.session_state.get("last_trace_lines"):
             trace_md = "\n\n".join(st.session_state.last_trace_lines)
             live_trace_placeholder.markdown(
                 f'<div style="background:#0a0a0a;padding:12px 16px;border-radius:8px;">'
                 f'<div style="font-size:11px;color:#60a5fa;font-family:monospace;'
                 f'line-height:1.6;">{trace_md}</div></div>',
+                unsafe_allow_html=True
+            )
+        else:
+            live_trace_placeholder.markdown(
+                '<div style="font-size:11px;color:#64748b;font-style:italic;">Waiting for query...</div>',
                 unsafe_allow_html=True
             )
 
@@ -647,10 +655,20 @@ with col_chat:
                         if isinstance(follow_up, str) and follow_up:
                             st.markdown(f"\n❓ **{follow_up}**")
                     else:
-                        content = response_data if isinstance(response_data, str) else message["content"]
-                        st.markdown(content)
+                        # Fallback: if response_data doesn't have proper structure
+                        content = message["content"]
+                        # Safeguard: don't display raw JSON
+                        if isinstance(content, str) and (content.strip().startswith('{') or content.strip().startswith('[')):
+                            st.warning("⚠️ Unable to render response properly. Please refresh the page.")
+                        else:
+                            st.markdown(content)
                 else:
-                    st.markdown(message["content"])
+                    content = message["content"]
+                    # Safeguard: don't display raw JSON
+                    if isinstance(content, str) and (content.strip().startswith('{') or content.strip().startswith('[')):
+                        st.warning("⚠️ Unable to render response properly. Please refresh the page.")
+                    else:
+                        st.markdown(content)
                 assistant_message_count += 1
 
     # Suggestions
@@ -675,30 +693,31 @@ with col_chat:
                         st.session_state.pending_input = item["query"]
                         st.rerun()
 
-    # Input form
-    user_input = None
-    image_data_to_send = None
 
-    if user_input_from_suggestion:
-        user_input = user_input_from_suggestion
-    else:
-        with st.form("input_form", clear_on_submit=True):
-            typed_text = st.text_input(
-                _site_ui["chat_placeholder"],
-                label_visibility="collapsed",
-                placeholder=_site_ui["chat_placeholder"]
-            )
-            with st.expander("📸 Attach image"):
-                uploaded_file = st.file_uploader("Upload image", type=["png", "jpg", "jpeg"], label_visibility="collapsed")
-                if uploaded_file:
-                    st.image(uploaded_file, width=120, caption="Image ready — hit Send")
-            submitted = st.form_submit_button("Send ✨", use_container_width=True)
+# ── Input form (OUTSIDE columns so it stays at bottom) ─────────────────────────
+user_input = None
+image_data_to_send = None
 
-        if submitted and (typed_text.strip() or uploaded_file):
-            user_input = typed_text.strip() or "Visual search"
+if user_input_from_suggestion:
+    user_input = user_input_from_suggestion
+else:
+    with st.form("input_form", clear_on_submit=True):
+        typed_text = st.text_input(
+            _site_ui["chat_placeholder"],
+            label_visibility="collapsed",
+            placeholder=_site_ui["chat_placeholder"]
+        )
+        with st.expander("📸 Attach image"):
+            uploaded_file = st.file_uploader("Upload image", type=["png", "jpg", "jpeg"], label_visibility="collapsed")
             if uploaded_file:
-                image_data_to_send = uploaded_file.getvalue()
-                st.session_state.staged_image = {"data": image_data_to_send, "name": uploaded_file.name}
+                st.image(uploaded_file, width=120, caption="Image ready — hit Send")
+        submitted = st.form_submit_button("Send ✨", use_container_width=True)
+
+    if submitted and (typed_text.strip() or uploaded_file):
+        user_input = typed_text.strip() or "Visual search"
+        if uploaded_file:
+            image_data_to_send = uploaded_file.getvalue()
+            st.session_state.staged_image = {"data": image_data_to_send, "name": uploaded_file.name}
 
 
 # ── Agent execution ────────────────────────────────────────────────────────────
@@ -742,6 +761,7 @@ if user_input:
                 except queue.Empty:
                     break
             if updated:
+                # Update inline trace (last 3 lines)
                 visible = trace_lines[-3:]
                 lines_html = "".join(
                     f'<div style="margin-bottom:3px">{line}</div>'
@@ -753,20 +773,20 @@ if user_input:
                     f'border-left:3px solid #e2e8f0;border-radius:4px;">{lines_html}</div>',
                     unsafe_allow_html=True
                 )
+
+                # Update Live Trace panel in real-time (all lines)
+                if hasattr(st.session_state, 'live_trace_placeholder'):
+                    trace_md = "\n\n".join(trace_lines)
+                    st.session_state.live_trace_placeholder.markdown(
+                        f'<div style="background:#0a0a0a;padding:12px 16px;border-radius:8px;">'
+                        f'<div style="font-size:11px;color:#60a5fa;font-family:monospace;'
+                        f'line-height:1.6;">{trace_md}</div></div>',
+                        unsafe_allow_html=True
+                    )
             time.sleep(0.1)
         inline_trace.empty()
 
     thread.join()
-
-    # Also update the right-panel trace
-    if trace_lines:
-        trace_md = "\n\n".join(trace_lines)
-        live_trace_placeholder.markdown(
-            f'<div style="background:#0a0a0a;padding:12px 16px;border-radius:8px;">'
-            f'<div style="font-size:11px;color:#60a5fa;font-family:monospace;'
-            f'line-height:1.6;">{trace_md}</div></div>',
-            unsafe_allow_html=True
-        )
 
     if "error" in result_box:
         with col_chat:

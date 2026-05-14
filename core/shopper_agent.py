@@ -297,14 +297,30 @@ class ShopperAgent:
             trace_fn(f"🔎 Searching catalog — {n} quer{'y' if n == 1 else 'ies'} in parallel")
         results = {}
 
-        def _run(i: int, query: Dict):
+        def _run(i: int, query):
             qt0 = time.monotonic()
-            q_text = query.get("q", "")
+            # Defensive: handle if query is a string instead of dict
+            if isinstance(query, str):
+                q_text = query
+                category = None
+                min_price = 0
+                max_price = float("inf")
+                # Normalize to dict for return value
+                query = {"q": q_text}
+            elif isinstance(query, dict):
+                q_text = query.get("q", "")
+                category = query.get("category") or None
+                min_price = query.get("min_price", 0)
+                max_price = query.get("max_price", float("inf"))
+            else:
+                print(f"[WARN] Invalid query type: {type(query)}, skipping")
+                return i, {"q": ""}, []
+
             matches = self._call_scapi_search(
                 q_text,
-                category=query.get("category") or None,
-                min_price=query.get("min_price", 0),
-                max_price=query.get("max_price", float("inf")),
+                category=category,
+                min_price=min_price,
+                max_price=max_price,
                 max_results=20,
             )
             if trace_fn:
@@ -533,7 +549,7 @@ QUERIES: [comma-separated queries, one per product]"""
 
         iteration, assistant_message, tool_call_log = 0, "", []
         search_calls = 0
-        MAX_SEARCH_CALLS = 2
+        MAX_SEARCH_CALLS = 3  # Allow up to 3 search attempts
         chat_t0 = time.monotonic()
 
         while iteration < max_iterations:
