@@ -173,8 +173,11 @@ class ShopperAgent:
                     "name": va.get("name", ""),
                     "values": [v.get("name", v.get("value", "")) for v in va.get("values", [])],
                 })
+            # Use first image as the main image_url for product cards
+            image_url = images[0]["url"] if images else ""
             detail = {**self.product_cache.get(product_id, {}),
                 "description": self._clean_html(data.get("longDescription") or data.get("shortDescription", "")),
+                "image_url": image_url,
                 "images": images,
                 "variations": variations,
                 "currency": data.get("currency", "USD"),
@@ -307,12 +310,15 @@ class ShopperAgent:
 
         def _run(i: int, query):
             qt0 = time.monotonic()
+            # Initialize variables before conditional blocks
+            refine = None
+            category = None
+            min_price = 0
+            max_price = float("inf")
+
             # Defensive: handle if query is a string instead of dict
             if isinstance(query, str):
                 q_text = query
-                category = None
-                min_price = 0
-                max_price = float("inf")
                 # Normalize to dict for return value
                 query = {"q": q_text}
             elif isinstance(query, dict):
@@ -333,8 +339,18 @@ class ShopperAgent:
                 max_price=max_price,
                 max_results=20,
             )
+            # Build trace message showing full query
+            trace_parts = [f"q={q_text}" if q_text else ""]
+            if refine:
+                trace_parts.append(f"refine={refine}")
+            if category:
+                trace_parts.append(f"category={category}")
+            if max_price != float("inf"):
+                trace_parts.append(f"max_price={max_price}")
+            trace_query = ", ".join([p for p in trace_parts if p])
+
             if trace_fn:
-                trace_fn(f"  ✅ `{q_text}` → {len(matches)} results ({_ms(qt0)})")
+                trace_fn(f"  ✅ {trace_query} → {len(matches)} results ({_ms(qt0)})")
             return i, query, matches
 
         with ThreadPoolExecutor(max_workers=min(n, 5)) as executor:
@@ -351,11 +367,17 @@ class ShopperAgent:
         return results
 
     def get_product_details(self, product_ids: List[str]) -> Dict[str, Any]:
-        """Return cached product details."""
-        return {
-            pid: self.product_cache.get(pid, {"error": "Product not found"})
-            for pid in product_ids
-        }
+        """Fetch full product details including images from SCAPI Product endpoint."""
+        results = {}
+        for pid in product_ids:
+            # Check cache first
+            if pid in self.product_cache and self.product_cache[pid].get("images"):
+                results[pid] = self.product_cache[pid]
+            else:
+                # Fetch from SCAPI and update cache
+                detail = self._fetch_product_detail(pid)
+                results[pid] = detail
+        return results
 
     def _get_tools(self) -> List[Dict]:
         tc = self._tool_config
