@@ -1,0 +1,42 @@
+[
+  {
+    "input": "I have very damaged and breaking hair",
+    "criteria": ["damage", "repair", "resistance", "product"]
+  },
+  {
+    "input": "My hair is dry and frizzy",
+    "criteria": ["dry", "frizz", "nutritive", "hydration", "product"]
+  },
+  {
+    "input": "I need a shampoo for oily scalp",
+    "criteria": ["shampoo", "bain", "oily", "scalp", "product"]
+  },
+  {
+    "input": "What's the best hair oil for shine?",
+    "criteria": ["oil", "elixir", "shine", "product"]
+  },
+  {
+    "input": "I have color-treated hair that needs protection",
+    "criteria": ["color", "protect", "chroma", "product"]
+  },
+  {
+    "input": "My hair is thinning and I want to add density",
+    "criteria": ["density", "aminexil", "hair fall", "product"]
+  },
+  {
+    "input": "I need a complete ritual for damaged fine hair",
+    "criteria": ["damage", "fine", "ritual", "bain", "fondant", "product"]
+  },
+  {
+    "input": "Show me products with hyaluronic acid",
+    "criteria": ["hyaluronic", "hydration", "product"]
+  },
+  {
+    "input": "I have sensitive scalp with dandruff",
+    "criteria": ["sensitive", "scalp", "dandruff", "symbiose", "product"]
+  },
+  {
+    "input": "What shampoo is good for thick curly hair?",
+    "criteria": ["thick", "curly", "curl", "shampoo", "product"]
+  }
+]

@@ -30,10 +30,12 @@ class ShopperAgent:
 
         if base_url:
             self.client = Anthropic(api_key=api_key, base_url=base_url)
-            self.model = "us.anthropic.claude-sonnet-4-6"
+            # Default to Sonnet 4.6 (balanced speed/quality)
+            # Override with env var: CLAUDE_MODEL=us.anthropic.claude-haiku-4-5 for faster
+            self.model = os.getenv("CLAUDE_MODEL", "us.anthropic.claude-sonnet-4-6")
         else:
             self.client = Anthropic(api_key=api_key)
-            self.model = "claude-opus-4-7"
+            self.model = os.getenv("CLAUDE_MODEL", "claude-opus-4-7")
 
         # SCAPI configuration
         self.scapi_token_url = scapi_token_url
@@ -188,7 +190,7 @@ class ShopperAgent:
 
     def _call_scapi_search(self, query_text: str, category: str = None,
                            min_price: float = 0, max_price: float = float("inf"),
-                           max_results: int = 10) -> List[Dict]:
+                           max_results: int = 10, refine: str = None) -> List[Dict]:
         """Call the SCAPI Shopper Search endpoint."""
         t0 = time.monotonic()
         try:
@@ -201,7 +203,13 @@ class ShopperAgent:
             }
             if self._active_locale:
                 params["locale"] = self._active_locale.replace("_", "-")
-            if category:
+
+            # Handle refinements
+            if refine:
+                # refine parameter provided directly
+                params["refine"] = refine
+            elif category:
+                # Backward compatibility: category maps to cgid
                 params["refine"] = f"cgid={category}"
 
             resp = requests.get(
@@ -312,6 +320,7 @@ class ShopperAgent:
                 category = query.get("category") or None
                 min_price = query.get("min_price", 0)
                 max_price = query.get("max_price", float("inf"))
+                refine = query.get("refine") or None
             else:
                 print(f"[WARN] Invalid query type: {type(query)}, skipping")
                 return i, {"q": ""}, []
@@ -319,6 +328,7 @@ class ShopperAgent:
             matches = self._call_scapi_search(
                 q_text,
                 category=category,
+                refine=refine,
                 min_price=min_price,
                 max_price=max_price,
                 max_results=20,
@@ -445,7 +455,7 @@ class ShopperAgent:
             return {"query": query, "results": [], "error": str(e)}
 
     def _analyze_image_and_create_query(self, image: bytes, user_message: str) -> tuple:
-        """Use Claude's vision to analyze a gear image and create search queries."""
+        """Use Claude's vision to analyze a product image and create search queries."""
         try:
             import base64, re as _re
 
@@ -459,23 +469,30 @@ class ShopperAgent:
             else:
                 media_type = "image/jpeg"
 
-            vision_prompt = """Analyze this outdoor gear or apparel image CAREFULLY.
+            vision_prompt = """Analyze this product image CAREFULLY and identify what product(s) are shown.
 
 STEP 1 — READ ALL TEXT ON THE PRODUCT FIRST.
-Read brand name, product name, product type, key features. Do not guess brand names — only use what is written.
+Read brand name, product name, product type, key features, ingredients, or descriptions. Do not guess brand names — only use what is clearly visible or written.
 
 STEP 2 — IDENTIFY EACH PRODUCT.
-- Exact brand name (from label — DO NOT GUESS)
-- Product type (hiking boot, rain jacket, tent, backpack, etc.)
-- Key visible features (waterproof, insulated, etc.)
+- Exact brand name (from label/packaging — DO NOT GUESS if not visible)
+- Product category (e.g., shampoo, conditioner, serum, moisturizer, makeup, jacket, shoes, electronics, etc.)
+- Product type/name if visible (e.g., "Elixir Ultime Oil", "Rain Jacket", "Moisturizing Cream")
+- Key visible features or claims (e.g., "for dry hair", "waterproof", "anti-aging", "SPF 50")
 
-STEP 3 — BUILD SEARCH QUERIES. Brand first if readable.
-Good: "Patagonia rain jacket", "Merrell hiking boot waterproof"
-Bad: "outdoor jacket" (no brand)
+STEP 3 — BUILD SEARCH QUERIES.
+Create 1-3 specific search queries that would help find this product or similar items in a catalog.
+- Include brand name if clearly visible
+- Include product type and key features
+- Use natural search terms a customer would use
+
+Examples:
+Good: "Kérastase Elixir hair oil", "damaged hair repair shampoo", "hydrating face serum hyaluronic acid"
+Bad: "product", "bottle" (too generic)
 
 Respond in this EXACT format:
-DESCRIPTION: [what you see]
-QUERIES: [comma-separated queries, one per product]"""
+DESCRIPTION: [what you see in the image]
+QUERIES: [comma-separated search queries, 1-3 queries total]"""
 
             response = self.client.messages.create(
                 model=self.model,
@@ -498,16 +515,16 @@ QUERIES: [comma-separated queries, one per product]"""
                     queries = [q.strip() for q in line.replace("QUERIES:", "").split(",") if q.strip()]
 
             if not queries:
-                queries = ["outdoor gear"]
+                queries = ["product from image"]
             if not description:
-                description = "Outdoor product(s) in image"
+                description = "Product(s) in image"
 
             print(f"  🔍 Vision: {description} → {queries}")
             return queries, description, media_type, response_text
 
         except Exception as e:
             print(f"  ⚠️  Vision error: {e}")
-            return ["outdoor gear"], "Outdoor product in image", "unknown", str(e)
+            return ["product from image"], "Product in image", "unknown", str(e)
 
     def _generate_follow_up(self, user_message: str, agent_response: str) -> str:
         """Generate a contextual follow-up question when JSON parsing fails."""
@@ -561,8 +578,9 @@ QUERIES: [comma-separated queries, one per product]"""
                 if not (t["name"] == self._search_tool_name and search_calls >= MAX_SEARCH_CALLS)
             ]
 
-            # Keep last 10 messages (5 user+assistant turns) to limit input tokens
-            trimmed_history = self.conversation_history[-10:] if len(self.conversation_history) > 10 else self.conversation_history
+            # Keep last 12 messages (6 user+assistant turns) to preserve diagnosis context
+            # Extended from 6 to support multi-step shopping journey (diagnosis + cross-sell)
+            trimmed_history = self.conversation_history[-12:] if len(self.conversation_history) > 12 else self.conversation_history
 
             claude_t0 = time.monotonic()
             response = self.client.messages.create(

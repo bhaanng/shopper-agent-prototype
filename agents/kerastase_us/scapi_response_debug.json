@@ -1,0 +1,1690 @@
+{
+  "limit": 10,
+  "hits": [
+    {
+      "currency": "USD",
+      "hitType": "product",
+      "orderable": true,
+      "price": 39.0,
+      "pricePerUnit": 39.0,
+      "productId": "3474630636187-6",
+      "productType": {
+        "item": true
+      },
+      "representedProduct": {
+        "id": "3474630636187-6"
+      },
+      "representedProducts": [
+        {
+          "id": "3474630636187-6"
+        }
+      ]
+    },
+    {
+      "currency": "USD",
+      "hitType": "product",
+      "orderable": false,
+      "price": 0.0,
+      "pricePerUnit": 0.0,
+      "productId": "3474630647411",
+      "productType": {
+        "item": true
+      },
+      "representedProduct": {
+        "id": "3474630647411"
+      },
+      "representedProducts": [
+        {
+          "id": "3474630647411"
+        }
+      ]
+    },
+    {
+      "currency": "USD",
+      "hitType": "product",
+      "orderable": false,
+      "price": 0.0,
+      "pricePerUnit": 0.0,
+      "productId": "3474630664869",
+      "productType": {
+        "item": true
+      },
+      "representedProduct": {
+        "id": "3474630664869"
+      },
+      "representedProducts": [
+        {
+          "id": "3474630664869"
+        }
+      ]
+    },
+    {
+      "currency": "USD",
+      "hitType": "product",
+      "orderable": false,
+      "price": 0.0,
+      "pricePerUnit": 0.0,
+      "productId": "3474636382682-1",
+      "productType": {
+        "item": true
+      },
+      "representedProduct": {
+        "id": "3474636382682-1"
+      },
+      "representedProducts": [
+        {
+          "id": "3474636382682-1"
+        }
+      ]
+    },
+    {
+      "currency": "USD",
+      "hitType": "product",
+      "orderable": false,
+      "price": 0.0,
+      "pricePerUnit": 0.0,
+      "productId": "3474630636187-a",
+      "productType": {
+        "item": true
+      },
+      "representedProduct": {
+        "id": "3474630636187-a"
+      },
+      "representedProducts": [
+        {
+          "id": "3474630636187-a"
+        }
+      ]
+    },
+    {
+      "currency": "USD",
+      "hitType": "product",
+      "orderable": false,
+      "price": 0.0,
+      "pricePerUnit": 0.0,
+      "productId": "3474630647497",
+      "productType": {
+        "item": true
+      },
+      "representedProduct": {
+        "id": "3474630647497"
+      },
+      "representedProducts": [
+        {
+          "id": "3474630647497"
+        }
+      ]
+    },
+    {
+      "currency": "USD",
+      "hitType": "product",
+      "orderable": false,
+      "price": 0.0,
+      "pricePerUnit": 0.0,
+      "productId": "3474636397372-1",
+      "productType": {
+        "item": true
+      },
+      "representedProduct": {
+        "id": "3474636397372-1"
+      },
+      "representedProducts": [
+        {
+          "id": "3474636397372-1"
+        }
+      ]
+    },
+    {
+      "currency": "USD",
+      "hitType": "product",
+      "orderable": true,
+      "price": 0.0,
+      "pricePerUnit": 0.0,
+      "productId": "3474636494712",
+      "productType": {
+        "item": true
+      },
+      "representedProduct": {
+        "id": "3474636494712"
+      },
+      "representedProducts": [
+        {
+          "id": "3474636494712"
+        }
+      ]
+    },
+    {
+      "currency": "USD",
+      "hitType": "product",
+      "orderable": true,
+      "price": 33.0,
+      "pricePerUnit": 33.0,
+      "productId": "3474636788040-1",
+      "productType": {
+        "item": true
+      },
+      "representedProduct": {
+        "id": "3474636788040-1"
+      },
+      "representedProducts": [
+        {
+          "id": "3474636788040-1"
+        }
+      ]
+    },
+    {
+      "currency": "USD",
+      "hitType": "product",
+      "orderable": true,
+      "price": 33.0,
+      "pricePerUnit": 33.0,
+      "productId": "3474636788040-2",
+      "productType": {
+        "item": true
+      },
+      "representedProduct": {
+        "id": "3474636788040-2"
+      },
+      "representedProducts": [
+        {
+          "id": "3474636788040-2"
+        }
+      ]
+    }
+  ],
+  "query": "hair",
+  "refinements": [
+    {
+      "attributeId": "c_productBenefits",
+      "label": "Product Benefits",
+      "values": [
+        {
+          "hitCount": 13,
+          "label": "Repairing",
+          "value": "Repairing"
+        },
+        {
+          "hitCount": 11,
+          "label": "Color Protecting",
+          "value": "Color Protecting"
+        },
+        {
+          "hitCount": 6,
+          "label": "Shine Enhancing",
+          "value": "Shine Enhancing"
+        },
+        {
+          "hitCount": 5,
+          "label": "Volumizing",
+          "value": "Volumizing"
+        },
+        {
+          "hitCount": 3,
+          "label": "Anti-Frizz",
+          "value": "Anti-Frizz"
+        },
+        {
+          "hitCount": 3,
+          "label": "Density/Growth",
+          "value": "Density/Growth"
+        },
+        {
+          "hitCount": 2,
+          "label": "Densifying",
+          "value": "Densifying"
+        },
+        {
+          "hitCount": 2,
+          "label": "Heat Protection",
+          "value": "Heat Protection"
+        },
+        {
+          "hitCount": 2,
+          "label": "Hydrating",
+          "value": "Hydrating"
+        },
+        {
+          "hitCount": 2,
+          "label": "Strengthening",
+          "value": "Strengthening"
+        },
+        {
+          "hitCount": 1,
+          "label": "Exfoliating",
+          "value": "Exfoliating"
+        },
+        {
+          "hitCount": 1,
+          "label": "Frizz Control",
+          "value": "Frizz Control"
+        },
+        {
+          "hitCount": 1,
+          "label": "Oil Control",
+          "value": "Oil Control"
+        },
+        {
+          "hitCount": 1,
+          "label": "Scalp protection",
+          "value": "Scalp protection"
+        },
+        {
+          "hitCount": 1,
+          "label": "Thickening",
+          "value": "Thickening"
+        },
+        {
+          "hitCount": 1,
+          "label": "Volume",
+          "value": "Volume"
+        }
+      ]
+    },
+    {
+      "attributeId": "c_productType",
+      "label": "Product Type"
+    },
+    {
+      "attributeId": "c_productFeatures",
+      "label": "Product Features",
+      "values": [
+        {
+          "hitCount": 16,
+          "label": "Oil Infused",
+          "value": "Oil Infused"
+        },
+        {
+          "hitCount": 14,
+          "label": "Paraben-Free",
+          "value": "Paraben-Free"
+        },
+        {
+          "hitCount": 10,
+          "label": "Silicone-Free",
+          "value": "Silicone-Free"
+        },
+        {
+          "hitCount": 7,
+          "label": "Vitamin Infused",
+          "value": "Vitamin Infused"
+        },
+        {
+          "hitCount": 5,
+          "label": "Sulfate-Free",
+          "value": "Sulfate-Free"
+        },
+        {
+          "hitCount": 4,
+          "label": "Anti-Fade Protection",
+          "value": "Anti-Fade Protection"
+        },
+        {
+          "hitCount": 4,
+          "label": "Mineral-Free",
+          "value": "Mineral-Free"
+        },
+        {
+          "hitCount": 3,
+          "label": "Heat Protection",
+          "value": "Heat Protection"
+        },
+        {
+          "hitCount": 3,
+          "label": "Men's Hair Care",
+          "value": "Men's Hair Care"
+        },
+        {
+          "hitCount": 3,
+          "label": "UV Protection",
+          "value": "UV Protection"
+        },
+        {
+          "hitCount": 2,
+          "label": "Detox Formula",
+          "value": "Detox Formula"
+        },
+        {
+          "hitCount": 2,
+          "label": "Specialty Treatment",
+          "value": "Specialty Treatment"
+        },
+        {
+          "hitCount": 1,
+          "label": "Antioxidant Protection",
+          "value": "Antioxidant Protection"
+        }
+      ]
+    },
+    {
+      "attributeId": "c_productSizes",
+      "label": "Available Sizes",
+      "values": [
+        {
+          "hitCount": 8,
+          "label": "Full",
+          "value": "Full"
+        },
+        {
+          "hitCount": 4,
+          "label": "Travel",
+          "value": "Travel"
+        },
+        {
+          "hitCount": 1,
+          "label": "Mini",
+          "value": "Mini"
+        }
+      ]
+    },
+    {
+      "attributeId": "c_productStyling",
+      "label": "Desired Styling Results"
+    },
+    {
+      "attributeId": "c_productApplication",
+      "label": "Application Type",
+      "values": [
+        {
+          "hitCount": 11,
+          "label": "Leave-In",
+          "value": "Leave-In"
+        },
+        {
+          "hitCount": 3,
+          "label": "Rinse Out",
+          "value": "Rinse Out"
+        }
+      ]
+    },
+    {
+      "attributeId": "c_productForm",
+      "label": "Application Style",
+      "values": [
+        {
+          "hitCount": 21,
+          "label": "Oil",
+          "value": "Oil"
+        },
+        {
+          "hitCount": 2,
+          "label": "Serum",
+          "value": "Serum"
+        },
+        {
+          "hitCount": 1,
+          "label": "Pomade/Balm",
+          "value": "Pomade/Balm"
+        }
+      ]
+    },
+    {
+      "attributeId": "price",
+      "label": "Price",
+      "values": [
+        {
+          "hitCount": 64,
+          "label": "$15 - $20",
+          "value": "(0..20)"
+        },
+        {
+          "hitCount": 15,
+          "label": "$20 - $30",
+          "value": "(20..30)"
+        },
+        {
+          "hitCount": 83,
+          "label": "$30 - $50",
+          "value": "(30..50)"
+        },
+        {
+          "hitCount": 44,
+          "label": "$50 - $75",
+          "value": "(50..75)"
+        },
+        {
+          "hitCount": 5,
+          "label": "$75 - $100",
+          "value": "(75..100)"
+        }
+      ]
+    },
+    {
+      "attributeId": "c_keyTechnology",
+      "label": "Ingredients",
+      "values": [
+        {
+          "hitCount": 17,
+          "label": "Ol\u00e9o-Complexe",
+          "value": "Ol\u00e9o-Complexe"
+        },
+        {
+          "hitCount": 8,
+          "label": "Ceramides",
+          "value": "Ceramides"
+        },
+        {
+          "hitCount": 5,
+          "label": "UV Filters",
+          "value": "UV Filters"
+        },
+        {
+          "hitCount": 4,
+          "label": "Hyaluronic Acid",
+          "value": "Hyaluronic Acid"
+        },
+        {
+          "hitCount": 3,
+          "label": "Iris Royal Complexe",
+          "value": "Iris Royal Complexe"
+        },
+        {
+          "hitCount": 3,
+          "label": "Irisome Complex",
+          "value": "Irisome Complex"
+        },
+        {
+          "hitCount": 2,
+          "label": "Benzoin Resin",
+          "value": "Benzoin Resin"
+        },
+        {
+          "hitCount": 2,
+          "label": "Morpho-Huiles Technology",
+          "value": "Morpho-Huiles Technology"
+        },
+        {
+          "hitCount": 2,
+          "label": "Resurrection Sap",
+          "value": "Resurrection Sap"
+        },
+        {
+          "hitCount": 1,
+          "label": "Anti-Oxidative Formula",
+          "value": "Anti-Oxidative Formula"
+        },
+        {
+          "hitCount": 1,
+          "label": "Intra-Cylane",
+          "value": "Intra-Cylane"
+        }
+      ]
+    },
+    {
+      "attributeId": "c_hairType",
+      "label": "Hair Type",
+      "values": [
+        {
+          "hitCount": 28,
+          "label": "All",
+          "value": "All"
+        },
+        {
+          "hitCount": 19,
+          "label": "Color-Treated Hair",
+          "value": "Color-Treated Hair"
+        },
+        {
+          "hitCount": 17,
+          "label": "Dry",
+          "value": "Dry"
+        },
+        {
+          "hitCount": 13,
+          "label": "Damaged",
+          "value": "Damaged"
+        },
+        {
+          "hitCount": 12,
+          "label": "Fine Hair",
+          "value": "Fine Hair"
+        },
+        {
+          "hitCount": 9,
+          "label": "Thinning Hair",
+          "value": "Thinning Hair"
+        },
+        {
+          "hitCount": 6,
+          "label": "Fine / Thin",
+          "value": "Fine / Thin"
+        },
+        {
+          "hitCount": 4,
+          "label": "Curly Hair",
+          "value": "Curly Hair"
+        },
+        {
+          "hitCount": 4,
+          "label": "Dry Hair",
+          "value": "Dry Hair"
+        },
+        {
+          "hitCount": 4,
+          "label": "Hair loss & Thinning hair",
+          "value": "Hair loss & Thinning hair"
+        },
+        {
+          "hitCount": 3,
+          "label": "All Hair Types",
+          "value": "All Hair Types"
+        },
+        {
+          "hitCount": 2,
+          "label": "Oily Hair",
+          "value": "Oily Hair"
+        },
+        {
+          "hitCount": 1,
+          "label": "Normal",
+          "value": "Normal"
+        }
+      ]
+    },
+    {
+      "attributeId": "c_holdLevel",
+      "label": "Hold Level",
+      "values": [
+        {
+          "hitCount": 2,
+          "label": "Flexible",
+          "value": "Flexible"
+        }
+      ]
+    },
+    {
+      "attributeId": "c_includedProducts",
+      "label": "Included Products",
+      "values": [
+        {
+          "hitCount": 5,
+          "label": "Hair Oil",
+          "value": "Hair Oil"
+        },
+        {
+          "hitCount": 4,
+          "label": "Hair Masques",
+          "value": "Hair Masques"
+        },
+        {
+          "hitCount": 2,
+          "label": "Shampoo",
+          "value": "Shampoo"
+        },
+        {
+          "hitCount": 1,
+          "label": "Hair Serums",
+          "value": "Hair Serums"
+        }
+      ]
+    },
+    {
+      "attributeId": "EAN",
+      "label": "EAN",
+      "values": [
+        {
+          "hitCount": 4,
+          "label": "3474636349821",
+          "value": "3474636349821"
+        },
+        {
+          "hitCount": 4,
+          "label": "3474636349845",
+          "value": "3474636349845"
+        },
+        {
+          "hitCount": 4,
+          "label": "3474636613908",
+          "value": "3474636613908"
+        },
+        {
+          "hitCount": 4,
+          "label": "3474636613922",
+          "value": "3474636613922"
+        },
+        {
+          "hitCount": 4,
+          "label": "3474636692422",
+          "value": "3474636692422"
+        },
+        {
+          "hitCount": 4,
+          "label": "3474636788019",
+          "value": "3474636788019"
+        },
+        {
+          "hitCount": 4,
+          "label": "3474637283384",
+          "value": "3474637283384"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474630268593",
+          "value": "3474630268593"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474630346826",
+          "value": "3474630346826"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474630652439",
+          "value": "3474630652439"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636215621",
+          "value": "3474636215621"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636349913",
+          "value": "3474636349913"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636349920",
+          "value": "3474636349920"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636382514",
+          "value": "3474636382514"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636382521",
+          "value": "3474636382521"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636382736",
+          "value": "3474636382736"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636386215",
+          "value": "3474636386215"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636386499",
+          "value": "3474636386499"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636419272",
+          "value": "3474636419272"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636419296",
+          "value": "3474636419296"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636613847",
+          "value": "3474636613847"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636613861",
+          "value": "3474636613861"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636692170",
+          "value": "3474636692170"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636695324",
+          "value": "3474636695324"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636695348",
+          "value": "3474636695348"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636857937",
+          "value": "3474636857937"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636857975",
+          "value": "3474636857975"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636858002",
+          "value": "3474636858002"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636858033",
+          "value": "3474636858033"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474637175306",
+          "value": "3474637175306"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474637308728",
+          "value": "3474637308728"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474637329860",
+          "value": "3474637329860"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474630315129",
+          "value": "3474630315129"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474630382459",
+          "value": "3474630382459"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474630436275",
+          "value": "3474630436275"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474630436312",
+          "value": "3474630436312"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474630539563",
+          "value": "3474630539563"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474630540415",
+          "value": "3474630540415"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474630540545",
+          "value": "3474630540545"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474630540583",
+          "value": "3474630540583"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474630545984",
+          "value": "3474630545984"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474630550520",
+          "value": "3474630550520"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636349876",
+          "value": "3474636349876"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636349944",
+          "value": "3474636349944"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636398041",
+          "value": "3474636398041"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636400232",
+          "value": "3474636400232"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636471751",
+          "value": "3474636471751"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636471768",
+          "value": "3474636471768"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636692361",
+          "value": "3474636692361"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636692446",
+          "value": "3474636692446"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636857883",
+          "value": "3474636857883"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636909292",
+          "value": "3474636909292"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474637079215",
+          "value": "3474637079215"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474637155025",
+          "value": "3474637155025"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474637283407",
+          "value": "3474637283407"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474637283414",
+          "value": "3474637283414"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474637283445",
+          "value": "3474637283445"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474637308735",
+          "value": "3474637308735"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474637314224",
+          "value": "3474637314224"
+        },
+        {
+          "hitCount": 1,
+          "label": "344635004202",
+          "value": "344635004202"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630098251",
+          "value": "3474630098251"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630131453",
+          "value": "3474630131453"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630140691",
+          "value": "3474630140691"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630152571",
+          "value": "3474630152571"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630179349",
+          "value": "3474630179349"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630179431",
+          "value": "3474630179431"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630180789",
+          "value": "3474630180789"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630212886",
+          "value": "3474630212886"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630223073",
+          "value": "3474630223073"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630247918",
+          "value": "3474630247918"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630250017",
+          "value": "3474630250017"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630263123",
+          "value": "3474630263123"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630265981",
+          "value": "3474630265981"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630267305",
+          "value": "3474630267305"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630275348",
+          "value": "3474630275348"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630275881",
+          "value": "3474630275881"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630288041",
+          "value": "3474630288041"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630288195",
+          "value": "3474630288195"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630288256",
+          "value": "3474630288256"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630288317",
+          "value": "3474630288317"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630288706",
+          "value": "3474630288706"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630290983",
+          "value": "3474630290983"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630305021",
+          "value": "3474630305021"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630313743",
+          "value": "3474630313743"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630314573",
+          "value": "3474630314573"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630315020",
+          "value": "3474630315020"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630340091",
+          "value": "3474630340091"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630340145",
+          "value": "3474630340145"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630340183",
+          "value": "3474630340183"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630340275",
+          "value": "3474630340275"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630342330",
+          "value": "3474630342330"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630370937",
+          "value": "3474630370937"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630371149",
+          "value": "3474630371149"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630371408",
+          "value": "3474630371408"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630380806",
+          "value": "3474630380806"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630393271",
+          "value": "3474630393271"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630407510",
+          "value": "3474630407510"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630436114",
+          "value": "3474630436114"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630436152",
+          "value": "3474630436152"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630439658",
+          "value": "3474630439658"
+        }
+      ]
+    },
+    {
+      "attributeId": "UPC",
+      "label": "UPC",
+      "values": [
+        {
+          "hitCount": 6,
+          "label": "3474630618008-1",
+          "value": "3474630618008-1"
+        },
+        {
+          "hitCount": 5,
+          "label": "3474636613908",
+          "value": "3474636613908"
+        },
+        {
+          "hitCount": 4,
+          "label": "3474630652439",
+          "value": "3474630652439"
+        },
+        {
+          "hitCount": 4,
+          "label": "3474636349821",
+          "value": "3474636349821"
+        },
+        {
+          "hitCount": 4,
+          "label": "3474636349845",
+          "value": "3474636349845"
+        },
+        {
+          "hitCount": 4,
+          "label": "3474636382514",
+          "value": "3474636382514"
+        },
+        {
+          "hitCount": 4,
+          "label": "3474636382521",
+          "value": "3474636382521"
+        },
+        {
+          "hitCount": 4,
+          "label": "3474636382736",
+          "value": "3474636382736"
+        },
+        {
+          "hitCount": 4,
+          "label": "3474636386215",
+          "value": "3474636386215"
+        },
+        {
+          "hitCount": 4,
+          "label": "3474636386499",
+          "value": "3474636386499"
+        },
+        {
+          "hitCount": 4,
+          "label": "3474636788019",
+          "value": "3474636788019"
+        },
+        {
+          "hitCount": 4,
+          "label": "3474637283384",
+          "value": "3474637283384"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474630268593",
+          "value": "3474630268593"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474630346826",
+          "value": "3474630346826"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474630539563",
+          "value": "3474630539563"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636215621",
+          "value": "3474636215621"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636349913",
+          "value": "3474636349913"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636349920",
+          "value": "3474636349920"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636419272",
+          "value": "3474636419272"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636419296",
+          "value": "3474636419296"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636857937",
+          "value": "3474636857937"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636857975",
+          "value": "3474636857975"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636858002",
+          "value": "3474636858002"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474636858033",
+          "value": "3474636858033"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474637308728",
+          "value": "3474637308728"
+        },
+        {
+          "hitCount": 3,
+          "label": "3474637329860",
+          "value": "3474637329860"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474630315129",
+          "value": "3474630315129"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474630382459",
+          "value": "3474630382459"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474630436275",
+          "value": "3474630436275"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474630436312",
+          "value": "3474630436312"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474630540415",
+          "value": "3474630540415"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474630540545",
+          "value": "3474630540545"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474630540583",
+          "value": "3474630540583"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474630545984",
+          "value": "3474630545984"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474630550520",
+          "value": "3474630550520"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474630645530",
+          "value": "3474630645530"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474630712744",
+          "value": "3474630712744"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474630712942",
+          "value": "3474630712942"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474635001577",
+          "value": "3474635001577"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636349876",
+          "value": "3474636349876"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636382699",
+          "value": "3474636382699"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636382705",
+          "value": "3474636382705"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636382712",
+          "value": "3474636382712"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636386185",
+          "value": "3474636386185"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636386208",
+          "value": "3474636386208"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636386253",
+          "value": "3474636386253"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636386475",
+          "value": "3474636386475"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636397945",
+          "value": "3474636397945"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636397969",
+          "value": "3474636397969"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636400201",
+          "value": "3474636400201"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636400232",
+          "value": "3474636400232"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636403936",
+          "value": "3474636403936"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636471751",
+          "value": "3474636471751"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636471768",
+          "value": "3474636471768"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636524013",
+          "value": "3474636524013"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636524020",
+          "value": "3474636524020"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636591275",
+          "value": "3474636591275"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636728336",
+          "value": "3474636728336"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636857876",
+          "value": "3474636857876"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636857883",
+          "value": "3474636857883"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474636909292",
+          "value": "3474636909292"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474637079215",
+          "value": "3474637079215"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474637155025",
+          "value": "3474637155025"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474637283407",
+          "value": "3474637283407"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474637283414",
+          "value": "3474637283414"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474637283445",
+          "value": "3474637283445"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474637308735",
+          "value": "3474637308735"
+        },
+        {
+          "hitCount": 2,
+          "label": "3474637314224",
+          "value": "3474637314224"
+        },
+        {
+          "hitCount": 1,
+          "label": "344635004202",
+          "value": "344635004202"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630098251",
+          "value": "3474630098251"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630131453",
+          "value": "3474630131453"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630140691",
+          "value": "3474630140691"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630152571",
+          "value": "3474630152571"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630179349",
+          "value": "3474630179349"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630179431",
+          "value": "3474630179431"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630180789",
+          "value": "3474630180789"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630212886",
+          "value": "3474630212886"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630223073",
+          "value": "3474630223073"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630247918",
+          "value": "3474630247918"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630250017",
+          "value": "3474630250017"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630263123",
+          "value": "3474630263123"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630265981",
+          "value": "3474630265981"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630267305",
+          "value": "3474630267305"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630275348",
+          "value": "3474630275348"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630275881",
+          "value": "3474630275881"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630288041",
+          "value": "3474630288041"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630288195",
+          "value": "3474630288195"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630288256",
+          "value": "3474630288256"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630288317",
+          "value": "3474630288317"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630288706",
+          "value": "3474630288706"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630290983",
+          "value": "3474630290983"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630305021",
+          "value": "3474630305021"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630313743",
+          "value": "3474630313743"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630314573",
+          "value": "3474630314573"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630315020",
+          "value": "3474630315020"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630340091",
+          "value": "3474630340091"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630340145",
+          "value": "3474630340145"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630340183",
+          "value": "3474630340183"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630340275",
+          "value": "3474630340275"
+        },
+        {
+          "hitCount": 1,
+          "label": "3474630342330",
+          "value": "3474630342330"
+        }
+      ]
+    }
+  ],
+  "searchPhraseSuggestions": {
+    "suggestedPhrases": [
+      {
+        "exactMatch": true,
+        "phrase": "hair"
+      }
+    ],
+    "suggestedTerms": [
+      {
+        "originalTerm": "hair",
+        "terms": [
+          {
+            "completed": false,
+            "corrected": false,
+            "exactMatch": true,
+            "value": "hair"
+          }
+        ]
+      }
+    ]
+  },
+  "sortingOptions": [
+    {
+      "id": "sort-by-default",
+      "label": "sort by"
+    },
+    {
+      "id": "best-matches",
+      "label": "best matches"
+    },
+    {
+      "id": "price-low-to-high",
+      "label": "price low to high"
+    },
+    {
+      "id": "price-high-to-low",
+      "label": "price high to low"
+    },
+    {
+      "id": "product-name-a-z",
+      "label": "product name a-z"
+    },
+    {
+      "id": "product-name-z-a",
+      "label": "product name z-a"
+    },
+    {
+      "id": "most-popular",
+      "label": "most popular"
+    },
+    {
+      "id": "best-sellers",
+      "label": "top sellers"
+    }
+  ],
+  "offset": 0,
+  "total": 420
+}
