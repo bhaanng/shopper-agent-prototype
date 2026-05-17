@@ -1,0 +1,615 @@
+{
+  "site_id": "shiseido_us",
+  "facets": {
+    "cgid": {
+      "label": "Category",
+      "values": [
+        {
+          "value": "friends-and-family",
+          "label": "Shop The Event",
+          "total_count": 362
+        },
+        {
+          "value": "all-best-sellers",
+          "label": "Best Sellers",
+          "total_count": 14
+        },
+        {
+          "value": "all-new-arrivals",
+          "label": "New",
+          "total_count": 17
+        },
+        {
+          "value": "skincare",
+          "label": "Skincare",
+          "total_count": 464
+        },
+        {
+          "value": "suncare",
+          "label": "Sunscreen",
+          "total_count": 99
+        },
+        {
+          "value": "makeup",
+          "label": "Makeup",
+          "total_count": 115
+        },
+        {
+          "value": "men",
+          "label": "Men",
+          "total_count": 64
+        },
+        {
+          "value": "sets-and-travel",
+          "label": "Sets & Travel",
+          "total_count": 283
+        },
+        {
+          "value": "exclusives",
+          "label": "Discover",
+          "total_count": 511
+        },
+        {
+          "value": "m-last-chance",
+          "label": "Last Chance",
+          "total_count": 6
+        },
+        {
+          "value": "consultation",
+          "label": "Virtual Consultation",
+          "total_count": 12
+        },
+        {
+          "value": "hidden-categories",
+          "label": "Hidden Categories",
+          "total_count": 34
+        },
+        {
+          "value": "hunterschafer-favorites",
+          "label": "Hunter Schafer's Favorites",
+          "total_count": 13
+        },
+        {
+          "value": "m-best-sellers",
+          "label": "Best Sellers",
+          "total_count": 8
+        },
+        {
+          "value": "m-ultimune",
+          "label": "Ultimune",
+          "total_count": 8
+        },
+        {
+          "value": "skincare-blog",
+          "label": "Skincare Blog",
+          "total_count": 4
+        },
+        {
+          "value": "ultimunememorytcells",
+          "label": "ultimunememorytcells",
+          "total_count": 3
+        },
+        {
+          "value": "vitamin-c",
+          "label": "Vitamin-C",
+          "total_count": 22
+        },
+        {
+          "value": "store-locator",
+          "label": "Store Locator",
+          "total_count": 2
+        }
+      ]
+    },
+    "c_skincareConcern": {
+      "label": "Concern",
+      "values": [
+        {
+          "value": "Brightening",
+          "label": "Brightening",
+          "total_count": 63
+        },
+        {
+          "value": "Wrinkle Smoothing",
+          "label": "Wrinkle Smoothing",
+          "total_count": 112
+        },
+        {
+          "value": "Anti-Aging",
+          "label": "Anti-Aging",
+          "total_count": 308
+        },
+        {
+          "value": "Lifting & Firming",
+          "label": "Lifting & Firming",
+          "total_count": 105
+        },
+        {
+          "value": "Deeply Hydrating",
+          "label": "Deeply Hydrating",
+          "total_count": 300
+        },
+        {
+          "value": "Pore Minimizing",
+          "label": "Pore Minimizing",
+          "total_count": 24
+        },
+        {
+          "value": "Texture & Tone Refining",
+          "label": "Texture & Tone Refining",
+          "total_count": 65
+        },
+        {
+          "value": "Daily Protection",
+          "label": "Daily Protection",
+          "total_count": 59
+        },
+        {
+          "value": "Skin Strengthening",
+          "label": "Skin Strengthening",
+          "total_count": 2
+        }
+      ]
+    },
+    "c_skinType": {
+      "label": "Skin Type",
+      "values": [
+        {
+          "value": "Combination Skin",
+          "label": "Combination Skin",
+          "total_count": 82
+        },
+        {
+          "value": "Dry Skin",
+          "label": "Dry Skin",
+          "total_count": 89
+        },
+        {
+          "value": "Oily Skin",
+          "label": "Oily Skin",
+          "total_count": 91
+        },
+        {
+          "value": "All Types",
+          "label": "All Types",
+          "total_count": 1
+        },
+        {
+          "value": "Normal Skin",
+          "label": "Normal Skin",
+          "total_count": 1
+        }
+      ]
+    },
+    "c_formula": {
+      "label": "Formula",
+      "values": [
+        {
+          "value": "Liquid",
+          "label": "Liquid",
+          "total_count": 190
+        },
+        {
+          "value": "Stick",
+          "label": "Stick",
+          "total_count": 12
+        },
+        {
+          "value": "Powder",
+          "label": "Powder",
+          "total_count": 13
+        },
+        {
+          "value": "Cream",
+          "label": "Cream",
+          "total_count": 200
+        },
+        {
+          "value": "Gel",
+          "label": "Gel",
+          "total_count": 189
+        },
+        {
+          "value": "Oil",
+          "label": "Oil",
+          "total_count": 10
+        },
+        {
+          "value": "Mask",
+          "label": "Mask",
+          "total_count": 22
+        },
+        {
+          "value": "Lotion",
+          "label": "Lotion",
+          "total_count": 63
+        },
+        {
+          "value": "Gloss",
+          "label": "Gloss",
+          "total_count": 1
+        },
+        {
+          "value": "Ink",
+          "label": "Ink",
+          "total_count": 6
+        },
+        {
+          "value": "Pencil",
+          "label": "Pencil",
+          "total_count": 5
+        }
+      ]
+    },
+    "c_brandName": {
+      "label": "Collection",
+      "values": [
+        {
+          "value": "Benefiance",
+          "label": "Benefiance",
+          "total_count": 66
+        },
+        {
+          "value": "Bio-Performance",
+          "label": "Bio-Performance",
+          "total_count": 26
+        },
+        {
+          "value": "Essential Energy",
+          "label": "Essential Energy",
+          "total_count": 15
+        },
+        {
+          "value": "Essentials",
+          "label": "Essentials",
+          "total_count": 13
+        },
+        {
+          "value": "Eudermine",
+          "label": "Eudermine",
+          "total_count": 35
+        },
+        {
+          "value": "Future Solution LX",
+          "label": "Future Solution LX",
+          "total_count": 63
+        },
+        {
+          "value": "Shiseido Men",
+          "label": "Shiseido Men",
+          "total_count": 44
+        },
+        {
+          "value": "Shiseido Men's",
+          "label": "Shiseido Men's",
+          "total_count": 4
+        },
+        {
+          "value": "Ultimate",
+          "label": "Ultimate",
+          "total_count": 22
+        },
+        {
+          "value": "Ultimune",
+          "label": "Ultimune",
+          "total_count": 107
+        },
+        {
+          "value": "Urban Environment",
+          "label": "Urban Environment",
+          "total_count": 11
+        },
+        {
+          "value": "Vital Perfection",
+          "label": "Vital Perfection",
+          "total_count": 63
+        },
+        {
+          "value": "WASO",
+          "label": "WASO",
+          "total_count": 3
+        },
+        {
+          "value": "Waso",
+          "label": "Waso",
+          "total_count": 13
+        },
+        {
+          "value": "White Lucent",
+          "label": "White Lucent",
+          "total_count": 11
+        },
+        {
+          "value": "Zen",
+          "label": "Zen",
+          "total_count": 2
+        },
+        {
+          "value": "REVITALESSENCE",
+          "label": "REVITALESSENCE",
+          "total_count": 3
+        },
+        {
+          "value": "Ultimate Sun",
+          "label": "Ultimate Sun",
+          "total_count": 2
+        }
+      ]
+    },
+    "c_ingredientRefinement": {
+      "label": "Ingredient",
+      "values": [
+        {
+          "value": "Caffeine",
+          "label": "Caffeine",
+          "total_count": 137
+        },
+        {
+          "value": "Hyaluronic Acid",
+          "label": "Hyaluronic Acid",
+          "total_count": 39
+        },
+        {
+          "value": "Niacinamide",
+          "label": "Niacinamide",
+          "total_count": 16
+        },
+        {
+          "value": "Retinol",
+          "label": "Retinol",
+          "total_count": 29
+        },
+        {
+          "value": "Squalene",
+          "label": "Squalene",
+          "total_count": 64
+        },
+        {
+          "value": "Vitamin C",
+          "label": "Vitamin C",
+          "total_count": 71
+        },
+        {
+          "value": "Peptides",
+          "label": "Peptides",
+          "total_count": 12
+        }
+      ]
+    },
+    "c_level1RefinementCategory": {
+      "label": "Category",
+      "values": [
+        {
+          "value": "Accessories",
+          "label": "Accessories",
+          "total_count": 4
+        },
+        {
+          "value": "Brushes",
+          "label": "Brushes",
+          "total_count": 7
+        },
+        {
+          "value": "Cheeks",
+          "label": "Cheeks",
+          "total_count": 1
+        },
+        {
+          "value": "Eyes",
+          "label": "Eyes",
+          "total_count": 9
+        },
+        {
+          "value": "Lips",
+          "label": "Lips",
+          "total_count": 2
+        }
+      ]
+    },
+    "c_finish": {
+      "label": "Finish",
+      "values": [
+        {
+          "value": "Matte",
+          "label": "Matte",
+          "total_count": 9
+        },
+        {
+          "value": "Sheer",
+          "label": "Sheer",
+          "total_count": 2
+        },
+        {
+          "value": "Natural",
+          "label": "Natural",
+          "total_count": 6
+        },
+        {
+          "value": "Radiant",
+          "label": "Radiant",
+          "total_count": 3
+        },
+        {
+          "value": "Shimmer",
+          "label": "Shimmer",
+          "total_count": 2
+        },
+        {
+          "value": "Satin",
+          "label": "Satin",
+          "total_count": 10
+        },
+        {
+          "value": "High-shine",
+          "label": "High-shine",
+          "total_count": 2
+        }
+      ]
+    },
+    "c_refinementColor": {
+      "label": "Color",
+      "values": [
+        {
+          "value": "Blue",
+          "label": "Blue",
+          "total_count": 2
+        },
+        {
+          "value": "Black",
+          "label": "Black",
+          "total_count": 4
+        },
+        {
+          "value": "Pink",
+          "label": "Pink",
+          "total_count": 5
+        },
+        {
+          "value": "Coral",
+          "label": "Coral",
+          "total_count": 4
+        },
+        {
+          "value": "Red",
+          "label": "Red",
+          "total_count": 7
+        },
+        {
+          "value": "Purple",
+          "label": "Purple",
+          "total_count": 2
+        },
+        {
+          "value": "Brown",
+          "label": "Brown",
+          "total_count": 7
+        },
+        {
+          "value": "Green",
+          "label": "Green",
+          "total_count": 1
+        },
+        {
+          "value": "Silver",
+          "label": "Silver",
+          "total_count": 1
+        },
+        {
+          "value": "Gold",
+          "label": "Gold",
+          "total_count": 1
+        },
+        {
+          "value": "Bronze",
+          "label": "Bronze",
+          "total_count": 1
+        },
+        {
+          "value": "Orange",
+          "label": "Orange",
+          "total_count": 6
+        },
+        {
+          "value": "White",
+          "label": "White",
+          "total_count": 4
+        },
+        {
+          "value": "Nude",
+          "label": "Nude",
+          "total_count": 3
+        },
+        {
+          "value": "Beige",
+          "label": "Beige",
+          "total_count": 4
+        },
+        {
+          "value": "Berry",
+          "label": "Berry",
+          "total_count": 2
+        },
+        {
+          "value": "Plum",
+          "label": "Plum",
+          "total_count": 2
+        },
+        {
+          "value": "Tan",
+          "label": "Tan",
+          "total_count": 1
+        }
+      ]
+    },
+    "brand": {
+      "label": "Collection",
+      "values": [
+        {
+          "value": "Shiseido",
+          "label": "Shiseido",
+          "total_count": 487
+        }
+      ]
+    },
+    "c_spf": {
+      "label": "SPF",
+      "values": [
+        {
+          "value": "15-30",
+          "label": "15-30",
+          "total_count": 45
+        },
+        {
+          "value": "30-40",
+          "label": "30-40",
+          "total_count": 28
+        },
+        {
+          "value": "40-49",
+          "label": "40-49",
+          "total_count": 32
+        },
+        {
+          "value": "50+",
+          "label": "50+",
+          "total_count": 31
+        }
+      ]
+    },
+    "c_newest": {
+      "label": "New Arrivals",
+      "values": [
+        {
+          "value": "newest",
+          "label": "newest",
+          "total_count": 34
+        }
+      ]
+    },
+    "c_awardWinner": {
+      "label": "Award Winners",
+      "values": [
+        {
+          "value": "award-winner",
+          "label": "award-winner",
+          "total_count": 102
+        }
+      ]
+    },
+    "c_bestSeller": {
+      "label": "Best Seller",
+      "values": [
+        {
+          "value": "best-seller",
+          "label": "best-seller",
+          "total_count": 219
+        },
+        {
+          "value": "true",
+          "label": "true",
+          "total_count": 9
+        }
+      ]
+    }
+  }
+}
